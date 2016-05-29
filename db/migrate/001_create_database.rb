@@ -3,8 +3,7 @@ class CreateDatabase < ActiveRecord::Migration
     # These are extensions that must be enabled in order to support this database
     enable_extension "plpgsql"
 
-    create_table "addresses", id: false, force: :cascade do |t|
-      t.bigint  "id"
+    create_table "addresses", force: :cascade do |t|
       t.bigint  "id_user"
       t.bigint  "id_bookstore"
       t.text    "city"
@@ -22,7 +21,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.bigint "id_category", null: false
     end
 
-    create_table "books", id: :bigint, force: :cascade do |t|
+    create_table "books", force: :cascade do |t|
       t.text "name"
       t.text "isbn"
       t.text "author"
@@ -37,17 +36,17 @@ class CreateDatabase < ActiveRecord::Migration
       t.bigint "stock"
     end
 
-    create_table "bookstores", id: :bigint, force: :cascade do |t|
+    create_table "bookstores", force: :cascade do |t|
       t.text "name"
       t.text "telephone"
       t.text "cnpj"
     end
 
-    create_table "categories", id: :bigint, force: :cascade do |t|
+    create_table "categories", force: :cascade do |t|
       t.text "name", null: false
     end
 
-    create_table "credit_cards", id: :bigint, force: :cascade do |t|
+    create_table "credit_cards", force: :cascade do |t|
       t.bigint  "id_user",     null: false
       t.text    "card_key",    null: false
       t.text    "name",        null: false
@@ -55,8 +54,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.integer "last_digits", null: false
     end
 
-    create_table "orders", primary_key: ["id"], force: :cascade do |t|
-      t.bigint   "id",           null: false
+    create_table "orders", force: :cascade do |t|
       t.bigint   "id_bookstore", null: false
       t.text     "status"
       t.datetime "date"
@@ -68,8 +66,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.bigint "id_user",    null: false
     end
 
-    create_table "packages", primary_key: ["id"], force: :cascade do |t|
-      t.bigint   "id",            null: false
+    create_table "packages", force: :cascade do |t|
       t.bigint   "id_user",       null: false
       t.bigint   "id_order",      null: false
       t.datetime "dispatch_date"
@@ -77,7 +74,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.bigint   "id_bookstore",  null: false
     end
 
-    create_table "payments", id: :bigint, force: :cascade do |t|
+    create_table "payments", force: :cascade do |t|
       t.bigint   "id_user",           null: false
       t.bigint   "id_credit_card"
       t.text     "payment_method"
@@ -89,16 +86,16 @@ class CreateDatabase < ActiveRecord::Migration
       t.integer  "total_value"
     end
 
-    create_table "periodicities", id: :bigint, force: :cascade do |t|
+    create_table "periodicities", force: :cascade do |t|
       t.text "name", null: false
     end
 
-    create_table "signatures", id: :bigint, force: :cascade do |t|
+    create_table "signatures", force: :cascade do |t|
       t.bigint "id_user",        null: false
       t.bigint "id_periodicity", null: false
     end
 
-    create_table "support_tickets", id: :bigint, force: :cascade do |t|
+    create_table "support_tickets", force: :cascade do |t|
       t.bigint   "id_user"
       t.text     "description"
       t.text     "status"
@@ -116,7 +113,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.bigint "id_category", null: false
     end
 
-    create_table "users", id: :bigint, force: :cascade do |t|
+    create_table "users", force: :cascade do |t|
       t.text    "login"
       t.text    "password"
       t.text    "name"
