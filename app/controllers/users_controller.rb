@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         format.html { redirect_to action: :index, notice: 'User created' }
         format.json { render :index, status: :created, location: @user }
       else
-        format.html { render :index }
+        format.html { render :register }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :cpf, :login, :password, :addresses_attributes => [ :zipcode ])
+      params.require(:user).permit(:name, :cpf, :login, :birth_date, :password, :password_confirmation, :gender, :addresses_attributes => [ :zipcode, :city, :country, :state, :complement, :street, :quarter])
     end
-
 end

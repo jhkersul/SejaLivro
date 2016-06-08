@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 20160608120416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 1) do
     t.text    "goodreads_id"
     t.date    "birth_date"
     t.boolean "admin",        default: false
+    t.integer "gender",       default: 0
   end
 
   add_foreign_key "addresses", "users", name: "address_user_id_fk", on_delete: :cascade

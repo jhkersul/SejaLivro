@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+    enum gender: [ :male, :female ]
+
     has_many :addresses, :class_name => 'Address'
     accepts_nested_attributes_for :addresses
 
@@ -9,4 +11,6 @@ class User < ActiveRecord::Base
     has_many :payments, :class_name => 'Payment'
     has_many :packages, :class_name => 'Package'
     has_many :credit_cards, :class_name => 'CreditCard'
+
+    validates :password, confirmation: true
 end

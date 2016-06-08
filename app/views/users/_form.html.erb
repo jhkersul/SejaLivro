@@ -31,10 +31,35 @@
       <%= f.password_field :password %>
     </div>
 
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="field">
+      <%= f.date_select :birth_date %>
+    </div>
+
+    <div class="field">
+      <% User.genders.keys.each do |gender| %>
+          <%= f.radio_button :gender, gender %>
+          <%= f.label gender.to_sym %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label "Endereço" %>
+    </div>
+
     <%= f.fields_for :addresses do |ff| %>
-        <div>
+        <div class="field">
           <%= ff.label :zipcode %>
           <%= ff.text_field :zipcode %>
+        </div>
+
+        <div class="field">
+          <%= ff.label :street %>
+          <%= ff.text_field :street %>
         </div>
     <% end %>
 
