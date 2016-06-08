@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 1) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.bigint  "id_user"
-    t.bigint  "id_bookstore"
+    t.bigint  "user_id"
+    t.bigint  "bookstore_id"
     t.text    "city"
     t.text    "country"
     t.text    "zipcode"
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 1) do
     t.text    "quarter"
   end
 
-  create_table "book_categories", primary_key: ["id_book", "id_category"], force: :cascade do |t|
-    t.bigint "id_book",     null: false
-    t.bigint "id_category", null: false
+  create_table "book_categories", primary_key: ["book_id", "category_id"], force: :cascade do |t|
+    t.bigint "book_id",     null: false
+    t.bigint "category_id", null: false
   end
 
   create_table "books", force: :cascade do |t|
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 1) do
     t.text "year"
   end
 
-  create_table "bookstore_books", primary_key: ["id_bookstore", "id_book"], force: :cascade do |t|
-    t.bigint "id_bookstore", null: false
-    t.bigint "id_book",      null: false
+  create_table "bookstore_books", primary_key: ["bookstore_id", "book_id"], force: :cascade do |t|
+    t.bigint "bookstore_id", null: false
+    t.bigint "book_id",      null: false
     t.bigint "stock"
   end
 
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 1) do
   end
 
   create_table "credit_cards", force: :cascade do |t|
-    t.bigint  "id_user",     null: false
+    t.bigint  "user_id",     null: false
     t.text    "card_key",    null: false
     t.text    "name",        null: false
     t.text    "brand"
@@ -68,28 +68,28 @@ ActiveRecord::Schema.define(version: 1) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint   "id_bookstore", null: false
+    t.bigint   "bookstore_id", null: false
     t.text     "status"
     t.datetime "date"
   end
 
-  create_table "package_books", primary_key: ["id_package", "id_book", "id_user"], force: :cascade do |t|
-    t.bigint "id_package", null: false
-    t.bigint "id_book",    null: false
-    t.bigint "id_user",    null: false
+  create_table "package_books", primary_key: ["package_id", "book_id", "user_id"], force: :cascade do |t|
+    t.bigint "package_id", null: false
+    t.bigint "book_id",    null: false
+    t.bigint "user_id",    null: false
   end
 
   create_table "packages", force: :cascade do |t|
-    t.bigint   "id_user",       null: false
-    t.bigint   "id_order",      null: false
+    t.bigint   "user_id",       null: false
+    t.bigint   "order_id",      null: false
     t.datetime "dispatch_date"
     t.datetime "arrival_date"
-    t.bigint   "id_bookstore",  null: false
+    t.bigint   "bookstore_id",  null: false
   end
 
   create_table "payments", force: :cascade do |t|
-    t.bigint   "id_user",           null: false
-    t.bigint   "id_credit_card"
+    t.bigint   "user_id",           null: false
+    t.bigint   "credit_card_id"
     t.text     "payment_method"
     t.datetime "created_date"
     t.datetime "updated_date"
@@ -104,26 +104,26 @@ ActiveRecord::Schema.define(version: 1) do
   end
 
   create_table "signatures", force: :cascade do |t|
-    t.bigint "id_user",        null: false
-    t.bigint "id_periodicity", null: false
+    t.bigint "user_id",        null: false
+    t.bigint "periodicity_id", null: false
   end
 
   create_table "support_tickets", force: :cascade do |t|
-    t.bigint   "id_user"
+    t.bigint   "user_id"
     t.text     "description"
     t.text     "status"
     t.datetime "created_date"
     t.text     "type"
   end
 
-  create_table "user_books", primary_key: ["id_user", "id_book"], force: :cascade do |t|
-    t.bigint "id_user", null: false
-    t.bigint "id_book", null: false
+  create_table "user_books", primary_key: ["user_id", "book_id"], force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
   end
 
-  create_table "user_preferences", primary_key: ["id_user", "id_category"], force: :cascade do |t|
-    t.bigint "id_user",     null: false
-    t.bigint "id_category", null: false
+  create_table "user_preferences", primary_key: ["user_id", "category_id"], force: :cascade do |t|
+    t.bigint "user_id",     null: false
+    t.bigint "category_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -139,22 +139,23 @@ ActiveRecord::Schema.define(version: 1) do
     t.boolean "admin",        default: false
   end
 
-  add_foreign_key "book_categories", "books", column: "id_book", name: "book_preferences_fk1", on_delete: :cascade
-  add_foreign_key "book_categories", "categories", column: "id_category", name: "book_preferences_fk2", on_delete: :cascade
-  add_foreign_key "bookstore_books", "books", column: "id_book", name: "bookstore_books_fk2", on_delete: :cascade
-  add_foreign_key "bookstore_books", "bookstores", column: "id_bookstore", name: "bookstore_books_fk1", on_delete: :cascade
-  add_foreign_key "credit_cards", "users", column: "id_user", name: "foreign_key"
-  add_foreign_key "orders", "bookstores", column: "id_bookstore", name: "orders_id_bookstore_fkey"
-  add_foreign_key "package_books", "books", column: "id_book", name: "package_books_fk2", on_delete: :cascade
-  add_foreign_key "package_books", "packages", column: "id_package", name: "package_books_fk1", on_delete: :cascade
-  add_foreign_key "packages", "orders", column: "id_order", name: "packages_id_order_fkey"
-  add_foreign_key "packages", "users", column: "id_user", name: "packages_id_user_fkey"
-  add_foreign_key "payments", "credit_cards", column: "id_credit_card", name: "foreign key id_credit_card payments"
-  add_foreign_key "payments", "users", column: "id_user", name: "foreign key id_user payments"
-  add_foreign_key "signatures", "users", column: "id_user", name: "foreign_key_signature"
-  add_foreign_key "support_tickets", "users", column: "id_user", name: "foreign key id_user support ticket"
-  add_foreign_key "user_books", "books", column: "id_book", name: "user_books_fk2", on_delete: :cascade
-  add_foreign_key "user_books", "bookstores", column: "id_user", name: "user_books_fk1", on_delete: :cascade
-  add_foreign_key "user_preferences", "categories", column: "id_category", name: "user_preferences_fk2", on_delete: :cascade
-  add_foreign_key "user_preferences", "users", column: "id_user", name: "user_preferences_fk1", on_delete: :cascade
+  add_foreign_key "addresses", "users", name: "address_user_id_fk", on_delete: :cascade
+  add_foreign_key "book_categories", "books", name: "book_preferences_fk1", on_delete: :cascade
+  add_foreign_key "book_categories", "categories", name: "book_preferences_fk2", on_delete: :cascade
+  add_foreign_key "bookstore_books", "books", name: "bookstore_books_fk2", on_delete: :cascade
+  add_foreign_key "bookstore_books", "bookstores", name: "bookstore_books_fk1", on_delete: :cascade
+  add_foreign_key "credit_cards", "users", name: "foreign_key"
+  add_foreign_key "orders", "bookstores", name: "orders_id_bookstore_fkey"
+  add_foreign_key "package_books", "books", name: "package_books_fk2", on_delete: :cascade
+  add_foreign_key "package_books", "packages", name: "package_books_fk1", on_delete: :cascade
+  add_foreign_key "packages", "orders", name: "packages_id_order_fkey"
+  add_foreign_key "packages", "users", name: "packages_id_user_fkey"
+  add_foreign_key "payments", "credit_cards", name: "foreign key id_credit_card payments"
+  add_foreign_key "payments", "users", name: "foreign key id_user payments"
+  add_foreign_key "signatures", "users", name: "foreign_key_signature"
+  add_foreign_key "support_tickets", "users", name: "foreign key id_user support ticket"
+  add_foreign_key "user_books", "books", name: "user_books_fk2", on_delete: :cascade
+  add_foreign_key "user_books", "bookstores", column: "user_id", name: "user_books_fk1", on_delete: :cascade
+  add_foreign_key "user_preferences", "categories", name: "user_preferences_fk2", on_delete: :cascade
+  add_foreign_key "user_preferences", "users", name: "user_preferences_fk1", on_delete: :cascade
 end

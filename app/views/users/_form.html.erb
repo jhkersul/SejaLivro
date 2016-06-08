@@ -12,6 +12,16 @@
   <% end %>
 
     <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cpf %>
+      <%= f.text_field :cpf %>
+    </div>
+
+    <div class="field">
       <%= f.label :login %>
       <%= f.text_field :login %>
     </div>
@@ -21,7 +31,17 @@
       <%= f.password_field :password %>
     </div>
 
+    <%= f.fields_for :addresses do |ff| %>
+        <div>
+          <%= ff.label :zipcode %>
+          <%= ff.text_field :zipcode %>
+        </div>
+    <% end %>
+
     <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
