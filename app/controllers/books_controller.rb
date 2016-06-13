@@ -12,8 +12,8 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to action: :index, notice: 'Book created' }
-        format.json { render :index, status: :created, location: @book }
+        format.html { redirect_to action: :new, notice: 'Book created' }
+        format.json { render :new, status: :created, location: @book }
       else
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -24,7 +24,7 @@ class BooksController < ApplicationController
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:book).permit(:name, :isbn, :autor, :language, :publisher)
+    params.require(:book).permit(:name, :isbn, :author, :language, :publisher, :year)
   end
 
 end

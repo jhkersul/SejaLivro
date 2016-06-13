@@ -27,10 +27,9 @@
     </div>
 
     <div class="field">
-      <%= f.text_field :categories %>
-      <% @categories.each do |c| %>
-        <%= f.collection_select :product, Product.all, :id, :name %>
-    <% end %>
+      <% @categories.each do |cat| %>
+        <%= link_to cat.name, new_book_path %>
+      <% end %>
     </div>
 
     <div class="field">
