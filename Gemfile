@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 #Culpa do Windows
-gem 'nokogiri', '~> 1.6.8'
+gem 'nokogiri'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

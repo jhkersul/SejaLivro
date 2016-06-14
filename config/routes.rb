@@ -15,4 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
+  root "main#index"
+
+  get '/assinatura', to: 'main#assinatura'
+  get '/cadastro', to: 'users#cadastro'
+  get '/profile/:id', to: 'users#profile'
+
 end
