@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   # Método que define o que ocorre quando abre-se a tela para cadastrar usuário
   # GET /users/register
-  def register
+  def cadastro
     @user = User.new
     1.times { @user.addresses.build}
   end

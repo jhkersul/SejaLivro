@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-    enum gender: [ :male, :female ]
+    enum gender: [ :masculino, :feminino ]
 
     has_many :addresses, :class_name => 'Address'
     accepts_nested_attributes_for :addresses
