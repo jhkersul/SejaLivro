@@ -144,76 +144,94 @@
 
 							<!-- Feature 1 -->
 								<section class="container box feature1">
-								<!--
-									<div class="row">
-										<div class="12u">
-											<header class="first major">
-												<h2>This is an important heading</h2>
-												<p>And this is where we talk about why we’re <strong>pretty awesome</strong> ...</p>
-											</header>
-										</div>
+
+
+									<div class="12u" id="vantagens">
+                    <%= form_for(@user, :html => { :id => "form_cadastro" }) do |f| %>
+                        <div class="row">
+                          <% if @user.errors.any? %>
+                              <div id="error_explanation">
+                                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                                <ul>
+                                  <% @user.errors.full_messages.each do |message| %>
+                                      <li><%= message %></li>
+                                  <% end %>
+                                </ul>
+                              </div>
+                          <% end %>
+
+                          <div class="4u">
+                            <section>
+                              <header>
+                                <h3>Dados pessoais</h3>
+                              </header>
+                              <article>
+                                <fieldset>
+                                  <p><%= f.text_field :name, placeholder: "Nome" %></p>
+                                  <p><%= f.text_field :cpf, placeholder: "CPF" %></p>
+                                  <div class="row" >
+                                    <% User.genders.keys.each do |gender| %>
+                                        <div class="6u">
+                                          <p><%= f.label gender.to_sym, :html => { :style => "float: center;"} %></p>
+                                          <p><%= f.radio_button :gender, gender %></p>
+                                        </div>
+                                    <% end %>
+                                  </div>
+                                  <div class="row" >
+                                    <div class="12u"><%= f.label "Nascimento:" %></div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="12u"><%= f.date_select :birth_date, class: "4u" %></div>
+                                  </div>
+                                </fieldset>
+                              </article>
+                            </section>
+                          </div>
+
+                          <div class="4u">
+                            <section>
+                              <header>
+                                <h3>Endereço</h3>
+                              </header>
+                              <article>
+                                <fieldset>
+                                  <p><input type="text" id="cep" value="CEP" onfocus="this.value='';" /></p>
+                                  <p><input type="text" id="address" value="Logradouro" onfocus="this.value='';" /></p>
+                                  <p><input type="text" id="compl" value="Complemento" onfocus="this.value='';" /></p>
+                                </fieldset>
+                              </article>
+                            </section>
+                          </div>
+
+                          <div class="4u">
+                            <section>
+                              <header>
+                                <h3>Cadastre uma senha</h3>
+                              </header>
+                              <article>
+
+                                <fieldset>
+                                  <p><input type="email" id="email" value="Email" onfocus="this.value='';" /></p>
+                                  <p><label for="password">Senha </label></p>
+                                  <p><input type="password" id="password" value="xxxxxxxx" onfocus="this.value='';" /></p>
+                                  <p><label for="confPassword">Confirmar </label></p>
+                                  <p><input type="password" id="confPassword" value="xxxxxxxx" onfocus="this.value='';" /></p>
+                                </fieldset>
+                              </article>
+                            </section>
+                          </div>
+                        </div>
+
+                    <% end %>
+
 									</div>
-									-->
-									<div class="row" id="vantagens">
-										<div class="4u 12u(mobile)">
-											<section>
-												<header>
-													<h3>Dados pessoais</h3>													
-												</header>	
-												<article>
-													<form action="#" method="post">
-														<fieldset>
-															<p><input type="text" id="name" value="Nome" onfocus="this.value='';" /></p>
-															<p><input type="text" id="cpf" value="CPF" onfocus="this.value='';" /></p>
-															<p><label for="m"><input type="radio" name="sexo" id="m" value="m" /> M</label>
-															<label for="f"><input type="radio" name="sexo" id="f" value="f" /> F</label>
-          														</p>
-															<p><input type="text" id="birthDate" value="Data de nascimento" onfocus="this.value='';" /></p>
-														</fieldset>
-													</form>
-												</article>
-											</section>
-										</div>
-										<div class="4u 12u(mobile)">
-											<section>
-												<header>
-													<h3>Endereço</h3>
-												</header>
-												<article>
-													<form>
-														<fieldset>
-															<p><input type="text" id="cep" value="CEP" onfocus="this.value='';" /></p>
-															<p><input type="text" id="address" value="Logradouro" onfocus="this.value='';" /></p>
-															<p><input type="text" id="compl" value="Complemento" onfocus="this.value='';" /></p>
-														</fieldset>
-													</form>
-												</article>
-											</section>
-										</div>
-										<div class="4u 12u(mobile)">
-											<section>
-												<header>
-													<h3>Cadastre uma senha</h3>
-												</header>
-												<article>
-													<form>
-														<fieldset>
-															<p><input type="email" id="email" value="Email" onfocus="this.value='';" /></p>
-															<p><label for="password">Senha </label></p>
-															<p><input type="password" id="password" value="xxxxxxxx" onfocus="this.value='';" /></p>
-															<p><label for="confPassword">Confirmar </label></p>
-															<p><input type="password" id="confPassword" value="xxxxxxxx" onfocus="this.value='';" /></p>
-														</fieldset>
-													</form>
-												</article>
-											</section>
-										</div>
-									</div>
+
 									<div class="row">
 										<div class="12u">
 											<a href="profile.html" class="button big icon fa-arrow-circle-right">Cadastrar</a>
 										</div>
 									</div>
+
 								</section>
 							</div>
 					</div>
