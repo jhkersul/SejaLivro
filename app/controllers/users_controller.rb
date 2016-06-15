@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     1.times { @user.addresses.build}
   end
 
+  def logout
+    sign_out :user
+    redirect_to root_path
+  end
 
   # POST /users
   # POST /users.json
@@ -20,8 +24,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        @user.addresses.build(user_params[:addresses_attributes][0])
+        @user.addresses.build(user_params[:addresses_attributes]["0"])
         @user.save
+
         format.html { redirect_to root_path, notice: 'User created' }
         format.json { render root_path, status: :created, location: @user }
       else

@@ -1,96 +1,15 @@
-<!DOCTYPE HTML>
-<!--
-	ZeroFour by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html xmlns:style="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>SejaLivro - Assinatura Literária</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-		</script>
 
-	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<div id="header-wrapper">
 					<div class="container">
-
-						<!-- Header -->
-							<header id="header">
-								<div class="inner">
-
-									<!-- Logo -->
-										<h1><%= link_to "SejaLivro", root_path %></h1>
-
-									<!-- Nav -->
-										<nav id="nav">
-											<ul>
-												<li> 
-													<a href="#">Como funciona</a>
-													<ul> 
-														<div class="row">
-															<div class="4u 12u(mobile)"> 
-																<section>
-																	<span>Cadastre-se:</span> </br>
-																	Através de um simples</br> 
-																	formulário, você pode  </br>
-																	identificar-se em nosso </br>
-																	sistema.
-																    
-																</section>
-															</div>
-																<div class="4u 12u(mobile)"> 
-																<section>
-																	<span>Escolha seu Pacote:</span><br>
-																	Temos diversas opções de </br> 
-																	pacotes para adequarem-se </br>
-																    aos seus hábitos de leitura. </br>
-																    Simule um pacotee veja como </br>
-																    funciona.	
-																</section>
-															</div>
-																<div class="4u 12u(mobile)">  
-																<section>
-																	<span> Pague:</span><br>
-																	Aceitamos diversas formas </br> 
-																	de pagamento. Tudo para  </br>
-																    que você possa aproveitar  </br>
-																    as comodidades do </br> 
-																    SejaLivro!
-																</section>	
-																</div>			  
-															<li> 
-																<a href="#simular" class="button icon fa-arrow-circle-right" style="align: center;">Simular Assinatura</a>
-															</li>
-														</div>
-													</ul>
-												</li>
-												<li>
-													<a href="#simular">Simule seu Pacote</a>
-												</li>
-												<li>
-													<a href="#social">#SejaLivro</a>
-												</li>
-												<li>
-													<a href="#">Já é assinante?</a>
-													<ul>
-														<li><%= link_to "Login", login_path %></li>
-													</ul>
-												</li> 
-											</ul>
-										</nav>
-
-								</div>
-							</header>
+            <% if user_signed_in? %>
+                <%= render 'main/login_top_menu' %>
+            <% else %>
+                <%= render 'main/logout_top_menu' %>
+            <% end %>
 
 						<!-- Banner -->
 							<div id="banner">
@@ -367,4 +286,3 @@
 			<script src="/assets/js/main.js"></script>
 
 	</body>
-</html>
