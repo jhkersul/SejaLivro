@@ -16,13 +16,12 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 		</script>
-		</script>
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<div id="header-wrapper" style="background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("images/bg03.png"), url("images/bg02.png");">
+				<div id="header-wrapper">
 					<div class="container">
 						<!-- Header -->
 							<header id="header">
@@ -60,8 +59,7 @@
 												<h2>Livros</h2>
 												<a href="create_book.html.erb" class="button" style="float: right;" >Adicionar livro</a>
 												<form action="action_page.php">
-													Search 
-													<input type="search" id="mysearch2 placeholder="search">
+                          <label for="search"><span>Search </span><input type="search" id="search" /></label>
 													<input type="submit">
 												</form>
 											</header>
