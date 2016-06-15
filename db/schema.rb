@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 20160608120416) do
 
   create_table "users", force: :cascade do |t|
     t.text    "login"
-    t.text    "password"
+    t.text    "encrypted_password"
     t.text    "name"
     t.text    "email"
     t.text    "telephone"
@@ -136,8 +136,8 @@ ActiveRecord::Schema.define(version: 20160608120416) do
     t.text    "facebook_id"
     t.text    "goodreads_id"
     t.date    "birth_date"
-    t.boolean "admin",        default: false
-    t.integer "gender",       default: 0
+    t.boolean "admin",              default: false
+    t.integer "gender",             default: 0
   end
 
   add_foreign_key "addresses", "users", name: "address_user_id_fk", on_delete: :cascade
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 20160608120416) do
   add_foreign_key "signatures", "users", name: "foreign_key_signature"
   add_foreign_key "support_tickets", "users", name: "foreign key id_user support ticket"
   add_foreign_key "user_books", "books", name: "user_books_fk2", on_delete: :cascade
-  add_foreign_key "user_books", "bookstores", column: "user_id", name: "user_books_fk1", on_delete: :cascade
+  add_foreign_key "user_books", "users", name: "user_books_fk1", on_delete: :cascade
   add_foreign_key "user_preferences", "categories", name: "user_preferences_fk2", on_delete: :cascade
   add_foreign_key "user_preferences", "users", name: "user_preferences_fk1", on_delete: :cascade
 end

@@ -2579,3 +2579,29 @@ dl.inline dt{
 	float: left;
 	width: 100px;
 }
+
+#user_birth_date_1i, #user_birth_date_2i, #user_birth_date_3i  {
+	width: 30%;
+	margin-right: 10px;
+	float: left;
+}
+
+.no-padding {
+	padding: 0px 0px 0px 0px;
+}
+
+.form-field {
+	padding: 30px 0px 0px 0px;
+}
+
+.form-field-labeled {
+	padding: 15px 0px 0px 0px;
+}
+
+.form-label {
+	padding: 15px 0px 0px 0px;
+}
+
+.form-margin {
+	margin: 40px 0px 0px 0px;
+}
