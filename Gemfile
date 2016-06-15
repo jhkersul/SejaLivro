@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 #Culpa do Windows
+gem 'coffee-script-source'
 gem 'nokogiri'
 
 gem 'devise'
@@ -51,3 +52,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#to avoid polling for changes
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
