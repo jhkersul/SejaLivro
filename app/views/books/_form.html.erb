@@ -1,53 +1,37 @@
 <%= form_for(book) do |f| %>
-    <% if book.errors.any? %>
+    <% if @book.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-
+          <h2><%= pluralize(@book.errors.count, "error") %> prohibited this user from being saved:</h2>
           <ul>
-            <% user.errors.full_messages.each do |message| %>
+            <% @book.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
             <% end %>
           </ul>
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+    <div class="row">
+      <div class="6u 12u(mobile)">
+        <fieldset>
+          <label for="name"><span>Nome </span><%= f.text_field :name %></label>
+          <label for="isbn"><span>ISBN </span><%= f.text_field :isbn %></label>
+          <label for="autor"><span>Autor </span><%= f.text_field :author %></label>
+        </fieldset>
+      </div>
+
+      <div class="6u 12u(mobile)">
+        <label for="ano"><span>Ano </span><%= f.text_field :year %></label>
+        <label for="idioma"><span>Idioma </span><%= f.text_field :language %></label>
+        <label for="editora"><span>Editora </span><%= f.text_field :publisher %></label>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :isbn %>
-      <%= f.text_field :isbn %>
-    </div>
-
-    <div class="field">
-      <%= f.label :author %>
-      <%= f.text_field :author %>
-    </div>
-
-    <div class="field">
-      <% @categories.each do |cat| %>
-        <%= link_to cat.name, new_book_path %>
-      <% end %>
-    </div>
-
-    <div class="field">
-      <%= f.label :language %>
-      <%= f.text_field :language %>
-    </div>
-
-    <div class="field">
-      <%= f.label :publisher %>
-      <%= f.text_field :publisher %>
-    </div>
-
-    <div class="field">
-      <%= f.label :year %>
-      <%= f.text_field :year %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    <section class="container box feature1">
+      <div class="row">
+        <div class="12u">
+          <%= f.submit "Salvar", class: "button" %>
+          <%= link_to "Cancelar", books_path, class: "button" %>
+        </div>
+      </div>
+    </section>
 <% end %>
