@@ -19,5 +19,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'users#logout'
   get '/assinatura', to: 'main#assinatura'
   get '/profile/:id', to: 'users#profile'
+  get '/my_books/:id', to: 'users#my_books'
+  get '/book/:id', to: 'books#show'
+  get  '/admin/:id', to: 'admins#index'
 
 end

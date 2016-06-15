@@ -53,46 +53,71 @@
 						<div class="inner">
 							<div class="container">
 							<section class="container box feature1">
-									<div class="row" id="viewBook">
+									<div class="row" id="bookList">
 										<div class="12u">
 											<header>
-												<h2>Visualizar item</h2>
+												<h2>Livros</h2>
+												<a href="create_book.html.erb" class="button" style="float: right;" >Adicionar livro</a>
+												<form action="action_page.php">
+                          <label for="search"><span>Search </span><input type="search" id="search" /></label>
+													<input type="submit">
+												</form>
 											</header>
+											<table style="width:100%">
+                        <tr>
+                          <td><b>ID</b></td>
+                          <td><b>Nome</b></td>
+                          <td><b>ISBN</b></td>
+                          <td><b>Autor</b></td>
+                          <td><b>Ano</b></td>
+                          <td><b>Idioma</b></td>
+                          <td><b>Editora</b></td>
+                          <td><b>Ações</b></td>
+                        </tr>
+                        <tr>
+                          <td>000000</td>
+                          <td>Livro 1</td>
+                          <td>ISBN do livro 1</td>
+                          <td>Autor do livro 1</td>
+                          <td>Ano do livro 1</td>
+                          <td>Idioma do livro 1</td>
+                          <td>Editora do livro 1</td>
+                          <td><span> <a href="../books/view_book.html.erb" class="button">Visualizar</a>
+											        <a href="create_book.html.erb" class="button">Editar</a>
+											        <a href="#" class="button">Excluir</a> 
+											    </span></td>
+                        </tr>
+                        <tr>
+                          <td>000001</td>
+                          <td>Livro 2</td>
+                          <td>ISBN do livro 2</td>
+                          <td>Autor do livro 2</td>
+                          <td>Ano do livro 2</td>
+                          <td>Idioma do livro 2</td>
+                          <td>Editora do livro 2</td>
+                          <td><span> <a href="../books/view_book.html.erb" class="button">Visualizar</a>
+											        <a href="create_book.html.erb" class="button">Editar</a>
+											        <a href="#" class="button">Excluir</a> 
+											    </span></td>
+                        </tr>
+                      </table>
 										</div>
 									</div>
 							</section>
-								<div class="row">
+								<!-- <div class="row">
 									<div class="6u 12u(mobile)">
 										<a href="#" class="image centered"><img src="images/overcoat.jpg" alt="" height=400 width=auto /></a>
 									</div>
 									<div class="6u 12u(mobile)">
-										<dl class="inline">
-											<dt>ID:</dt>
-											<dd>ID do Livro</dd>
-											<dt>Nome:</dt>
-											<dd>Nome do Livro</dd>
-											<dt>ISBN:</dt>
-											<dd>ISBN do livro</dd>
-											<dt>Autor:</dt>
-											<dd>Autor do Livro</dd>
-											<dt>Ano:</dt>
-											<dd>Ano de publicação</dd>
-											<dt>Idioma:</dt>
-											<dd>Idioma do livro</dd>
-											<dt>Editora:</dt>
-											<dd>Editora do Livro</dd>
-										</dl>
+									  
 									</div>
 								</div>
 								<section class="container box feature1">
 									<div class="row">
 										<div class="12u">
-											<span> <a href="book_list.html" class="button">Voltar</a>  
-											  <a href="create_book.html" class="button">Editar</a>
-											  <a href="#" class="button">Excluir</a> 
-											  </span>
+											
 										</div>
-									</div>
+									</div> -->
 								</section>
 							</div>
 						</div>
