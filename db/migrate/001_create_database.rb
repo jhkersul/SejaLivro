@@ -115,7 +115,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     create_table "users", force: :cascade do |t|
       t.text    "login"
-      t.text    "password"
+      t.text    "encrypted_password"
       t.text    "name"
       t.text    "email"
       t.text    "telephone"
@@ -142,7 +142,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_foreign_key "signatures", "users", column: "user_id", name: "foreign_key_signature"
     add_foreign_key "support_tickets", "users", column: "user_id", name: "foreign key id_user support ticket"
     add_foreign_key "user_books", "books", column: "book_id", name: "user_books_fk2", on_delete: :cascade
-    add_foreign_key "user_books", "bookstores", column: "user_id", name: "user_books_fk1", on_delete: :cascade
+    add_foreign_key "user_books", "users", column: "user_id", name: "user_books_fk1", on_delete: :cascade
     add_foreign_key "user_preferences", "categories", column: "category_id", name: "user_preferences_fk2", on_delete: :cascade
     add_foreign_key "user_preferences", "users", column: "user_id", name: "user_preferences_fk1", on_delete: :cascade
   end
