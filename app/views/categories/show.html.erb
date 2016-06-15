@@ -54,21 +54,62 @@
 							<div class="container">
 							<section class="container box feature1">
 									<div class="row" id="viewCategory">
-										<div class="12u">
+										<div class="4u">
 											<header>
-												<h2>Visualizar Categoria</h2>
+												<h2>Categoria</h2>
 											</header>
 											<dl class="inline">
 												<dt>ID:</dt>
-												<dd>ID da Categoria</dd>
+												<dd><%= @category.id %></dd>
 												<dt>Nome:</dt>
-												<dd>Nome da Categoria</dd>								
+												<dd><%= @category.name %></dd>								
 											</dl>
 											<img id="categoria" src="images/categoria.png"/><br>
-											<span> <a href="category_list.html" class="button">Voltar</a>  
-												<a href="create_category.html" class="button">Editar</a>
-												<a href="#" class="button">Excluir</a> 
+											<span> 
+												<%= link_to "Voltar", "/categories", :class => "button" %>
+												<%= link_to "Editar", "/categories/#{@category.id.to_s}/edit/", :class => "button" %>
+												<%= link_to "Excluir", "/categories/#{@category.id.to_s}/del/", :class => "button" %>
 											</span>
+										</div>
+										<div class="4u"> 
+											<header>
+												<h2>Livros nesta categoria</h2>
+											</header>
+												<% if @category_book_cats.count == 0 %>
+													 <dt>Não há livros cadastrados nessa categoria</dt>
+												<% else %>
+													<dl class="inline">
+														<dt>ID </dt>
+														<dt>Nome </dt>
+													</dl>
+													<% @category_book_cats.each do |book| 
+														b = Book.find(book[:id])%>
+														<dl class="inline">
+															<dd><%= b.id  %></dd>
+															<dd><%= b.name %></dd>
+														</dl>
+													<% end %>
+												<% end %>
+										</div>
+										<div class="4u"> 
+											<header>
+												<h2>Usuários com essa preferência</h2>
+											</header>
+													<% if @category_user_prefs.count == 0 %>
+													 <dt>Não há usuários cadastrados com essa preferência</dt>
+												<% else %>
+													<dl class="inline">
+														<dt>ID </dt>
+														<dt>Nome </dt>
+													</dl>
+													<% @category_user_prefs.each do |user| 
+														u = User.find(user[:id])%>
+														<dl class="inline">
+															<dd><%= u.id  %></dd>
+															<dd><%= u.name %></dd>
+														</dl>
+													<% end %>
+												<% end %>
 										</div>
 									</div>
 								</section>								
@@ -78,77 +119,4 @@
 				</div>
 
 			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="6u 12u(mobile)"> 
-								<!-- About -->
-									<section>
-										<h2><strong>SejaLivro</strong></h2>
-										<p>Ol�! Este � o <strong>SejaLivro</strong>, um servi�o de assinatura de livros. Voc� adquire um pacote por valor fixo e n�s nos encarregamos de te surpreender com novas leituras, sem qualquer dor de cabe�a e entrega em sua casa!</p>
-										<a href="#simular" class="button icon fa-arrow-circle-right" style="align: center;">Simular Assinatura</a>
-									</section>
-							</div>
-							
-							<div class="6u 12u(mobile)">
-								<!-- Contact -->
-									<section>
-										<h2>Redes Sociais</h2>
-										<div>
-											<div class="row">
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Twitter</dt>
-														<dd><a href="#">@SejaLivro</a></dd>
-														<dt>Facebook</dt>
-														<dd><a href="#">facebook.com/SejaLivro</a></dd>
-														<dt>WWW</dt>
-														<dd><a href="#">sejalivro.com</a></dd>
-														<dt>Email</dt>
-														<dd><a href="#">contato@sejalivro.com</a></dd>
-													</dl>
-												</div>
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Endere�o</dt>
-														<dd>
-															Av. Luciano Gualberto, 314, Cid. Universit�ria<br />
-															S�o Paulo, SP 01300-7800<br />
-															Brasil
-														</dd>
-														<dt>Telefone</dt>
-														<dd>(11) 0800-9999</dd>
-													</dl>
-												</div>
-											</div>
-										</div>
-									</section>
-
-							</div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
-
-		</div>
-
-		<!-- Scripts -->
-
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+			<%= render 'main/footer' %>

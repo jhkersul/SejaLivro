@@ -99,41 +99,6 @@
 													</div>
 												</div>
 											<% end %>	
-											
-											<!--
-											
-											<table style="width:100%">
-												<tr>
-												  <td><b>ID</b></td>
-												  <td><b>Nome</b></td>
-												  <td><b>CNPJ</b></td>
-												  <td><b>Telefone</b></td>
-												  <td><b>E-mail</b></td>
-												</tr>
-												<tr>
-													<td>000000</td>
-													<td>Livraria 1</td>
-													<td>CNPJ da livraria 1</td>
-													<td>Telefone da livraria 1</td>
-													<td>E-mail da livraria 1</td>
-													<td><span> <a href="view_bookstore.html.erb" class="button">Visualizar</a>
-														<a href="create_bookstore.html.erb" class="button">Editar</a>
-														<a href="#" class="button">Excluir</a> 
-													</span></td>
-												</tr>
-												<tr>
-													<td>000001</td>
-													<td>Livraria 2</td>
-													<td>CNPJ da livraria 2</td>
-													<td>Telefone da livraria 2</td>
-													<td>E-mail da livraria 2</td>
-													<td><span> <a href="new.html.erb" class="button">Visualizar</a>
-														<a href="new.html.erb" class="button">Editar</a>
-														<a href="#" class="button">Excluir</a> 
-													</span></td>
-												</tr>
-											</table>
-											-->
 										</div>
 									</div>	
 								</section>
@@ -143,72 +108,4 @@
 				</div>
 				
 			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="6u 12u(mobile)"> 
-								<!-- About -->
-									<section>
-										<h2><strong>SejaLivro</strong></h2>
-										<p>Ol�! Este � o <strong>SejaLivro</strong>, um servi�o de assinatura de livros. Voc� adquire um pacote por valor fixo e n�s nos encarregamos de te surpreender com novas leituras, sem qualquer dor de cabe�a e entrega em sua casa!</p>
-										<a href="#simular" class="button icon fa-arrow-circle-right" style="align: center;">Simular Assinatura</a>
-									</section>
-							</div>
-							
-							<div class="6u 12u(mobile)">
-								<!-- Contact -->
-									<section>
-										<h2>Redes Sociais</h2>
-										<div>
-											<div class="row">
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Twitter</dt>
-														<dd><a href="#">@SejaLivro</a></dd>
-														<dt>Facebook</dt>
-														<dd><a href="#">facebook.com/SejaLivro</a></dd>
-														<dt>WWW</dt>
-														<dd><a href="#">sejalivro.com</a></dd>
-														<dt>Email</dt>
-														<dd><a href="#">contato@sejalivro.com</a></dd>
-													</dl>
-												</div>
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Endere�o</dt>
-														<dd>
-															Av. Luciano Gualberto, 314, Cid. Universit�ria<br />
-															S�o Paulo, SP 01300-7800<br />
-															Brasil
-														</dd>
-														<dt>Telefone</dt>
-														<dd>(11) 0800-9999</dd>
-													</dl>
-												</div>
-											</div>
-										</div>
-									</section>
-							</div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
-		</div>
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-	</body>
-</html>
+			<%= render 'main/footer' %>

@@ -28,6 +28,13 @@ Rails.application.routes.draw do
   get '/bookstores/:id/view', to: "bookstores#show"
   get '/bookstores/:id/edit', to: "bookstores#edit"
   get '/bookstores/:id/del', to: "bookstores#destroy"
+  #Categories
+  get "/categories/new", to: "categories#create"
+  get '/categories/', to: "categories#index"
+  get '/categories/:id/view', to: "categories#show"
+  get '/categories/:id/edit', to: "categories#edit"
+  get '/categories/:id/del', to: "categories#destroy"
+
 
 
 end
