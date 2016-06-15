@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get '/users/', to: 'users#index'
   get "/bookstores/new", to: "bookstores#create"
   get '/bookstores/', to: "bookstores#index"
-  get '/bookstores/view/:id', to: "bookstores#show"
+  get '/bookstores/:id/view', to: "bookstores#show"
+  get '/bookstores/:id/edit', to: "bookstores#edit"
+  get '/bookstores/:id/del', to: "bookstores#destroy"
+
 
 end

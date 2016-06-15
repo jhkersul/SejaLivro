@@ -24,26 +24,11 @@
 				<div id="header-wrapper">
 					<div class="container">
 						<!-- Header -->
-							<header id="header">
-								<div class="inner">
-									<!-- Logo -->
-										<h1><a href="index.html" id="logo">SejaLivro</a></h1>
-									<!-- Nav -->
-										<nav id="nav">
-											<ul>
-												<li> 
-													<a href="profile.html">Meu Perfil</a>
-												</li>
-												<li>
-													<a href="my_books.html">Meus livros</a>
-												</li>
-												<li>
-													<a href="logout.html">Sair</a>
-												</li>
-											</ul>
-										</nav>
-								</div>
-							</header>
+							<% if user_signed_in? %>
+			                <%= render 'main/login_top_menu' %>
+			            <% else %>
+			                <%= render 'main/logout_top_menu' %>
+			            <% end %>
 					</div>
 				</div>
 				
@@ -60,8 +45,11 @@
 												<div class="row">
 													<div class="6u">
 														<form action="action_page.php">
-	                         							<label for="search"><span>Search </span><input type="search" id="search" /></label>
-	                         							<input type="Find">
+	                         							<label for="search">
+	                         								<span>Buscar</span>
+	                         								<input type="search" id="search"/>
+	                         							</label>
+	                         							<input type="submit"/>
 														</form>
 													</div>
 													<div class="6u">
@@ -104,9 +92,10 @@
 													</div>
 													<div class="5u"> 
 													<span> 
-														<a href=<%= "/bookstores/view/" + bookstore.id.to_s %> class="button">Visualizar</a>
-														<a href="update_bookstore.html" class="button">Editar</a>
-														<a href=<%= "del_bookstore.html/" + bookstore.id.to_s %> class="button">Excluir</a> 
+														<%= link_to "Visualizar", "/bookstores/#{bookstore.id.to_s}/view/", :class => "button" %>
+														<%= link_to "Editar", "/bookstores/#{bookstore.id.to_s}/edit/", :class => "button" %>
+														<%= link_to "Deletar", "/bookstores/#{bookstore.id.to_s}/del/", :class => "button" %>
+	
 													</div>
 												</div>
 											<% end %>	

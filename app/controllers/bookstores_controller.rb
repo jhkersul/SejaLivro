@@ -4,11 +4,15 @@ class BookstoresController < ApplicationController
     @bookstore = Bookstore.new
   end
 
+  # GET /books/1/edit
+  def edit
+    @bookstore = Bookstore.find(params[:id])
+  end
 
   # POST /users
   # POST /users.json
   def create
-    @bookstore = Bookstore.new(user_params)
+    @bookstore = Bookstore.new(bookstore_params)
 
     respond_to do |format|
       if @bookstore.save
@@ -28,14 +32,43 @@ class BookstoresController < ApplicationController
   end 
 
   def index
-    @bookstores = Bookstore.all
+    if user_signed_in?
+      @bookstores = Bookstore.all
+    else
+      redirect_to root_path
+    end
   end
 
+  # PATCH/PUT /bookstore/1
+  # PATCH/PUT /bookstore/1.json
+  def update
+    @bookstore = Bookstore.find(params[:id])
+    respond_to do |format|
+      if @bookstore.update(bookstore_params)
+        format.html { redirect_to @bookstore, notice: 'Bookstore was successfully updated.' }
+        format.json { render :show, status: :ok, location: @bookstore }
+      else
+        format.html { render :edit }
+        format.json { render json: @bookstore.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /bookstore/1
+  # DELETE /bookstore/1.json
+  def destroy
+    @bookstore = Bookstore.find(params[:id])
+    @bookstore.destroy
+    respond_to do |format|
+      format.html { redirect_to bookstores_url, notice: 'Bookstore was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.
-  def user_params
+  def bookstore_params
     params.require(:bookstore).permit(:name, :telephone, :cnpj)
   end
 
