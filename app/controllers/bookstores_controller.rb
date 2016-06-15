@@ -21,6 +21,18 @@ class BookstoresController < ApplicationController
     end
   end
 
+  def show
+    @bookstore = Bookstore.find(params[:id])
+    @bookstore_books = @bookstore.bookstore_books
+    @bookstore_orders = @bookstore.orders
+  end 
+
+  def index
+    @bookstores = Bookstore.all
+  end
+
+
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params

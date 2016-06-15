@@ -56,26 +56,43 @@
 									<div class="row" id="viewBookstore">
 										<div class="12u">
 											<header>
-												<h2>Visualizar Livraria</h2>
+												<h2>Visualizando Livraria <%= @bookstore.name %></h2>
 											</header>
-											<dl class="inline">
-												<dt>ID:</dt>
-												<dd>ID da Livraria</dd>
-												<dt>Nome:</dt>
-												<dd>Nome da Livraria</dd>
-												<dt>CNPJ:</dt>
-												<dd>CNPJ da Livraria</dd>
-												<dt>Telefone:</dt>
-												<dd>Telefone da Livraria</dd>
-												<dt>E-mail:</dt>
-												<dd>E-mail da Livraria</dd>											
-											</dl>
-											<span> <a href="bookstore_list.html" class="button">Voltar</a>  
-												<a href="create_bookstore.html" class="button">Editar</a>
-												<a href="#" class="button">Excluir</a> 
-											</span>
 										</div>
 									</div>
+										<div class="row">
+											<div class="4u">
+												<h1>Dados</h1>
+												<dl class="inline">
+													<dt>ID:</dt>
+													<dd><%= @bookstore.id %></dd>
+													<dt>Nome:</dt>
+													<dd><%= @bookstore.name %></dd>
+													<dt>CNPJ:</dt>
+													<dd><%= @bookstore.cnpj %></dd>
+													<dt>Telefone:</dt>
+													<dd><%= @bookstore.telephone %></dd>
+													<!--<dt>E-mail:</dt>
+													<dd>E-mail da Livraria</dd>		-->									
+												</dl>
+
+												<span> <a href="/../bookstores" class="button">Voltar</a>  
+													<a href="create_bookstore.html" class="button">Editar</a>
+													<a href="#" class="button">Excluir</a> 
+												</span>
+											</div>
+
+											<div class="4u">
+												<h1>Orders</h1>
+											</div>
+
+											<div class="4u">
+												<h1>Books</h1>
+											</div>
+
+
+										</div>
+			
 								</section>								
 							</div>
 						</div>

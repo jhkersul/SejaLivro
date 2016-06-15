@@ -56,13 +56,63 @@
 									<div class="row" id="bookstoreList">
 										<div class="12u">
 											<header>
-												<h2>Livraria</h2>
-												<a href="create_bookstore.html.erb" class="button" style="float: right;" >Adicionar livro</a>
-												<form action="action_page.php">
-                          <label for="search"><span>Search </span><input type="search" id="search" /></label>
-                          <input type="submit">
-												</form>
+												<h2>Livrarias</h2> <br>
+												<div class="row">
+													<div class="6u">
+														<form action="action_page.php">
+	                         							<label for="search"><span>Search </span><input type="search" id="search" /></label>
+	                         							<input type="Find">
+														</form>
+													</div>
+													<div class="6u">
+														<a href="bookstores/new.html" class="button">Adicionar livraria</a>
+													</div>
+												</div>
+												
 											</header>
+											<div class="row"> 
+												<div class="1u"> 
+													<b>ID</b>
+												</div>
+												<div class="2u"> 
+													<b>NAME</b>
+												</div>
+												<div class="2u"> 
+													<b>CNPJ</b>
+												</div>
+												<div class="2u"> 
+													<b>Telephone</b>
+												</div>
+												<div class="5u"> 
+													<b>Options</b>
+												</div>
+											</div>
+											
+											<% @bookstores.each do |bookstore| %>
+												<div class="row"> 
+													<div class="1u"> 
+														<%= bookstore.id %>
+													</div>
+													<div class="2u"> 
+														<%= bookstore.name %>
+													</div>
+													<div class="2u"> 
+														<%= bookstore.cnpj %>
+													</div>
+													<div class="2u"> 
+														<%= bookstore.telephone %>
+													</div>
+													<div class="5u"> 
+													<span> 
+														<a href=<%= "/bookstores/view/" + bookstore.id.to_s %> class="button">Visualizar</a>
+														<a href="update_bookstore.html" class="button">Editar</a>
+														<a href=<%= "del_bookstore.html/" + bookstore.id.to_s %> class="button">Excluir</a> 
+													</div>
+												</div>
+											<% end %>	
+											
+											<!--
+											
 											<table style="width:100%">
 												<tr>
 												  <td><b>ID</b></td>
@@ -88,12 +138,13 @@
 													<td>CNPJ da livraria 2</td>
 													<td>Telefone da livraria 2</td>
 													<td>E-mail da livraria 2</td>
-													<td><span> <a href="view_bookstore.html.erb" class="button">Visualizar</a>
-														<a href="create_bookstore.html.erb" class="button">Editar</a>
+													<td><span> <a href="new.html.erb" class="button">Visualizar</a>
+														<a href="new.html.erb" class="button">Editar</a>
 														<a href="#" class="button">Excluir</a> 
 													</span></td>
 												</tr>
 											</table>
+											-->
 										</div>
 									</div>	
 								</section>
