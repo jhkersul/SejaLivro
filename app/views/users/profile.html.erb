@@ -5,18 +5,20 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 	oi
 -->
-<html>
+<html xmlns:style="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>SejaLivro - Assinatura Literária</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 		</script>
+
 	</head>
+
 	<body class="homepage">
 		<div id="page-wrapper">
 
@@ -63,13 +65,13 @@
 												<a href="#" class="image featured"><img src="images/avatar.png" alt="" /></a>
 												<dl class="inline">
 													<dt>Nome:  </dt>
-													<dd><=% @user.name =></dd>
+													<dd><%= @user.name %></dd>
 													<dt>CPF: </dt>
-													<dd><=% @user.cpf =></dd>
+													<dd><%= @user.cpf %></dd>
 													<dt>Data de nascimento: </dt>
-													<dd><=% @user.birth_date =></dd>
+													<dd><%= @user.birth_date %></dd>
 													<dt>Endereço: </dt>
-													<dd><=% full_address =></dd>
+													<dd><%= full_address %></dd>
 												</dl>
 												<footer>
 												  <p><a href="cadastro.html" class="button" style="align: center;">Atualizar dados</a></p>
@@ -82,18 +84,24 @@
 												<header>
 													<h3>Dados de assinatura</h3>
 												</header>
-												<% @user_signatures.each do |signature| %>
-													<dl class="inline">
-														<dt>Status da assinatura: </dt>
-														<dd><=% signature.user_id => </dd>
-														<dt>Periodicidade: </dt>
-														<dd><=% signature.periodicity_id => </dd>
-														<dt>Quantidade: </dt>
-														<dd>Quantidade de livros </dd>
-														<dt>Preferências: </dt>
-														<dd>Preferências </dd>
-													</dl>
+												<% if @user_signatures.count == 0 %>
+													 <dt>Status da assinatura: </dt>
+													 <dd>Não possui assinaturas</dd>
+												<% else %>
+													<% @user_signatures.each do |signature| %>
+														<dl class="inline">
+															<dt>Status da assinatura: </dt>
+															<dd> </dd>
+															<dt>Periodicidade: </dt>
+															<dd></dd>
+															<dt>Quantidade: </dt>
+															<dd>Quantidade de livros </dd>
+															<dt>Preferências: </dt>
+															<dd>Preferências </dd>
+														</dl>
+													<% end %>
 												<% end %>
+
 												<footer>
 												  <p><a href="assinatura.html" class="button" style="align: center;">Alterar assinatura</a></p>
 												  <p><a href="cancelAssinatura.html" class="button" style="align: center;">Cancelar assinatura</a></p>
@@ -107,13 +115,17 @@
 												</header>
 												<article>
 													<div class="row" id="livros">
-														<% @user_books.books.each do |book| %>
-															<% #b = Book.find(book[:id]) %>	
-										        			<div class="1.5u 6u(mobile)">
-											        			<img id="capa" src="images/overcoat.jpg"/><br>
-        														<span style="font-weight: bold;"> <=% book.title =></span><br>
-						        								<span style="font-style: italic;"> <=% book.author =></span><br>
-									        				</div>
+													<% if @user_books.count == 0 %>
+														<span style="font-weight: bold;"> Não possui itens. </span><br>
+														<% else 
+															@user_books.each do |book| %>
+																<% b = Book.find(book[:id]) %>	
+											        			<div class="1.5u 6u(mobile)">
+												        			<img id="capa" src="images/overcoat.jpg"/><br>
+	        														<span style="font-weight: bold;"> <=% book.title =></span><br>
+							        								<span style="font-style: italic;"> <=% book.author =></span><br>
+										        				</div>
+									        				<% end %>
 									        			<% end %>
     												</div>
 												</article>

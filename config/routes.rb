@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'users#profile'
   get '/my_books/:id', to: 'users#my_books'
   get '/book/:id', to: 'books#show'
-  get  '/admin/:id', to: 'admins#index'
+  get '/admin/:id', to: 'admins#index'
+  get '/users/', to: 'users#index'
 
 end

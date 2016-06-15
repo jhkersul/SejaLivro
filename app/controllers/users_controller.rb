@@ -31,16 +31,26 @@ class UsersController < ApplicationController
     end
   end
 
+
+  # Método que define o que ocorre quando abre-se a tela de perfil
+  # GET /profile/:id
+  def profile
+    @user = User.find(params[:id])
+    @user_signatures = @user.signatures
+    @user_addresses = @user.addresses
+    @user_books = @user.user_books
+  end 
+
+  def index
+    @users = User.all
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :cpf, :email, :login, :birth_date, :gender, :password, :password_confirmation, :addresses_attributes => [ :zipcode, :city, :country, :state, :complement, :street, :quarter])
     end
 
-  def show
-    @user = User.find(params[:id])
-    @user_signatures = @user.signatures
-    @user_addresses = @user.addresses
-    @user_books = @user.user_books
-  end 
+
+
 end
