@@ -26,8 +26,30 @@
 			            <% end %>
 					</div>
 				</div>
-				<h1>Editando livro</h1>
-				<%= render 'form', bookstore: @bookstore %>
+				<div id="main-wrapper">
+					<div class="wrapper style2">
+						<div class="inner">
 
-				<%= link_to 'Show', @bookstore %> |
-				<%= link_to 'Back', books_path %>
+							<!-- Feature 1 -->
+								<section class="container box feature1">
+									<div class="row" id="vantagens">
+										<div class="4u 12u(mobile)"></div>
+										<div class="4u 12u(mobile)">
+											<section>
+												<h1>Editando livraria</h1>
+												<%= render 'form', bookstore: @bookstore %>
+												<%= link_to 'Show', @bookstore %> |
+												<%= link_to 'Back', books_path %>
+											</section>
+										</div>
+										<div class="4u 12u(mobile)"></div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+	<%= render 'main/footer' %>
+	

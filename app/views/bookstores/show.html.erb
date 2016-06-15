@@ -83,11 +83,48 @@
 											</div>
 
 											<div class="4u">
-												<h1>Orders</h1>
+												<h1>Pedidos</h1>
+													<% if @bookstore_orders.count == 0 %>
+														 <dt>Não há registro de pedidos</dt>
+												<% else %>
+													<dl class="inline">
+														<dt>Data </dt>
+														<dt>Status </dt>
+													</dl>
+													<% @bookstore_orders.each do |order| %>
+														<dl class="inline">
+															<dd><%= order.date.to_formatted_s(:rfc822) %></dd>
+															<dd><%= order.status %></dd>
+														</dl>
+													<% end %>
+												<% end %>
+
+
+
 											</div>
 
 											<div class="4u">
-												<h1>Books</h1>
+												<h1>Catálogo</h1>
+													<% if @bookstore_books.count == 0 %>
+														 <dt>Não há livros no catálogo</dt>
+												<% else %>
+													<dl class="inline">
+														<dt>ID </dt>
+														<dt>Título </dt>
+														<dt>Autor </dt>
+														<dt>Estoque </dt>
+													</dl>
+													<% @bookstore_books.each do |book| %>
+														<% b = Book.find(book[:id]) %>
+														<dl class="inline">
+															<dd><%= b.id %></dd>
+															<dd><%= b.title %></dd>
+															<dd><%= b.author %></dd>
+															<dd><%= book.stock %></dd>
+
+														</dl>
+													<% end %>
+												<% end %>
 											</div>
 
 
