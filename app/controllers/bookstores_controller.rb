@@ -12,7 +12,7 @@ class BookstoresController < ApplicationController
 
     respond_to do |format|
       if @bookstore.save
-        format.html { redirect_to action: :new, notice: 'User created' }
+        format.html { redirect_to action: :new, notice: 'Bookstore created' }
         format.json { render :new, status: :created, location: @bookstore }
       else
         format.html { render :new }

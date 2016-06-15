@@ -61,33 +61,41 @@
 										</div>
 									</div>
 							</section>
-								<div class="row">
-									<div class="6u 12u(mobile)">
-										<form>
-											<fieldset>
-												<label for="name"><span>Nome </span><input type="text" id="name" /></label>
-												<label for="cnpj"><span>CNPJ </span><input type="text" id="cnpj" /></label>
+						<%= form_for(@bookstore) do |f| %>                        	
+                          	<% if @bookstore.errors.any? %>
+                            	  <div id="error_explanation">
+                                	<h2><%= pluralize(@bookstore.errors.count, "error") %> prohibited this user from being saved:</h2>
+                                	<ul>
+                                  	<% @bookstore.errors.full_messages.each do |message| %>
+                                    	  <li><%= message %></li>
+                                  	<% end %>
+                                	</ul>
+                             	  </div>
+                        <% end %>								
+								<div class="row">								
+									<div class="6u 12u(mobile)">										
+											<fieldset>												
+												<label for="name"><span>Nome </span><%= f.text_field :name %></label>
+												<label for="cnpj"><span>CNPJ </span><%= f.text_field :cnpj %></label>
 											</fieldset>
-										</form>
 									</div>
-									<div class="6u 12u(mobile)">
-										<form>
+									<div class="6u 12u(mobile)">										
 											<fieldset>
-												<label for="tel"><span>Telefone </span><input type="text" id="tel" /></label>
-												<label for="email"><span>E-mail </span><input type="text" id="email" /></label>
-											</fieldset>
-										</form>
+												<label for="tel"><span>Telefone </span><%= f.text_field :telephone %></label>
+												<!-- <label for="email"><span>E-mail </span><%# f.text_field :email %></label>
+												-->
+											</fieldset>										
 									</div>
 								</div>
 								<section class="container box feature1">
 									<div class="row">
-										<div class="12u">
-											<span> <a href="view_bookstore.html.erb" class="button">Salvar</a>
-											<a href="bookstore_list.html" class="button">Cancelar</a> 
-											</span>
+										<div class="12u">										
+											<%= f.submit "Salvar", class: "button" %>
+											<%= link_to "Cancelar", root_path, class: "button" %>
 										</div>
 									</div>
 								</section>
+					<% end %>								
 							</div>
 						</div>
 					</div>
