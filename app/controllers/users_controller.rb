@@ -32,4 +32,11 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :cpf, :login, :birth_date, :password, :password_confirmation, :gender, :addresses_attributes => [ :zipcode, :city, :country, :state, :complement, :street, :quarter])
     end
+
+  def show
+    @user = User.find(params[:id])
+    @user_signatures = @user.signatures
+    @user_addresses = @user.addresses
+    @user_books = @user.user_books
+  end 
 end
