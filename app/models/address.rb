@@ -4,6 +4,6 @@ class Address < ActiveRecord::Base
   belongs_to :user, dependent: :destroy
 
   # Validação
-  validates :user_id, :presence => true
+  validates :user_id, :zipcode, :street, :presence => true
 
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, path: 'auth', path_names: {
+  devise_for :users, path_names: {
       sign_in: 'login', sign_out: 'logout', registration: 'cadastro'
   }
 
@@ -10,19 +10,14 @@ Rails.application.routes.draw do
 
   resources :books
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users
 
-  # Rotas para o usuario
-  resources :users do
-    collection do
-      get 'register'
-    end
-  end
+  root 'main#index'
 
-  root "main#index"
-
-  get '/assinatura', to: 'main#assinatura'
   get '/cadastro', to: 'users#cadastro'
+  get '/login', to: 'users#login'
+  get '/logout', to: 'users#logout'
+  get '/assinatura', to: 'main#assinatura'
   get '/profile/:id', to: 'users#profile'
 
 end

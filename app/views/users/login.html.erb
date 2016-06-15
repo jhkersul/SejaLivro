@@ -16,39 +16,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 		</script>
-		<style type="text/css">
-		* {
-			margin:0;
-			padding:0;
-		}
-		form fieldset {
-			margin:20px;
-			padding:20px;
-		}
-		form fieldset label {
-			display:inline;
-			float:left;
-			width:100px;
-			height:22px;
-			line-height:22px;
-			text-align:left;
-			font-weight:normal;
-			font-size:100%;
-			color:#333;
-			margin:6px 10px 0 0;
-			overflow:hidden;
-		}
-		form fieldset label input {
-			display:inline;
-			float:left;
-			width:auto;
-			height:22px;
-			line-height:22px;
-			margin:0 3px 0 0;
-			padding:0;
-			border:none;
-		}
-		</style>
+
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -111,7 +79,7 @@
 												<li>
 													<a href="#">Já é assinante?</a>
 													<ul>
-														<li><a href="#">Login</a></li>
+														<li><a href="login.html">Login</a></li>
 														<li><a href="#">Simular assinatura</a></li>
 														<li>
 															<a href="#">Outras opções</a>
@@ -142,107 +110,48 @@
 					<div class="wrapper style2">
 						<div class="inner">
 
-							<!-- Feature 1 -->
-								<section class="container box feature1">
 
 
-									<div class="12u" id="vantagens">
-                    <%= form_for(@user, :html => { :id => "form_cadastro" }) do |f| %>
-                        <div class="row">
+							<!-- Feature 2 -->
+								<section class="container box feature2">
+									<div class="row" id="logar">
+										<div class="6u 12u(mobile)">
+											<section>
+                        <%= form_for(:user, url: session_path(:user)) do |f| %>
+                          <header class="major">
+                            <h2>Login </h2>
 
-                          <% if @user.errors.any? %>
-                              <div id="error_explanation">
-                                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-                                <ul>
-                                  <% @user.errors.full_messages.each do |message| %>
-                                      <li><%= message %></li>
-                                  <% end %>
-                                </ul>
-                              </div>
-                          <% end %>
+                                <div class="12u">
+                                  <%= f.label :email %>
+                                  <%= f.email_field :email, autofocus: true %>
+                                </div>
 
-
-                          <div class="4u">
-                            <section>
-                              <header>
-                                <h3>Dados pessoais</h3>
-                              </header>
-                              <article>
-                                <fieldset>
-                                  <div class="row">
-                                    <div class="12u form-field"><%= f.text_field :name, placeholder: "Nome" %></div>
-                                    <div class="12u form-field"><%= f.text_field :cpf, placeholder: "CPF" %></div>
-                                    <div class="12u form-label"><%= f.label "Gênero:" %></div>
-                                    <div class="12u form-field-labeled">
-                                      <%= f.select(:gender) do %>
-                                          <% [['Masculino', 0], ['Feminino', 1]].each do |c| -%>
-                                              <%= content_tag(:option, c.first, value: c.last) %>
-                                          <% end %>
-                                      <% end %>
-                                    </div>
+                                <div class="12u form-label">
+                                  <%= f.label :password %>
+                                  <%= f.password_field :password, autocomplete: "off" %>
+                                </div>
 
 
-                                    <div class="12u form-label"> <%= f.label "Nascimento:" %></div>
-                                    <div class="12u form-field-labeled"><%= f.date_select :birth_date,  order: [:day, :month, :year], :size => 5 %></div>
-                                  </div>
-
-                                </fieldset>
-                              </article>
-                            </section>
-                          </div>
-
-                          <div class="4u">
-                            <section>
-                              <header>
-                                <h3>Endereço</h3>
-                              </header>
-                              <article>
-                                <fieldset>
-                                  <div class="row">
-                                    <%= f.fields_for :addresses do |ff| %>
-                                        <div class="12u form-field"><%= ff.text_field :zipcode, placeholder: "CEP" %></div>
-                                        <div class="12u form-field"><%= ff.text_field :street, placeholder: "Logradouro" %></div>
-                                        <div class="12u form-field"><%= ff.text_field :complement, placeholder: "Complemento" %></div>
-                                    <% end %>
-
-                                  </div>
-                                </fieldset>
-                              </article>
-                            </section>
-                          </div>
-
-                          <div class="4u">
-                            <section>
-                              <header>
-                                <h3>Cadastre uma senha</h3>
-                              </header>
-                              <article>
-
-                                <fieldset>
-                                  <div class="row">
-                                    <div class="12u form-field"><%= f.text_field :email, placeholder: "Email" %></div>
-                                    <div class="12u form-field"><%= f.password_field :password, placeholder: "Senha" %></div>
-                                    <div class="12u form-field"><%= f.password_field :password_confirmation, placeholder: "Confirmação de Senha" %></div>
-                                  </div>
-                                </fieldset>
-                              </article>
-                            </section>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="12u no-padding form-margin">
-                            <%= f.submit "Cadastrar", class: "button big icon fa-arrow-circle-right" %>
-                          </div>
-                        </div>
-
-                    <% end %>
-
+                          </header>
+                          <footer>
+                            <%= f.submit "Entrar", class: "button medium icon" %>
+                          </footer>
+                        <% end %>
+											</section>
+										</div>
+										<div class="6u 12u(mobile)">
+											<section>
+												<header class="major">
+													<h2>Criar minha conta</h2>
+												</header>
+												<footer>
+                          <%= link_to "Cadastrar", cadastro_path, class: "button big icon fa-arrow-circle-right" %>
+												</footer>
+											</section>
+										</div>
 									</div>
-
-
-
 								</section>
+
 							</div>
 					</div>
 				</div>
@@ -300,7 +209,7 @@
 							<div class="12u">
 								<div id="copyright">
 									<ul class="menu">
-										<li>&copy; All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										<li>&copy; Todos direitos reservados</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 									</ul>
 								</div>
 							</div>
