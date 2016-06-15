@@ -62,14 +62,14 @@
 												</header>
 												<a href="#" class="image featured"><img src="images/avatar.png" alt="" /></a>
 												<dl class="inline">
-													<dt>Nome: </dt>
-													<dd>Fulano de Tal</dd>
+													<dt>Nome:  </dt>
+													<dd><=% @user.name =></dd>
 													<dt>CPF: </dt>
-													<dd>O número aqui</dd>
+													<dd><=% @user.cpf =></dd>
 													<dt>Data de nascimento: </dt>
-													<dd>A data aqui</dd>
+													<dd><=% @user.birth_date =></dd>
 													<dt>Endereço: </dt>
-													<dd>O endereço aqui</dd>
+													<dd><=% full_address =></dd>
 												</dl>
 												<footer>
 												  <p><a href="cadastro.html" class="button" style="align: center;">Atualizar dados</a></p>
@@ -82,16 +82,18 @@
 												<header>
 													<h3>Dados de assinatura</h3>
 												</header>
-												<dl class="inline">
-													<dt>Status da assinatura: </dt>
-													<dd>Ativo/Inativo </dd>
-													<dt>Periodicidade: </dt>
-													<dd>Periodicidade </dd>
-													<dt>Quantidade: </dt>
-													<dd>Quantidade de livros </dd>
-													<dt>Preferências: </dt>
-													<dd>Preferências </dd>
-												</dl>
+												<% @user_signatures.each do |signature| %>
+													<dl class="inline">
+														<dt>Status da assinatura: </dt>
+														<dd><=% signature.user_id => </dd>
+														<dt>Periodicidade: </dt>
+														<dd><=% signature.periodicity_id => </dd>
+														<dt>Quantidade: </dt>
+														<dd>Quantidade de livros </dd>
+														<dt>Preferências: </dt>
+														<dd>Preferências </dd>
+													</dl>
+												<% end %>
 												<footer>
 												  <p><a href="assinatura.html" class="button" style="align: center;">Alterar assinatura</a></p>
 												  <p><a href="cancelAssinatura.html" class="button" style="align: center;">Cancelar assinatura</a></p>
@@ -105,27 +107,15 @@
 												</header>
 												<article>
 													<div class="row" id="livros">
+														<% @user_books.books.each do |book| %>
+															<% #b = Book.find(book[:id]) %>	
 										        			<div class="1.5u 6u(mobile)">
 											        			<img id="capa" src="images/overcoat.jpg"/><br>
-        														<span style="font-weight: bold;"> Overcoat</span><br>
-						        								<span style="font-style: italic;"> Nikolai Gogol</span><br>
+        														<span style="font-weight: bold;"> <=% book.title =></span><br>
+						        								<span style="font-style: italic;"> <=% book.author =></span><br>
 									        				</div>
-													        <div class="1.5u 6u(mobile)">
-													        	<img id="capa" src="images/overcoat.jpg"/><br>
-					        									<span style="font-weight: bold;"> Overcoat</span><br>
-									        					<span style="font-style: italic;"> Nikolai Gogol</span><br>
-											                        </div>
-        													<div class="1.5u 6u(mobile)">
-							        							<img id="capa" src="images/overcoat.jpg"/><br>
-											        			<span style="font-weight: bold;"> Overcoat</span><br>
-        														<span style="font-style: italic;"> Nikolai Gogol</span><br>
-        													</div>
-        													<div class="1.5u 6u(mobile)">
-							        							<img id="capa" src="images/overcoat.jpg"/><br>
-											        			<span style="font-weight: bold;"> Overcoat</span><br>
-        														<span style="font-style: italic;"> Nikolai Gogol</span><br>
-        													</div>
-        												</div>
+									        			<% end %>
+    												</div>
 												</article>
 												<footer>
 												  <a href="#importar" class="button" style="align: center;">Importar</a>
