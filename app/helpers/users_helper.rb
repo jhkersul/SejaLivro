@@ -3,5 +3,6 @@ module UsersHelper
 		@user.addresses each do |addr|
 			if addr.main = true
 				addr.street + ", " addr.city
+		end
 	end
 end
