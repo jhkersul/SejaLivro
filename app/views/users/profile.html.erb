@@ -69,7 +69,7 @@
 													<dt>CPF: </dt>
 													<dd><%= @user.cpf %></dd>
 													<dt>Data de nascimento: </dt>
-													<dd><%= @user.birth_date %></dd>
+													<dd><%= @user.birth_date.to_formatted_s(:rfc822) %></dd>
 													<dt>Endereço: </dt>
 													<dd><%= full_address %></dd>
 												</dl>
