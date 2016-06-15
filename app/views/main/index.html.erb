@@ -83,36 +83,14 @@
 													<h2>1. Categorias </h2>
 													<p>Escolha suas categorias prediletas de leitura</p>
 												</header>
-												<div class="row" id="category">
-													<div class="1.5u 6u(mobile)">
-														<img id="categoria" src="images/categoria.png"/><br>
-														<span style="font-weight: bold;">Romance</span><br>
-													</div>
-													<div class="1.5u 6u(mobile)">
-														<img id="categoria" src="images/categoria.png"/><br>
-														<span style="font-weight: bold;">Anime</span><br>
-													</div>
-													<div class="1.5u 6u(mobile)">
-														<img id="categoria" src="images/categoria.png"/><br>
-														<span style="font-weight: bold;">Policial</span><br>
-													</div>
-													<div class="1.5u 6u(mobile)">
-														<img id="categoria" src="images/categoria.png"/><br>
-														<span style="font-weight: bold;">Fantasia</span><br>
-													</div>
-													<div class="1.5u 6u(mobile)">
-														<img id="categoria" src="images/categoria.png"/><br>
-														<span style="font-weight: bold;">Clássicos Ingleses</span><br>
-													</div>
-													<div class="1.5u 6u(mobile)">
-														<img id="categoria" src="images/categoria.png"/><br>
-														<span style="font-weight: bold;">Infantil</span><br>
-													</div>
-													<div class="1.5u 6u(mobile)">
-														<img id="categoria" src="images/categoria.png"/><br>
-														<span style="font-weight: bold;">Clássicos Franceses</span><br>
-													</div>
-        											</div>
+                          <div class="row" id="category">
+                            <% @categories.each do |category| %>
+                                <div class="1.5u 6u(mobile)">
+                                  <img id="categoria" src="images/categoria.png"/><br>
+                                  <span style="font-weight: bold;"><%= category.name %></span><br>
+                                </div>
+                            <% end %>
+                          </div>
 												<footer>
 													<a href="#" class="button">Ver catálogo</a>
 												</footer>

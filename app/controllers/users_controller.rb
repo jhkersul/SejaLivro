@@ -40,11 +40,15 @@ class UsersController < ApplicationController
   # Método que define o que ocorre quando abre-se a tela de perfil
   # GET /profile/:id
   def profile
-    @user = User.find(params[:id])
-    @user_signatures = @user.signatures
-    @user_addresses = @user.addresses
-    @user_books = @user.user_books
-  end 
+    if user_signed_in? && current_user.id.to_s == params[:id]
+      @user = User.find(params[:id])
+      @user_signatures = @user.signatures
+      @user_addresses = @user.addresses
+      @user_books = @user.user_books
+    else
+      redirect_to root_path
+    end
+  end
 
   def index
     @users = User.all
