@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20160615182200) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "addresses", "users", name: "address_user_id_fk", on_delete: :cascade

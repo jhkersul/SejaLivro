@@ -2386,10 +2386,17 @@
 	padding: 0px;
 }
 
-#categoria {
+.categoria-img {
 	width: 100px;
 	height: 100px;
-}	
+	border-radius: 50px;
+	background-position: center center;
+	background-size: cover;
+}
+
+.categoria-box {
+	padding: 10px;
+}
 
 .youtube h3::after {
     content: "";
@@ -2605,3 +2612,4 @@ dl.inline dt{
 .form-margin {
 	margin: 40px 0px 0px 0px;
 }
+
