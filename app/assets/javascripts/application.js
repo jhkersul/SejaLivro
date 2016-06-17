@@ -14,3 +14,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var selectedCategories = [];
+
+function changeBackgroundColorCategory(category_id) {
+    var index = selectedCategories.indexOf(category_id);
+
+    if (index != -1) {
+        selectedCategories.splice(index, 1);
+
+        document.getElementById("categoria-img-".concat(category_id)).style.backgroundColor = "transparent";
+    } else {
+        selectedCategories.push(category_id);
+
+        document.getElementById("categoria-img-".concat(category_id)).style.backgroundColor = "#d1d1d1";
+        document.getElementById("categoria-img-".concat(category_id)).style.borderRadius = "10px";
+    }
+}
