@@ -68,28 +68,28 @@
 									<div class="6u 12u(mobile)">
 										<dl class="inline">
 											<dt>ID:</dt>
-											<dd>ID do Livro</dd>
+											<dd><%= @book.id %></dd>
 											<dt>Nome:</dt>
-											<dd>Nome do Livro</dd>
+											<dd><%= @book.name %></dd>
 											<dt>ISBN:</dt>
-											<dd>ISBN do livro</dd>
+											<dd><%= @book.isbn %></dd>
 											<dt>Autor:</dt>
-											<dd>Autor do Livro</dd>
+											<dd><%= @book.author %></dd>
 											<dt>Ano:</dt>
-											<dd>Ano de publicação</dd>
+											<dd><%= @book.year %></dd>
 											<dt>Idioma:</dt>
-											<dd>Idioma do livro</dd>
+											<dd><%= @book.language %></dd>
 											<dt>Editora:</dt>
-											<dd>Editora do Livro</dd>
+											<dd><%= @book.publisher %></dd>
 										</dl>
 									</div>
 								</div>
 								<section class="container box feature1">
 									<div class="row">
 										<div class="12u">
-											<span> <a href="book_list.html" class="button">Voltar</a>
-											  <a href="create_book.html" class="button">Editar</a>
-											  <a href="#" class="button">Excluir</a>
+											<span> <%= link_to 'Voltar', books_path, class: "button" %>
+                          							<%= link_to 'Editar', edit_book_path(@book), class: "button" %>
+                          							<%= link_to 'Excluir', @book, method: :delete, class: "button" %>
 											  </span>
 										</div>
 									</div>

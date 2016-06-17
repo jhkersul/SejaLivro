@@ -41,44 +41,75 @@
 												<h2>Livros</h2>
                         <%= link_to 'Adicionar livro', new_book_path, class: "button" %>
 												<form action="action_page.php">
-                          <label for="search"><span>Search </span><input type="search" id="search" /></label>
+                          <label for="search"><span>Search <input type="search" id="search" /></label>
 													<input type="submit">
+													</span>
 												</form>
 											</header>
                       <% if @books.count ==  0 %>
                           <span style="font-weight: bold;"> Não possui itens. </span><br>
                       <% else %>
-                      <table style="width:100%">
-                        <tr>
-                          <td><b>ID</b></td>
-                          <td><b>Nome</b></td>
-                          <td><b>ISBN</b></td>
-                          <td><b>Autor</b></td>
-                          <td><b>Ano</b></td>
-                          <td><b>Idioma</b></td>
-                          <td><b>Editora</b></td>
-                          <td><b>Ações</b></td>
-                        </tr>
+                      <div class="row"> 
+							<div class="1u"> 
+								<b>ID</b>
+							</div>
+							<div class="1u"> 
+								<b>Nome</b>
+							</div>
+							<div class="1u"> 
+								<b>ISBN</b>
+							</div>
+							<div class="1u"> 
+								<b>Autor</b>
+							</div>
+							<div class="1u"> 
+								<b>Ano</b>
+							</div>	
+							<div class="1u"> 
+								<b>Idioma</b>
+							</div>
+							<div class="1u"> 
+								<b>Editora</b>
+							</div>
+							<div class="5u"> 
+								<b>Ações</b>
+							</div>
+					</div>
                       <% @books.each do |b| %>
-											  <tr>
-                         <td><%= b.id %></td>
-                         <td><%= b.name %></td>
-                         <td><%= b.isbn %></td>
-                         <td><%= b.author %></td>
-                         <td><%= b.year %></td>
-                         <td><%= b.language %></td>
-                         <td><%= b.publisher %></td>
-                         <td><span> <%= link_to 'Visualizar', b, class: "button" %>
-                          <%= link_to 'Editar', edit_book_path(b), class: "button" %>
-                          <%= link_to 'Excluir', b, method: :delete, class: "button" %>
-											   </span></td>
-                      </tr>
-                      </table>
+						<div class="row"> 
+							<div class="1u"> 
+								<%= b.id %>
+							</div>
+							<div class="1u"> 
+								<%= b.name %>
+							</div>
+							<div class="1u"> 
+								<%= b.isbn %>
+							</div>
+							<div class="1u"> 
+								<%= b.author %>
+							</div>
+							<div class="1u"> 
+								<%= b.year %>
+							</div>
+							<div class="1u"> 
+								<%= b.language %>
+							</div>
+							<div class="1u"> 
+								<%= b.publisher %>
+							</div>
+							<div class="5u"> 
+							<span> 
+								<%= link_to 'Visualizar', b, class: "button" %>
+                          		<%= link_to 'Editar', edit_book_path(b), class: "button" %>
+                          		<%= link_to 'Excluir', b, method: :delete, class: "button" %>
+                          		</span>
+							</div>
+							</div>
                       <% end %>
                       <% end %>
-
-										</div>
-									</div>
+							</div>
+							</div>
 							</section>
 								<!-- <div class="row">
 									<div class="6u 12u(mobile)">

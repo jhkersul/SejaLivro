@@ -10,15 +10,20 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:id])
     if @book.nil?
       redirect_to books_path
     end
   end
 
+  def show
+    @book = Book.find(params[:id])
+  end
+
   # POST /users
   # POST /users.json
   def create
-    @book = Book.new(user_params)
+    @book = Book.new(book_params)
 
     respond_to do |format|
       if @book.save
