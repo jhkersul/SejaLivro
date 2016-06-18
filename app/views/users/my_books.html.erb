@@ -47,7 +47,7 @@
                               @user_books.each do |book| %>
                                 <% b = Book.find(book.book_id) %> 
                                     <div class="1.5u 6u(mobile)">
-                                      <img id="capa" src="/images/books_cover/overcoat.jpg"/><br>
+                                      <%= image_tag("/images/books_cover/#{b.id}.jpg",:id => "capa") %><br>
                                       <span style="font-weight: bold;"> <%= b.name %></span><br>
                                       <span style="font-style: italic;"> <%= b.author %></span><br>
                                     </div>
