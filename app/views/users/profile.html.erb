@@ -17,7 +17,7 @@
 							<!-- Feature 1 -->
 								<section class="container box feature1">
 									<div class="row" id="vantagens">
-										<div class="4u 12u(mobile)">
+										<div class="3u 12u(mobile)">
 											<section>
 												<header>
 													<h3>Dados pessoais</h3>													
@@ -39,7 +39,7 @@
 												</footer>
 											</section>
 										</div>
-										<div class="4u 12u(mobile)">
+										<div class="3u 12u(mobile)">
 											<section>
 												<header>
 													<h3>Dados de assinatura</h3>
@@ -68,7 +68,7 @@
 												</footer>
 											</section>
 										</div>
-										<div class="4u 12u(mobile)">
+										<div class="6u 12u(mobile)">
 											<section>
 												<header>
 													<h3>Biblioteca pessoal</h3>
@@ -78,19 +78,24 @@
 													<% if @user_books.count == 0 %>
 														<span style="font-weight: bold;"> Não possui itens. </span><br>
 														<% else 
-															@user_books.each do |book| %>
-																<% b = Book.find(book[:id]) %>	
+															if @user_books.count > 6
+																max = 6
+															else
+																max = @user_books.count
+															end
+															@user_books[0..max].each do |book| %>
+																<% b = Book.find(book.book_id) %>	
 											        			<div class="1.5u 6u(mobile)">
-												        			<img id="capa" src="images/overcoat.jpg"/><br>
-	        														<span style="font-weight: bold;"> <=% book.title =></span><br>
-							        								<span style="font-style: italic;"> <=% book.author =></span><br>
+												        			<img id="capa" src="/images/books_cover/overcoat.jpg"/><br>
+	        														<span style="font-weight: bold;"> <%= b.name %></span><br>
+							        								<span style="font-style: italic;"> <%= b.author %></span><br>
 										        				</div>
 									        				<% end %>
 									        			<% end %>
     												</div>
 												</article>
 												<footer>
-												  <a href="#importar" class="button" style="align: center;">Importar</a>
+												<%= link_to "Ver todos", "/my_books/#{@user.id}", :class => "button" %>
 												</footer>
 											</section>
 										</div>

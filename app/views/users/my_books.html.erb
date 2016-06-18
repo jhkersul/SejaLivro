@@ -22,6 +22,9 @@
   <!-- Header -->
   <!-- Header -->
   <!-- include do header -->
+              <%= render 'main/login_top_menu' %>
+          </div>
+        </div>
 
   <!-- Main Wrapper -->
   <div id="main-wrapper">
@@ -34,6 +37,9 @@
               <li>
                 <input type="radio" name="css3-tabstrip-0" checked="checked" id="css3-tabstrip-0-0" /><label for="css3-tabstrip-0-0">Meus Livros</label>
                 <div>
+                   <header>
+                        <h2>Visualizando biblioteca de <%= @user.name %></h2>
+                      </header>
                   <div class="row" id="livros">
                     <div class="1.5u 6u(mobile)">
                       <img id="capa" src="images/overcoat.jpg"/><br>
@@ -135,12 +141,9 @@
 
       </div>
     </div>
-    <div class="wrapper style2">
-      <div class="inner">
-
-      </div>
-    </div>
   </div>
 </div>
+  <!-- Footer Wrapper -->
+      <%= render 'main/footer' %>
 </body>
 </html>
