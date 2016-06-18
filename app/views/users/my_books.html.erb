@@ -38,93 +38,47 @@
                 <input type="radio" name="css3-tabstrip-0" checked="checked" id="css3-tabstrip-0-0" /><label for="css3-tabstrip-0-0">Meus Livros</label>
                 <div>
                    <header>
-                        <h2>Visualizando biblioteca de <%= @user.name %></h2>
-                      </header>
+                        <h2>Biblioteca de <%= @user.name %></h2>
+                    </header>
                   <div class="row" id="livros">
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
-                    <div class="1.5u 6u(mobile)">
-                      <img id="capa" src="images/overcoat.jpg"/><br>
-                      <span style="font-weight: bold;"> Overcoat</span><br>
-                      <span style="font-style: italic;"> Nikolai Gogol</span><br>
-
-                    </div>
+                          <% if @user_books.count == 0 %>
+                            <span style="font-weight: bold;"> Não possui itens. </span><br>
+                            <% else 
+                              @user_books.each do |book| %>
+                                <% b = Book.find(book.book_id) %> 
+                                    <div class="1.5u 6u(mobile)">
+                                      <img id="capa" src="/images/books_cover/overcoat.jpg"/><br>
+                                      <span style="font-weight: bold;"> <%= b.name %></span><br>
+                                      <span style="font-style: italic;"> <%= b.author %></span><br>
+                                    </div>
+                                  <% end %>
+                                <% end %>
+                  </div>
+                  <div class="row" id="livros">
+          
                   </div>
                 </div>
               </li>
               <li>
               <input type="radio" name="css3-tabstrip-0" id="css3-tabstrip-0-1" /><label for="css3-tabstrip-0-1">Categorias</label>
               <div>
+               <header>
+                        <h2>Categorias prediletas de <%= @user.name %></h2>
+                      </header>
+
                 <div class="row" id="livros">
-                  <div class="1.5u 6u(mobile)">
-                    <img id="categoria" src="images/categoria.png"/><br>
-                    <span style="font-weight: bold;">Romance</span><br>
+                          <% if @user_prefs.count == 0 %>
+                            <span style="font-weight: bold;"> Não possui preferências. </span><br>
+                            <% else 
+                              @user_prefs.each do |pref| %>
+                              <% c = Category.find(pref.preference_id) %> 
+                                    <div class="1.5u 6u(mobile)">
+                                      <img id="capa" src="/images/categories/#{pref.id}.jpg"/><br>
+                                      <span style="font-weight: bold;"> <%= c.name %></span><br>
+                                    </div>
+                                  <% end %>
+                                <% end %>
                   </div>
-                  <div class="1.5u 6u(mobile)">
-                    <img id="categoria" src="images/categoria.png"/><br>
-                    <span style="font-weight: bold;">Anime</span><br>
-                  </div>
-                  <div class="1.5u 6u(mobile)">
-                    <img id="categoria" src="images/categoria.png"/><br>
-                    <span style="font-weight: bold;">Policial</span><br>
-                  </div>
-                  <div class="1.5u 6u(mobile)">
-                    <img id="categoria" src="images/categoria.png"/><br>
-                    <span style="font-weight: bold;">Fantasia</span><br>
-                  </div>
-                </div>
               </div>
             </li>
             </div>
@@ -132,9 +86,11 @@
           </div>
           <br><br><br>
           <div class="row">
-            <div class="6u"></div>
             <div class="6u">
-              <a href="#" class="button big icon fa-arrow-circle-right">Importar</a>
+                <%= link_to "Voltar", "/profile/#{@user.id}", :class => "button big icon " %>
+            </div>
+            <div class="6u">
+                <%= link_to "Importar", "/my_books/#{@user.id}", :class => "button big icon fa-arrow-circle-right" %>
             </div>
           </div>
         </section>
