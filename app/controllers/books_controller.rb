@@ -53,8 +53,14 @@ class BooksController < ApplicationController
       book.destroy
       redirect_to books_path
     end
-
   end
+
+  def search
+    @q = "%#{params[:query]}%"
+    @books = Book.where("lower(name) LIKE ?", @q.downcase)
+    render 'index'
+  end
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def book_params

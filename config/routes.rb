@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get '/categories/:id/del', to: "categories#destroy"
 
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
+  post 'books/search' => 'books#search', as: 'search_books'
 
 
 end
