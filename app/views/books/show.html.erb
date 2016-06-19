@@ -21,31 +21,13 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<div id="header-wrapper">
-					<div class="container">
-						<!-- Header -->
-							<header id="header">
-								<div class="inner">
-									<!-- Logo -->
-										<h1><a href="index.html" id="logo">SejaLivro</a></h1>
-									<!-- Nav -->
-										<nav id="nav">
-											<ul>
-												<li>
-													<a href="profile.html">Meu Perfil</a>
-												</li>
-												<li>
-													<a href="my_books.html">Meus livros</a>
-												</li>
-												<li>
-													<a href="logout.html">Sair</a>
-												</li>
-											</ul>
-										</nav>
-								</div>
-							</header>
-					</div>
-				</div>
+      <div id="header-wrapper">
+        <div class="container">
+          <% if user_signed_in? %>
+              <%= render 'main/login_top_menu' %>
+          <% else %>
+              <%= render 'main/logout_top_menu' %>
+          <% end %>
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
@@ -62,8 +44,8 @@
 									</div>
 							</section>
 								<div class="row">
-									<div class="6u 12u(mobile)">
-										<a href="#" class="image centered"><img src="images/overcoat.jpg" alt="" height=400 width=auto /></a>
+									<div class="6u 12u(mobile)" style="text-align:right">
+										<%= image_tag("/images/books_cover/#{@book.id}.jpg",  float:'right', width:'auto', height:'400') %>
 									</div>
 									<div class="6u 12u(mobile)">
 										<dl class="inline">
@@ -99,7 +81,7 @@
 					</div>
 				</div>
 
-				<!--<div class="12u">
+				<div class="12u">
 											<header>
 												<h2></h2>
 											</header>
@@ -113,80 +95,7 @@
 							</div>
 						</div>
 					</div>
-				</div>-->
-
-			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="6u 12u(mobile)">
-								<!-- About -->
-									<section>
-										<h2><strong>SejaLivro</strong></h2>
-										<p>Olá! Este é o <strong>SejaLivro</strong>, um serviço de assinatura de livros. Você adquire um pacote por valor fixo e nós nos encarregamos de te surpreender com novas leituras, sem qualquer dor de cabeça e entrega em sua casa!</p>
-										<a href="#simular" class="button icon fa-arrow-circle-right" style="align: center;">Simular Assinatura</a>
-									</section>
-							</div>
-
-							<div class="6u 12u(mobile)">
-								<!-- Contact -->
-									<section>
-										<h2>Redes Sociais</h2>
-										<div>
-											<div class="row">
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Twitter</dt>
-														<dd><a href="#">@SejaLivro</a></dd>
-														<dt>Facebook</dt>
-														<dd><a href="#">facebook.com/SejaLivro</a></dd>
-														<dt>WWW</dt>
-														<dd><a href="#">sejalivro.com</a></dd>
-														<dt>Email</dt>
-														<dd><a href="#">contato@sejalivro.com</a></dd>
-													</dl>
-												</div>
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Endereço</dt>
-														<dd>
-															Av. Luciano Gualberto, 314, Cid. Universitária<br />
-															São Paulo, SP 01300-7800<br />
-															Brasil
-														</dd>
-														<dt>Telefone</dt>
-														<dd>(11) 0800-9999</dd>
-													</dl>
-												</div>
-											</div>
-										</div>
-									</section>
-
-							</div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
 				</div>
 
-		</div>
-
-		<!-- Scripts -->
-
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+			<!-- Footer Wrapper -->
+			<%= render 'main/footer' %>
