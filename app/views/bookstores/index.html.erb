@@ -44,13 +44,11 @@
 												<h2>Livrarias</h2> <br>
 												<div class="row">
 													<div class="6u">
-														<form action="action_page.php">
-	                         							<label for="search">
-	                         								<span>Buscar</span>
-	                         								<input type="search" id="search"/>
-	                         							</label>
-	                         							<input type="submit"/>
-														</form>
+													<%= form_tag search_bookstores_path do %>
+													<%= label_tag(:q, "Buscar livraria pelo nome:") %>
+													<input type="search" id="search" placeholder="Buscar livrarias" type="text" name="query">
+													<%= submit_tag("Buscar") %>
+													<% end %>
 													</div>
 													<div class="6u">
 														<a href="bookstores/new.html" class="button">Adicionar livraria</a>
@@ -75,7 +73,20 @@
 													<b>Options</b>
 												</div>
 											</div>
-											
+											<% if @bookstores.count == 0 and @q != nil %>
+												<div class="row"> 
+													<div class="12u">
+														<h2>
+															<%= "Não há livrarias cadastradas com esse nome" %>
+														</h2>
+													</div>
+												</div>
+												<div class="row"> 
+													<div class="12u">
+														<%= link_to "Voltar", "/bookstores/", :class => "button" %>
+														</div>
+												</div>
+											<% end %>
 											<% @bookstores.each do |bookstore| %>
 												<div class="row"> 
 													<div class="1u"> 

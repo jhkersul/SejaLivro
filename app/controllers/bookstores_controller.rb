@@ -65,6 +65,11 @@ class BookstoresController < ApplicationController
     end
   end
 
+  def search
+    @q = "%#{params[:query]}%"
+    @bookstores = Bookstore.where("lower(name) LIKE ?", @q.downcase)
+    render 'index'
+  end
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.
