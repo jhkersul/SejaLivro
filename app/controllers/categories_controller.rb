@@ -68,6 +68,13 @@ class CategoriesController < ApplicationController
     end
   end
 
+   def search
+    @q = "%#{params[:query]}%"
+    @categories = Category.where("lower(name) LIKE ?", @q.downcase)
+    render 'index'
+  end
+
+
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.

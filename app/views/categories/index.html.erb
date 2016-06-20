@@ -42,13 +42,12 @@
 												<h2>Categorias</h2> <br>
 												<div class="row">
 													<div class="6u">
-														<form action="action_page.php">
-	                         							<label for="search">
-	                         								<span>Buscar</span>
-	                         								<input type="search" id="search"/>
-	                         							</label>
-	                         							<input type="submit"/>
-														</form>
+													<%= form_tag search_categories_path do %>
+													<%= label_tag(:q, "Buscar categoria pelo nome:") %>
+													<input type="search" id="search" placeholder="Buscar categorias" type="text" name="query">
+													<%= submit_tag("Buscar") %>
+													<% end %>
+													
 													</div>
 													<div class="6u">
 														<a href="categories/new.html" class="button">Adicionar categoria</a>

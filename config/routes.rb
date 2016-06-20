@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
   post 'books/search' => 'books#search', as: 'search_books'
+  post 'categories/search' => 'categories#search', as: 'search_categories'
 
 
 end
