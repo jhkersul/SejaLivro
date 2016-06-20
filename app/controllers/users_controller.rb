@@ -62,7 +62,7 @@ def my_books
 
 
   def index
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   private

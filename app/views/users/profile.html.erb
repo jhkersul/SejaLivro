@@ -48,6 +48,9 @@
 												<% if @user_signatures.count == 0 %>
 													 <dt>Status da assinatura: </dt>
 													 <dd>Não possui assinaturas</dd>
+													 <footer>
+												  		<p><a href="assinatura.html" class="button" style="align: center;">Nova assinatura</a></p>												  		
+													</footer>
 												<% else %>
 													<% @user_signatures.each do |signature| %>
 														<dl class="inline">
@@ -61,12 +64,11 @@
 															<dd>Preferências </dd>
 														</dl>
 													<% end %>
-												<% end %>
-
-												<footer>
-												  <p><a href="assinatura.html" class="button" style="align: center;">Alterar assinatura</a></p>
-												  <p><a href="cancelAssinatura.html" class="button" style="align: center;">Cancelar assinatura</a></p>
-												</footer>
+													<footer>
+												  		<p><a href="assinatura.html" class="button" style="align: center;">Alterar assinatura</a></p>
+												  		<p><a href="cancelAssinatura.html" class="button" style="align: center;">Cancelar assinatura</a></p>
+													</footer>
+												<% end %>												
 											</section>
 										</div>
 										<div class="6u 12u(mobile)">

@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.all.order(:id)
   end
 
   def edit
@@ -37,6 +37,7 @@ class BooksController < ApplicationController
   end
 
   def update
+    @book = Book.find(params[:id])
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to action: :index, notice: 'Book updated' }
@@ -57,7 +58,7 @@ class BooksController < ApplicationController
 
   def search
     @q = "%#{params[:query]}%"
-    @books = Book.where("lower(name) LIKE ?", @q.downcase)
+    @books = Book.where("lower(name) LIKE ?", @q.downcase).order(:id)
     render 'index'
   end
 

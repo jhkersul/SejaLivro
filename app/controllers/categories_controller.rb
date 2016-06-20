@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
 
   def index
     if user_signed_in?
-      @categories = Category.all
+      @categories = Category.all.order(:id)
     else
       redirect_to root_path
     end
@@ -70,7 +70,7 @@ class CategoriesController < ApplicationController
 
    def search
     @q = "%#{params[:query]}%"
-    @categories = Category.where("lower(name) LIKE ?", @q.downcase)
+    @categories = Category.where("lower(name) LIKE ?", @q.downcase).oder(:id)
     render 'index'
   end
 

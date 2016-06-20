@@ -26,9 +26,9 @@ class BookstoresController < ApplicationController
   end
 
   def show
-    @bookstore = Bookstore.find(params[:id])
-    @bookstore_books = @bookstore.bookstore_books
-    @bookstore_orders = @bookstore.orders
+    @bookstore = Bookstore.find(params[:id]).order(:id)
+    @bookstore_books = @bookstore.bookstore_books.order(:id)
+    @bookstore_orders = @bookstore.orders.order(:id)
   end 
 
   def index
@@ -67,7 +67,7 @@ class BookstoresController < ApplicationController
 
   def search
     @q = "%#{params[:query]}%"
-    @bookstores = Bookstore.where("lower(name) LIKE ?", @q.downcase)
+    @bookstores = Bookstore.where("lower(name) LIKE ?", @q.downcase).order(:id)
     render 'index'
   end
 
