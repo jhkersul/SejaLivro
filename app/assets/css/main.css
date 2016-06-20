@@ -1715,10 +1715,10 @@
 			letter-spacing: 0.04em;
 		}
 
-/* Wrappers */
+/* Wrappers background: url("images/biblioteca5.jpg"), url("../../images/header.jpg"); */
 
 	#header-wrapper {
-		background: url("images/biblioteca5.jpg"), url("../../images/header.jpg");
+		
 		background-position: right bottom;
 		background-size: auto, cover;
 	}
