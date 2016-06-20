@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @category = Category.new(user_params)
+    @category = Category.new(categories_params)
 
     respond_to do |format|
       if @category.save
@@ -22,6 +22,9 @@ class CategoriesController < ApplicationController
   # GET /categories/:id/edit
   def edit
     @category = Category.find(params[:id])
+    if @category.nil?
+      redirect_to books_path
+    end
   end
 
     def show
@@ -44,7 +47,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     respond_to do |format|
-      if @category.update(bookstore_params)
+      if @category.update(categories_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
@@ -60,7 +63,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to categories_path, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +71,7 @@ class CategoriesController < ApplicationController
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.
-  def user_params
+  def categories_params
     params.require(:category).permit(:name, :image_url)
   end
 
