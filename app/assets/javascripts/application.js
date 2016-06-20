@@ -31,3 +31,25 @@ function changeBackgroundColorCategory(category_id) {
         document.getElementById("categoria-img-".concat(category_id)).style.borderRadius = "10px";
     }
 }
+
+function updatePrice() {
+    var peridiocityIndex = document.getElementById("peridiocity").selectedIndex;
+    var quantityIndex = document.getElementById("quantity").selectedIndex;
+    var periodIndex = document.getElementById("period").selectedIndex;
+
+    if (peridiocityIndex != 0 && quantityIndex != 0 && periodIndex != 0) {
+        var resultedPrice = calculatePrice(peridiocityIndex, quantityIndex, periodIndex);
+
+        document.getElementById("resultedValue").innerHTML = resultedPrice.toFixed(2);
+    }
+}
+
+function calculatePrice(peridiocityIndex, quantityIndex, periodIndex) {
+    var price = 0;
+
+    price += quantityIndex * 20;
+    price += price/peridiocityIndex;
+    price = periodIndex * price * 0.9 * 12;
+
+    return price;
+}
