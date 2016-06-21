@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     if (!user.admin)
       "/profile/#{user.id}"
     else
-      "/admin/#{user.id}"
+      admin_index_path
     end
   end
 end

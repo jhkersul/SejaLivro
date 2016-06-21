@@ -6,6 +6,11 @@
     <!-- Nav -->
     <nav id="nav">
       <ul>
+        <% if current_user.admin %>
+        <li>
+          <%= link_to 'Administrador', admin_index_path %>
+        </li>
+        <% end %>
         <li>
           <%= link_to 'Meu Perfil', "/profile/#{current_user.id}" %>
         </li>

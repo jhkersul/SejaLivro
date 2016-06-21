@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
 
   resources :bookstores, :categories, :books, :users
+  resources :admin
 
   root 'main#index'
 
@@ -13,11 +14,9 @@ Rails.application.routes.draw do
   get '/profile/:id/edit', to: 'users#edit'
   get '/profile/:id', to: 'users#profile'
   get '/my_books/:id', to: 'users#my_books'  
-  get '/admin/:id', to: 'admins#index'    
 
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
   post 'books/search' => 'books#search', as: 'search_books'
   post 'categories/search' => 'categories#search', as: 'search_categories'
-
 
 end
