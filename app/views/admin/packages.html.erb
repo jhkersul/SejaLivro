@@ -1,0 +1,58 @@
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div class="container">
+						<!-- Header -->
+            <% if user_signed_in? %>
+                <%= render 'main/login_top_menu' %>
+            <% else %>
+                <%= render 'main/logout_top_menu' %>
+            <% end %>
+					</div>
+				</div>
+				
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+					<div class="wrapper style3">
+						<div class="inner">
+							<div class="container">
+							<section class="container box feature1">
+									<div class="row" id="adminIndex">
+										<div class="12u">
+											<header>
+												<h2>Gerenciamento - Gerenciar Pacotes</h2>
+											</header>
+											   <h1>Próximas bateladas: </h1>
+											   <% pers = [5]
+											   	  (0..4).each do |i| 
+											   	  	pers[i] = 0
+											   	  end	
+											   %>
+	   											<% @users.each do |user| 
+	   												if user.signatures.count > 0
+	   													user.signatures.each do |signature|
+											   				@sig_per = signature.periodicity_id
+										   				end
+										   			pers[@sig_per] += 1
+										   			end
+											    end %>
+											      Pacotes para daqui 7: <%= pers[0] %>
+											      <br>Pacotes para daqui 15 dias: <%= pers[0] + pers[1]%>
+											      <br>Pacotes para daqui 30 dias: <%= pers[0] + pers[1] + pers[2] %>
+											<p><%= link_to "Ver compras", books_path, :class => "button" %> </p>
+											<p><%= link_to "Gerenciar Categorias", categories_path, :class => "button" %> </p>
+											<p><%= link_to "Gerenciar Livrarias", bookstores_path, :class => "button" %> </p>
+											<p><%= link_to "Gerenciar Pacotes", bookstores_path, :class => "button" %> </p>
+										</div>
+									</div>
+								</section>								
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer Wrapper -->
+      <%= render 'main/footer' %>
+
+		</div>

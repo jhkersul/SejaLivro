@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'users#profile', as: 'profile'
   get '/my_books/:id', to: 'users#my_books', as: 'my_books'
   get '/catalog' => 'books#catalog', as: 'books_catalog'
+   get '/packages' => 'admin#packages', as: 'admin_packages'
 
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
   post 'books/search' => 'books#search', as: 'search_books'

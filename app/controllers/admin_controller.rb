@@ -6,4 +6,8 @@ class AdminController < ApplicationController
     end
   end
 
+  def packages
+  	@users = User.all 
+  end
+
 end
