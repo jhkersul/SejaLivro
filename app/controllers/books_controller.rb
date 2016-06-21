@@ -62,6 +62,12 @@ class BooksController < ApplicationController
     render 'index'
   end
 
+  def catalog
+    @categories = Category.all
+  end
+
+  
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def book_params

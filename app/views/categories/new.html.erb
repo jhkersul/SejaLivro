@@ -21,11 +21,16 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-			<% if user_signed_in? %>
-                <%= render 'main/login_top_menu' %>
-            <% else %>
-                <%= render 'main/logout_top_menu' %>
-            <% end %>
+				<div id="header-wrapper">
+					<div class="container">
+						<!-- Header -->
+							<% if user_signed_in? %>
+			                <%= render 'main/login_top_menu' %>
+			            <% else %>
+			                <%= render 'main/logout_top_menu' %>
+			            <% end %>
+					</div>
+				</div>
 		
 	
 			<!-- Main Wrapper -->

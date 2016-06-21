@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   patch 'profile/:id/address', to: 'address#update', as: 'address_update'  
   get '/profile/:id', to: 'users#profile', as: 'profile'
   get '/my_books/:id', to: 'users#my_books', as: 'my_books'
+  get '/catalog' => 'books#catalog', as: 'books_catalog'
 
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
   post 'books/search' => 'books#search', as: 'search_books'

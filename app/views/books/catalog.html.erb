@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<!--
+	ZeroFour by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	oi
+-->
+
+<html>
+<body class="homepage">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+        <div id="header-wrapper" style="background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('images/bg03.png'), url('images/bg02.png');"> 
+          <div class="container">
+            <!-- Header -->
+            <% if user_signed_in? %>
+			                <%= render 'main/login_top_menu' %>
+			            <% else %>
+			                <%= render 'main/logout_top_menu' %>
+			            <% end %>
+          	</div>
+        </div>
+				
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+					<div class="wrapper style3">
+						<div class="inner">
+							<div class="container">
+								<section class="container box feature1">
+									<div class="row" id="bookstoreList">
+										<div class="12u">
+											<header>
+												<h2>Estes são alguns dos títulos em nosso catálogo</h2> <br>
+												<div class="row">
+													<div class="6u">
+													</div>
+													<div class="6u">
+													<%= link_to "Voltar ao simulador", "/#simular", :class => "button" %>
+													</div>
+												</div>
+												
+											</header>
+											<% @categories.each do |category| 
+												n_books = category.book_categories.count 
+												if n_books > 0 
+													if n_books < 5 
+													 	max = n_books
+													else
+													 	max = 5
+													end %>
+												
+													<div class="row"><h1> <%= category.name %></h1></div>
+														<% category.book_categories[0..max].each do |book| %>
+																<% b = Book.find(book.book_id) %>	
+											        			<div class="1.5u 6u(mobile)">
+												        			<%= image_tag("/images/books_cover/#{b.id}.jpg",:id => "capa") %><br>
+																	<span style="font-weight: bold;"> <%= b.name %></span><br>
+							        								<span style="font-style: italic;"> <%= b.author %></span><br>
+										        				</div>
+									        			<% end %>
+												<% end %>
+											<% end %>
+										</div>
+									</div>	
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			<!-- Footer Wrapper -->
+			<%= render 'main/footer' %>
