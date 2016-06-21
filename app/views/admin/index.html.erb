@@ -23,9 +23,9 @@
 											<header>
 												<h2>Gerenciamento</h2>
 											</header>
-											<p><a href="../books/book_list.html.erb" class="button">Gerenciar Livros</a> </p>
-											<p><a href="../categories/category_list.html.erb" class="button">Gerenciar Categorias</a> </p>
-											<p><a href="../bookstores/bookstore_list.html.erb" class="button">Gerenciar Livrarias</a> </p>
+											<p><%= link_to "Gerenciar Livros", books_path, :class => "button" %> </p>
+											<p><%= link_to "Gerenciar Categorias", categories_path, :class => "button" %> </p>
+											<p><%= link_to "Gerenciar Livrarias", bookstores_path, :class => "button" %> </p>
 										</div>
 									</div>
 								</section>								

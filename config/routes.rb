@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/cadastro', to: 'users#new'
   get '/logout', to: 'users#logout'
+  get '/pagamento', to: 'signature#payment'
   get '/profile/:id/edit', to: 'users#edit'
   get '/profile/:id', to: 'users#profile'
   get '/my_books/:id', to: 'users#my_books'  
@@ -18,5 +19,8 @@ Rails.application.routes.draw do
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
   post 'books/search' => 'books#search', as: 'search_books'
   post 'categories/search' => 'categories#search', as: 'search_categories'
+
+
+  post '/' => 'main#store_signature'
 
 end

@@ -33,14 +33,15 @@ function changeBackgroundColorCategory(category_id) {
 }
 
 function updatePrice() {
-    var peridiocityIndex = document.getElementById("peridiocity").selectedIndex;
-    var quantityIndex = document.getElementById("quantity").selectedIndex;
-    var periodIndex = document.getElementById("period").selectedIndex;
+    var peridiocityIndex = document.getElementById("form_signature_peridiocity").selectedIndex;
+    var quantityIndex = document.getElementById("form_signature_quantity").selectedIndex;
+    var periodIndex = document.getElementById("form_signature_period").selectedIndex;
 
     if (peridiocityIndex != 0 && quantityIndex != 0 && periodIndex != 0) {
         var resultedPrice = calculatePrice(peridiocityIndex, quantityIndex, periodIndex);
 
         document.getElementById("resultedValue").innerHTML = resultedPrice.toFixed(2);
+        document.getElementById("form_signature_resulted_value").value = resultedPrice.toFixed(2);
     }
 }
 
@@ -52,4 +53,8 @@ function calculatePrice(peridiocityIndex, quantityIndex, periodIndex) {
     price = periodIndex * price * 0.9 * 12;
 
     return price;
+}
+
+function goToByScroll(id){
+    $('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');
 }

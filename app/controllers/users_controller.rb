@@ -97,7 +97,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def index
     redirect_to new_user_path
   end

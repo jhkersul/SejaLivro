@@ -1,0 +1,64 @@
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <div id="header-wrapper" style="background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('images/bg03.png'), url('images/bg02.png');">
+
+    <div class="container" style="background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+  <div class="wrapper style2">
+    <div class="inner">
+
+      <!-- Feature 1 -->
+      <section class="container box feature2">
+        <div class="row" id="logar">
+          <div class="6u 12u(mobile)">
+            <section>
+              <header>
+                <h2>Valor da assinatura </h2>
+
+              </header>
+              <p>R$ <span class="valorDestaque" id="valor">VALOR </span></p>
+            </section>
+          </div>
+          <div class="6u 12u(mobile)">
+            <section>
+              <header>
+                <h2>Forma de pagamento</h2>
+              </header>
+              <article>
+                <form action="#" method="post">
+                  <fieldset>
+                    <p align="left">
+                      <label for="boleto"><input type="radio" name="formaPagamento" id="boleto" value="boleto" /> Boleto</label>
+                      <label for="card"><input type="radio" name="formaPagamento" id="card" value="card" /> Cartão de crédito</label>
+                    </p>
+                  </fieldset>
+                </form>
+                <div id=paymentType>
+                  <p>Escolha a forma de pagamento</p>
+                </div>
+
+              </article>
+            </section>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer Wrapper -->
+<%= render 'main/footer' %>
+
+</div>

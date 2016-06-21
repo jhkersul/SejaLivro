@@ -17,7 +17,7 @@
           Serviço <strong>personalizado</strong> de assinatura de livros<br/>
         </h2>
         <p>Quer receber em casa livros escolhidos pra você? </p>
-        <a href="#vantagens" class="button big icon fa-info-circle">Vantagens</a>
+        <a onclick="goToByScroll('vantagens');" class="button big icon fa-info-circle">Vantagens</a>
       </div>
 
     </div>
@@ -33,7 +33,7 @@
           <div class="row" id="vantagens">
             <div class="4u 12u(mobile)">
               <section>
-                <a href="#vantagens" class="image featured"><img src="/images/experienciasf.png" alt="" /></a>
+                <a onclick="goToByScroll('vantagens');" class="image featured"><img src="/images/experienciasf.png" alt="" /></a>
                 <!--<header class="second icon fa-user"></header>-->
                 <header>
                   <h3>Novas Experiências</h3>
@@ -43,7 +43,7 @@
             </div>
             <div class="4u 12u(mobile)">
               <section>
-                <a href="#vantagens" class="image featured"><img src="images/personalizadof.png" alt="" /></a>
+                <a onclick="goToByScroll('vantagens');" class="image featured"><img src="images/personalizadof.png" alt="" /></a>
                 <!-- <header class="second icon fa-cog"> -->
                 <header>
                   <h3>Perfeito para você</h3>
@@ -53,7 +53,7 @@
             </div>
             <div class="4u 12u(mobile)">
               <section>
-                <a href="#vantagens" class="image featured"><img src="images/comodidadef.png" alt="" /></a>
+                <a onclick="goToByScroll('vantagens');" class="image featured"><img src="images/comodidadef.png" alt="" /></a>
                 <!-- <header class="second icon fa-bar-chart-o"> -->
                 <header>
                   <h3>Comodidade</h3>
@@ -64,7 +64,7 @@
           </div>
           <div class="row">
             <div class="12u">
-              <a href="#simular" class="button big icon fa-arrow-circle-right">Simular Assinatura</a>
+              <a onclick="goToByScroll('simular');" class="button big icon fa-arrow-circle-right">Simular Assinatura</a>
             </div>
           </div>
         </section>
@@ -101,25 +101,28 @@
             </div>
             <div class="6u 12u(mobile)">
               <section>
-                <header class="major">
-                  <h2>2. Periodicidade </h2>
-                  <p>
-                    <%= select_tag "peridiocity", options_for_select(@peridiocities, selected: 0), :prompt => "Selecione uma peridiocidade", :onchange => "updatePrice();" %>
-                  </p>
-                  <h2>3. Quantidade </h2>
-                  <p>
-                    <%= select_tag "quantity", options_for_select(@quantities, selected: 0), :prompt => "Selecione uma quantidade", :onchange => "updatePrice();" %>
-                  </p>
-                  <h2>4. Período de assinatura </h2>
-                  <p>
-                    <%= select_tag "period", options_for_select(@periods, selected: 0), :prompt => "Selecione um período", :onchange => "updatePrice();" %>
-                  </p>
-                </header>
-                <p>R$ <span id="resultedValue" class="valorDestaque">VALOR</span></p>
-                <p>FRETE GRÁTIS</p>
-                <footer>
-                  <a href="assinatura.html" class="button medium alt icon fa-check-circle">Assine já!</a>
-                </footer>
+                <%= form_for(:form_signature, :html => { :id => "form_signature" }) do |f| %>
+                  <header class="major">
+                    <h2>2. Periodicidade </h2>
+                    <p>
+                      <%= f.select "peridiocity", options_for_select(@peridiocities, selected: 0), {:prompt => "Selecione uma peridiocidade"}, :onchange => "updatePrice();" %>
+                    </p>
+                    <h2>3. Quantidade </h2>
+                    <p>
+                      <%= f.select "quantity", options_for_select(@quantities, selected: 0), {:prompt => "Selecione uma quantidade"}, :onchange => "updatePrice();" %>
+                    </p>
+                    <h2>4. Período de assinatura </h2>
+                    <p>
+                      <%= f.select "period", options_for_select(@periods, selected: 0), {:prompt => "Selecione um período"}, :onchange => "updatePrice();" %>
+                    </p>
+                  </header>
+                  <p>R$ <span id="resultedValue" class="valorDestaque">VALOR</span></p>
+                    <%= f.hidden_field :resulted_value, :value => "VALOR" %>
+                  <p>FRETE GRÁTIS</p>
+                  <footer>
+                    <%= f.submit "Assine já!", :class => "button medium alt icon fa-check-circle" %>
+                  </footer>
+                <% end %>
               </section>
             </div>
           </div>
