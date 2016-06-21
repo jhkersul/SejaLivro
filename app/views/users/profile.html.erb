@@ -35,7 +35,7 @@
 													<dd><%= full_address %></dd>
 												</dl>
 												<footer>
-												  <p><a href="cadastro.html" class="button" style="align: center;">Atualizar dados</a></p>
+												  <p><%= link_to 'Atualizar dados', edit_user_path(@user), class: "button" %></p>
 												  <p><a href="cancel.html" class="button" style="align: center;">Cancelar conta</a></p>
 												</footer>
 											</section>
