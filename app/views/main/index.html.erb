@@ -1,192 +1,179 @@
 
-	<body class="homepage">
-		<div id="page-wrapper">
+<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper" style="background: url('/images/biblioteca5.jpg'), url('/images/header.jpg'); background-position: right bottom;
-				background-size: auto, cover;">
-					<div class="container">
-            <% if user_signed_in? %>
-                <%= render 'main/login_top_menu' %>
-            <% else %>
-                <%= render 'main/logout_top_menu' %>
-            <% end %>
+  <!-- Header -->
+  <div id="header-wrapper" style="background: url('/images/biblioteca5.jpg'), url('/images/header.jpg'); background-position: right bottom;
+      background-size: auto, cover;">
+    <div class="container">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
 
-						<!-- Banner -->
-							<div id="banner">
-								<h2>
-									Serviço <strong>personalizado</strong> de assinatura de livros<br/>
-								</h2>
-								<p>Quer receber em casa livros escolhidos pra você? </p>
-								<a href="#vantagens" class="button big icon fa-info-circle">Vantagens</a>
-							</div>
+      <!-- Banner -->
+      <div id="banner">
+        <h2>
+          Serviço <strong>personalizado</strong> de assinatura de livros<br/>
+        </h2>
+        <p>Quer receber em casa livros escolhidos pra você? </p>
+        <a href="#vantagens" class="button big icon fa-info-circle">Vantagens</a>
+      </div>
 
-					</div>
-				</div>
+    </div>
+  </div>
 
-			<!-- Main Wrapper -->
-				<div id="main-wrapper">
-					<div class="wrapper style1">
-						<div class="inner">
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style1">
+      <div class="inner">
 
-							<!-- Feature 1 -->
-								<section class="container box feature1">
-									<div class="row" id="vantagens">
-										<div class="4u 12u(mobile)">
-											<section>
-												<a href="#vantagens" class="image featured"><img src="/images/experienciasf.png" alt="" /></a>
-												<!--<header class="second icon fa-user"></header>-->
-												<header> 
-													<h3>Novas Experiências</h3>
-													<p>Conheça novos títulos e autores</p>
-												</header>
-											</section>
-										</div>
-										<div class="4u 12u(mobile)">
-											<section>
-												<a href="#vantagens" class="image featured"><img src="images/personalizadof.png" alt="" /></a>
-												<!-- <header class="second icon fa-cog"> -->
-												<header>
-													<h3>Perfeito para você</h3>
-													<p>Envios personalizados</p>
-												</header>
-											</section>
-										</div>
-										<div class="4u 12u(mobile)">
-											<section>
-												<a href="#vantagens" class="image featured"><img src="images/comodidadef.png" alt="" /></a>
-												<!-- <header class="second icon fa-bar-chart-o"> -->
-												<header>
-													<h3>Comodidade</h3>
-													<p>Nós escolhemos, compramos e garantimos que chegue até você</p>
-												</header>
-											</section>
-										</div>
-									</div>
-									<div class="row">
-										<div class="12u">
-											<a href="#simular" class="button big icon fa-arrow-circle-right">Simular Assinatura</a>
-										</div>
-									</div>
-								</section>
+        <!-- Feature 1 -->
+        <section class="container box feature1">
+          <div class="row" id="vantagens">
+            <div class="4u 12u(mobile)">
+              <section>
+                <a href="#vantagens" class="image featured"><img src="/images/experienciasf.png" alt="" /></a>
+                <!--<header class="second icon fa-user"></header>-->
+                <header>
+                  <h3>Novas Experiências</h3>
+                  <p>Conheça novos títulos e autores</p>
+                </header>
+              </section>
+            </div>
+            <div class="4u 12u(mobile)">
+              <section>
+                <a href="#vantagens" class="image featured"><img src="images/personalizadof.png" alt="" /></a>
+                <!-- <header class="second icon fa-cog"> -->
+                <header>
+                  <h3>Perfeito para você</h3>
+                  <p>Envios personalizados</p>
+                </header>
+              </section>
+            </div>
+            <div class="4u 12u(mobile)">
+              <section>
+                <a href="#vantagens" class="image featured"><img src="images/comodidadef.png" alt="" /></a>
+                <!-- <header class="second icon fa-bar-chart-o"> -->
+                <header>
+                  <h3>Comodidade</h3>
+                  <p>Nós escolhemos, compramos e garantimos que chegue até você</p>
+                </header>
+              </section>
+            </div>
+          </div>
+          <div class="row">
+            <div class="12u">
+              <a href="#simular" class="button big icon fa-arrow-circle-right">Simular Assinatura</a>
+            </div>
+          </div>
+        </section>
 
-						</div>
-					</div>
-					<div class="wrapper style2">
-						<div class="inner">
+      </div>
+    </div>
+    <div class="wrapper style2">
+      <div class="inner">
 
-							<!-- Feature 2 -->
-								<section class="container box feature2">
-									<div class="row" id="simular">
-										<div class="6u 12u(mobile)">
-											<section>
-												<header class="major">
-													<h2>1. Categorias </h2>
-													<p>Escolha suas categorias prediletas de leitura</p>
-												</header>
-                          <div class="row" id="category">
-                            <% @categories.each do |category| %>
-                                <div class="1.5u 6u(mobile)">
-                                  <div id="categoria-img-<%= category.id %>" class="categoria-box" onclick="changeBackgroundColorCategory('<%= category.id %>')">
-                                    <div class="categoria-img" style="background-image: url('<%= category.image_url %>');"></div>
-                                    <span style="font-weight: bold;"><%= category.name %></span><br>
-                                  </div>
+        <!-- Feature 2 -->
+        <section class="container box feature2">
+          <div class="row" id="simular">
+            <div class="6u 12u(mobile)">
+              <section>
+                <header class="major">
+                  <h2>1. Categorias </h2>
+                  <p>Escolha suas categorias prediletas de leitura</p>
+                </header>
+                <div class="row" id="category">
+                  <% @categories.each do |category| %>
+                      <div class="1.5u 6u(mobile)">
+                        <div id="categoria-img-<%= category.id %>" class="categoria-box" onclick="changeBackgroundColorCategory('<%= category.id %>')">
+                          <div class="categoria-img" style="background-image: url('<%= category.image_url %>');"></div>
+                          <span style="font-weight: bold;"><%= category.name %></span><br>
+                        </div>
 
-                                </div>
-                            <% end %>
-                          </div>
-												<footer>
-													<a href="#" class="button">Ver catálogo</a>
-												</footer>
-											</section>
-										</div>
-										<div class="6u 12u(mobile)">
-											<section>
-												<header class="major">
-													<h2>2. Periodicidade </h2>
-													<p>
-                            <%= select_tag "peridiocity", options_for_select(@peridiocities, selected: 0), :prompt => "Selecione uma peridiocidade", :onchange => "updatePrice();" %>
-													</p>
-													<h2>3. Quantidade </h2>
-													<p>
-                            <%= select_tag "quantity", options_for_select(@quantities, selected: 0), :prompt => "Selecione uma quantidade", :onchange => "updatePrice();" %>
-													</p>
-													<h2>4. Período de assinatura </h2>
-													<p>
-                            <%= select_tag "period", options_for_select(@periods, selected: 0), :prompt => "Selecione um período", :onchange => "updatePrice();" %>
-													</p>
-												</header>
-												<p>R$ <span id="resultedValue" class="valorDestaque">VALOR</span></p>
-												<p>FRETE GRÁTIS</p>
-												<footer>
-													<a href="assinatura.html" class="button medium alt icon fa-check-circle">Assine já!</a>
-												</footer>
-											</section>
-										</div>
-									</div>
-								</section>
+                      </div>
+                  <% end %>
+                </div>
+                <footer>
+                  <a href="#" class="button">Ver catálogo</a>
+                </footer>
+              </section>
+            </div>
+            <div class="6u 12u(mobile)">
+              <section>
+                <header class="major">
+                  <h2>2. Periodicidade </h2>
+                  <p>
+                    <%= select_tag "peridiocity", options_for_select(@peridiocities, selected: 0), :prompt => "Selecione uma peridiocidade", :onchange => "updatePrice();" %>
+                  </p>
+                  <h2>3. Quantidade </h2>
+                  <p>
+                    <%= select_tag "quantity", options_for_select(@quantities, selected: 0), :prompt => "Selecione uma quantidade", :onchange => "updatePrice();" %>
+                  </p>
+                  <h2>4. Período de assinatura </h2>
+                  <p>
+                    <%= select_tag "period", options_for_select(@periods, selected: 0), :prompt => "Selecione um período", :onchange => "updatePrice();" %>
+                  </p>
+                </header>
+                <p>R$ <span id="resultedValue" class="valorDestaque">VALOR</span></p>
+                <p>FRETE GRÁTIS</p>
+                <footer>
+                  <a href="assinatura.html" class="button medium alt icon fa-check-circle">Assine já!</a>
+                </footer>
+              </section>
+            </div>
+          </div>
+        </section>
 
-							</div>
-					</div>
+      </div>
+    </div>
 
-					<div class="wrapper style3">
-						<div class="inner">
-							<div class="container">
-							<section class="container box feature1">
-									<div class="row" id="social">
-										<div class="12u" style="align:center;">
-											<header class="first major">
-												<h2>#SejaLivro</h2>
-												<p>Nossos clientes nas redes sociais</p>
-											</header>
-										</div>
-									</div>
-							</section>
-								<div class="row">
-									<div class="6u 12u(mobile)">
+    <div class="wrapper style3">
+      <div class="inner">
+        <div class="container">
+          <section class="container box feature1">
+            <div class="row" id="social">
+              <div class="12u" style="align:center;">
+                <header class="first major">
+                  <h2>#SejaLivro</h2>
+                  <p>Nossos clientes nas redes sociais</p>
+                </header>
+              </div>
+            </div>
+          </section>
+          <div class="row">
+            <div class="6u 12u(mobile)">
 
-										<!-- Article list -->
-											<section class="box article-list">
-												<h2 class="icon fa-file-text-o">Twitter</h2>
-												<!-- Excerpt -->
-													<article class="box excerpt">
-											            <a class="twitter-timeline"  href="https://twitter.com/hashtag/SejaLivro" data-widget-id="740275139707871232">#SejaLivro Tweets</a>	
-													</article>
-                        </section>
-									</div>
-									<div class="6u 12u(mobile)">
+              <!-- Article list -->
+              <section class="box article-list">
+                <h2 class="icon fa-file-text-o">Twitter</h2>
+                <!-- Excerpt -->
+                <article class="box excerpt">
+                  <a class="twitter-timeline"  href="https://twitter.com/hashtag/SejaLivro" data-widget-id="740275139707871232">#SejaLivro Tweets</a>
+                </article>
+              </section>
+            </div>
+            <div class="6u 12u(mobile)">
 
-										<!-- Spotlight -->
-											<section class="box spotlight">
-												<h2 class="icon fa-file-text-o">Youtube</h2>
-												<article>
-													<iframe src="https://www.youtube.com/embed/AWzaIMz8wd8" allowfullscreen="" frameborder="0"  width="520" height="280" ></iframe>
-													<iframe src="https://www.youtube.com/embed/qxXtsmDUUM4" allowfullscreen="" frameborder="0"  width="520" height="280" ></iframe>
-													<footer>
-													</footer>
-												</article>
-											</section>
+              <!-- Spotlight -->
+              <section class="box spotlight">
+                <h2 class="icon fa-file-text-o">Youtube</h2>
+                <article>
+                  <iframe src="https://www.youtube.com/embed/AWzaIMz8wd8" allowfullscreen="" frameborder="0"  width="520" height="280" ></iframe>
+                  <iframe src="https://www.youtube.com/embed/qxXtsmDUUM4" allowfullscreen="" frameborder="0"  width="520" height="280" ></iframe>
+                  <footer>
+                  </footer>
+                </article>
+              </section>
 
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-			<!-- Footer Wrapper -->
-				<%= render 'main/footer' %>
+  <!-- Footer Wrapper -->
+  <%= render 'main/footer' %>
 
-		</div>
-
-		<!-- Scripts -->
-
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.dropotron.min.js"></script>
-			<script src="/assets/js/skel.min.js"></script>
-			<script src="/assets/js/skel-viewport.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="/assets/js/main.js"></script>
-
-	</body>
+</div>

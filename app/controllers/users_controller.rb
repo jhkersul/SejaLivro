@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     end
   end
 
-def my_books
+  def my_books
     if user_signed_in? && current_user.id.to_s == params[:id]
       @user = User.find(params[:id])
       @user_books = @user.user_books

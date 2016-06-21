@@ -1,324 +1,127 @@
-<!DOCTYPE HTML>
-<!--
-	ZeroFour by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-	oi
--->
-<html>
-	<head>
-		<title>SejaLivro - Assinatura Literária</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-		</script>
-		<style type="text/css">
-		* {
-			margin:0;
-			padding:0;
-		}
-		form fieldset {
-			margin:20px;
-			padding:20px;
-		}
-		form fieldset label {
-			display:inline;
-			float:left;
-			width:100px;
-			height:22px;
-			line-height:22px;
-			text-align:left;
-			font-weight:normal;
-			font-size:100%;
-			color:#333;
-			margin:6px 10px 0 0;
-			overflow:hidden;
-		}
-		form fieldset label input {
-			display:inline;
-			float:left;
-			width:auto;
-			height:22px;
-			line-height:22px;
-			margin:0 3px 0 0;
-			padding:0;
-			border:none;
-		}
-		</style>
-	</head>
-	<body class="homepage">
-		<div id="page-wrapper">
+<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div class="container">
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
 
-						<!-- Header -->
-							<header id="header">
-								<div class="inner">
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style2">
+      <div class="inner">
 
-									<!-- Logo -->
-										<h1><a href="index.html" id="logo">SejaLivro</a></h1>
-
-									<!-- Nav -->
-										<nav id="nav">
-											<ul>
-												<!--<li class="current_page_item"><a href="index.html">Menu</a></li> -->
-												<li> 
-													<a href="#">Como funciona</a>
-													<ul> 
-														<div class="row">
-															<div class="4u 12u(mobile)"> 
-																<section>
-																	Cadastre-se: </br>
-																	Entra aqui e faz o seu </br> 
-																	cadastro com as informações </br>
-																    suas e etc 
-																</section>
-															</div>
-																<div class="4u 12u(mobile)"> 
-																<section>
-																	Pague: <br>
-																	Entra aqui e faz o seu </br> 
-																	cadastro com as informações </br>
-																    suas e etc c 	
-																</section>
-															</div>
-																<div class="4u 12u(mobile)">  
-																<section>
-																	Receba: <br>
-																	Entra aqui e faz o seu </br> 
-																	cadastro com as informações </br>
-																    suas e etc 	
-																</section>	
-																</div>			  
-															<li> 
-																<a href="#simular" class="button icon fa-arrow-circle-right" style="align: center;">Simular Assinatura</a>
-															</li>
-														</div>
-													</ul>
-												</li>
-												<li>
-													<a href="#simular">Simule seu Pacote</a>
-												</li>
-												<li>
-													<a href="#simular">#SejaLivro</a>
-												</li>
-												<li>
-													<a href="#">Já é assinante?</a>
-													<ul>
-														<li><a href="#">Login</a></li>
-														<li><a href="#">Simular assinatura</a></li>
-														<li>
-															<a href="#">Outras opções</a>
-															<ul>
-																<li><a href="#">Como funciona</a></li>
-																<li><a href="#">Simular assinatura</a></li>
-																<li><a href="#">Assinar</a></li>
-																<li><a href="#">São as mesmas HUE</a></li>
-															</ul>
-														</li>
-														<li><a href="#">Veroeros feugiat</a></li>
-													</ul>
-												</li> 
-												<!--
-												<li><a href="left-sidebar.html">Left Sidebar</a></li>
-												<li><a href="right-sidebar.html">Right Sidebar</a></li>
-												<li><a href="no-sidebar.html">No Sidebar</a></li>
-												-->
-											</ul>
-										</nav>
-								</div>
-							</header>
-						</div>
-				</div>
-
-			<!-- Main Wrapper -->
-				<div id="main-wrapper">
-					<div class="wrapper style2">
-						<div class="inner">
-
-							<!-- Feature 1 -->
-								<section class="container box feature1">
+        <!-- Feature 1 -->
+        <section class="container box feature1">
 
 
-									<div class="12u" id="vantagens">
-                    <%= form_for(@user, :html => { :id => "form_cadastro" }) do |f| %>
-                        <div class="row">
+          <div class="12u" id="vantagens">
+            <%= form_for(@user, :html => { :id => "form_cadastro" }) do |f| %>
+                <div class="row">
 
-                          <% if @user.errors.any? %>
-                              <div id="error_explanation">
-                                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-                                <ul>
-                                  <% @user.errors.full_messages.each do |message| %>
-                                      <li><%= message %></li>
-                                  <% end %>
-                                </ul>
-                              </div>
+                  <% if @user.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                        <ul>
+                          <% @user.errors.full_messages.each do |message| %>
+                              <li><%= message %></li>
                           <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
 
 
-                          <div class="4u">
-                            <section>
-                              <header>
-                                <h3>Dados pessoais</h3>
-                              </header>
-                              <article>
-                                <fieldset>
-                                  <div class="row">
-                                    <div class="12u form-field"><%= f.text_field :name, placeholder: "Nome" %></div>
-                                    <div class="12u form-field"><%= f.text_field :cpf, placeholder: "CPF" %></div>
-                                    <div class="12u form-label"><%= f.label "Gênero:" %></div>
-                                    <div class="12u form-field-labeled">
-                                      <%= f.select(:gender) do %>
-                                          <% [['Masculino', 0], ['Feminino', 1]].each do |c| -%>
-                                              <%= content_tag(:option, c.first, value: c.last) %>
-                                          <% end %>
-                                      <% end %>
-                                    </div>
+                  <div class="4u">
+                    <section>
+                      <header>
+                        <h3>Dados pessoais</h3>
+                      </header>
+                      <article>
+                        <fieldset>
+                          <div class="row">
+                            <div class="12u form-field"><%= f.text_field :name, placeholder: "Nome" %></div>
+                            <div class="12u form-field"><%= f.text_field :cpf, placeholder: "CPF" %></div>
+                            <div class="12u form-label"><%= f.label "Gênero:" %></div>
+                            <div class="12u form-field-labeled">
+                              <%= f.select(:gender) do %>
+                                  <% [['Masculino', 0], ['Feminino', 1]].each do |c| -%>
+                                      <%= content_tag(:option, c.first, value: c.last) %>
+                                  <% end %>
+                              <% end %>
+                            </div>
 
 
-                                    <div class="12u form-label"> <%= f.label "Nascimento:" %></div>
-                                    <div class="12u form-field-labeled"><%= f.date_select :birth_date,  order: [:day, :month, :year], :size => 5 %></div>
-                                  </div>
-
-                                </fieldset>
-                              </article>
-                            </section>
+                            <div class="12u form-label"> <%= f.label "Nascimento:" %></div>
+                            <div class="12u form-field-labeled"><%= f.date_select :birth_date,  order: [:day, :month, :year], :size => 5 %></div>
                           </div>
 
-                          <div class="4u">
-                            <section>
-                              <header>
-                                <h3>Endereço</h3>
-                              </header>
-                              <article>
-                                <fieldset>
-                                  <div class="row">
-                                    <%= f.fields_for :addresses do |ff| %>
-                                        <div class="12u form-field"><%= ff.text_field :zipcode, placeholder: "CEP" %></div>
-                                        <div class="12u form-field"><%= ff.text_field :street, placeholder: "Logradouro" %></div>
-                                        <div class="12u form-field"><%= ff.text_field :complement, placeholder: "Complemento" %></div>
-                                    <% end %>
+                        </fieldset>
+                      </article>
+                    </section>
+                  </div>
 
-                                  </div>
-                                </fieldset>
-                              </article>
-                            </section>
+                  <div class="4u">
+                    <section>
+                      <header>
+                        <h3>Endereço</h3>
+                      </header>
+                      <article>
+                        <fieldset>
+                          <div class="row">
+                            <%= f.fields_for :addresses do |ff| %>
+                                <div class="12u form-field"><%= ff.text_field :zipcode, placeholder: "CEP" %></div>
+                                <div class="12u form-field"><%= ff.text_field :street, placeholder: "Logradouro" %></div>
+                                <div class="12u form-field"><%= ff.text_field :complement, placeholder: "Complemento" %></div>
+                            <% end %>
+
                           </div>
+                        </fieldset>
+                      </article>
+                    </section>
+                  </div>
 
-                          <div class="4u">
-                            <section>
-                              <header>
-                                <h3>Cadastre uma senha</h3>
-                              </header>
-                              <article>
+                  <div class="4u">
+                    <section>
+                      <header>
+                        <h3>Cadastre uma senha</h3>
+                      </header>
+                      <article>
 
-                                <fieldset>
-                                  <div class="row">
-                                    <div class="12u form-field"><%= f.text_field :email, placeholder: "Email" %></div>
-                                    <div class="12u form-field"><%= f.password_field :password, placeholder: "Senha" %></div>
-                                    <div class="12u form-field"><%= f.password_field :password_confirmation, placeholder: "Confirmação de Senha" %></div>
-                                  </div>
-                                </fieldset>
-                              </article>
-                            </section>
+                        <fieldset>
+                          <div class="row">
+                            <div class="12u form-field"><%= f.text_field :email, placeholder: "Email" %></div>
+                            <div class="12u form-field"><%= f.password_field :password, placeholder: "Senha" %></div>
+                            <div class="12u form-field"><%= f.password_field :password_confirmation, placeholder: "Confirmação de Senha" %></div>
                           </div>
-                        </div>
+                        </fieldset>
+                      </article>
+                    </section>
+                  </div>
+                </div>
 
-                        <div class="row">
-                          <div class="12u no-padding form-margin">
-                            <%= f.submit "Cadastrar", class: "button big icon fa-arrow-circle-right" %>
-                          </div>
-                        </div>
+                <div class="row">
+                  <div class="12u no-padding form-margin">
+                    <%= f.submit "Cadastrar", class: "button big icon fa-arrow-circle-right" %>
+                  </div>
+                </div>
 
-                    <% end %>
+            <% end %>
 
-									</div>
+          </div>
 
 
 
-								</section>
-							</div>
-					</div>
-				</div>
+        </section>
+      </div>
+    </div>
+  </div>
 
-			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="6u 12u(mobile)"> 
-								<!-- About -->
-									<section>
-										<h2><strong>SejaLivro</strong></h2>
-										<p>Olá! Este é o <strong>SejaLivro</strong>, um serviço de assinatura de livros. Você adquire um pacote por valor fixo e nós nos encarregamos de te surpreender com novas leituras, sem qualquer dor de cabeça e entrega em sua casa!</p>
-										<a href="#simular" class="button icon fa-arrow-circle-right" style="align: center;">Simular Assinatura</a>
-									</section>
-							</div>
-							
-							<div class="6u 12u(mobile)">
-								<!-- Contact -->
-									<section>
-										<h2>Redes Sociais</h2>
-										<div>
-											<div class="row">
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Twitter</dt>
-														<dd><a href="#">@SejaLivro</a></dd>
-														<dt>Facebook</dt>
-														<dd><a href="#">facebook.com/SejaLivro</a></dd>
-														<dt>WWW</dt>
-														<dd><a href="#">sejalivro.com</a></dd>
-														<dt>Email</dt>
-														<dd><a href="#">contato@sejalivro.com</a></dd>
-													</dl>
-												</div>
-												<div class="6u 12u(mobile)">
-													<dl class="contact">
-														<dt>Endereço</dt>
-														<dd>
-															Av. Luciano Gualberto, 314, Cid. Universitária<br />
-															São Paulo, SP 01300-7800<br />
-															Brasil
-														</dd>
-														<dt>Telefone</dt>
-														<dd>(11) 0800-9999</dd>
-													</dl>
-												</div>
-											</div>
-										</div>
-									</section>
+  <!-- Footer Wrapper -->
+  <%= render 'main/footer' %>
 
-							</div>
-						</div>
-						<div class="row">
-							<div class="12u">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
-
-		</div>
-
-		<!-- Scripts -->
-
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+</div>
