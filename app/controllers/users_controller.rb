@@ -56,6 +56,23 @@ class UsersController < ApplicationController
     result
   end
 
+  def update
+    # Convertendo genero inteiro
+    params[:user][:gender] = params[:user][:gender].to_i
+
+    # Build nos parametros
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to action: :profile, notice: 'User updated' }
+        format.json { render action: :profile, status: :created, location: @user }
+      else
+        format.html { render :cadastro }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # Método que define o que ocorre quando abre-se a tela de perfil
   # GET /profile/:id
@@ -83,6 +100,14 @@ class UsersController < ApplicationController
 
   def index
     redirect_to new_user_path
+  end
+
+  def edit
+    @user = User.find(params[:id])
+
+    if @user.nil?
+      redirect_to action: :profile
+    end    
   end
 
   private
