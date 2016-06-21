@@ -1,5 +1,37 @@
-<h1>New User</h1>
+<div id="page-wrapper">
 
-<%= render 'form', user: @user %>
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Back', users_path %>
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style2">
+      <div class="inner">
+
+        <!-- Feature 1 -->
+        <section class="container box feature1">
+
+
+          <div class="12u" id="vantagens">
+            <%= render 'form', user: @user %>
+          </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Wrapper -->
+  <%= render 'main/footer' %>
+
+</div>

@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
     has_many :credit_cards, :class_name => 'CreditCard'
 
     validates :password, confirmation: true
+
+  validates :name, :cpf, :email, :birth_date, :gender, presence: true
 end

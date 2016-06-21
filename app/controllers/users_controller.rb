@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   # Método que define o que ocorre quando abre-se a tela para cadastrar usuário
   # GET /users/register
-  def cadastro
+  def new
     @user = User.new
     1.times { @user.addresses.build}
   end
@@ -22,18 +22,38 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.addresses = []
 
+    if params[:user]["birth_date(1i)"] != '' && params[:user]["birth_date(2i)"] != '' && params[:user]["birth_date(3i)"] != ''
+      @user.birth_date = Date.new(params[:user]["birth_date(1i)"].to_i,params[:user]["birth_date(2i)"].to_i,params[:user]["birth_date(3i)"].to_i)
+    end
+
     respond_to do |format|
-      if @user.save
+      if valid_address(user_params) && @user.save
         @user.addresses.build(user_params[:addresses_attributes]["0"])
         @user.save
 
-        format.html { redirect_to root_path, notice: 'User created' }
-        format.json { render root_path, status: :created, location: @user }
+        format.html { redirect_to new_user_session_path, notice: 'Usuário criado!' }
+        format.json { render new_user_session_path, status: :created, location: @user }
       else
-        format.html { render :cadastro }
+        1.times { @user.addresses.build}
+        format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def valid_address(params)
+    result = true
+
+    if params[:addresses_attributes]["0"][:zipcode].empty?
+      @user.errors.add(:zipcode, "não pode ficar em branco.")
+      result = false
+    end
+    if params[:addresses_attributes]["0"][:street].empty?
+      @user.errors.add(:street, "não pode ficar em branco.")
+      result = false
+    end
+
+    result
   end
 
 
@@ -62,7 +82,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all.order(:id)
+    redirect_to new_user_path
   end
 
   private

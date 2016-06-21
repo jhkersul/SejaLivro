@@ -1,72 +1,81 @@
-<%= form_for(user) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for(@user, :html => { :id => "form_cadastro" }) do |f| %>
+    <div class="row">
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @user.errors.any? %>
+          <div class="12u">
+            <ul>
+              <li><b><%= pluralize(@user.errors.count, "erros") %> foram encontrados no preenchimento do formulário.</b></li>
+              <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
+
+
+      <div class="4u">
+        <section>
+          <header>
+            <h3>Dados pessoais</h3>
+          </header>
+          <article>
+            <fieldset>
+              <div class="12u form-field"><%= f.text_field :name, placeholder: "Nome" %></div>
+              <div class="12u form-field"><%= f.text_field :cpf, placeholder: "CPF" %></div>
+              <div class="12u form-label" style="text-align: left; margin-bottom: -20px;"><%= f.label "Gênero:" %></div>
+              <div class="12u form-field-labeled">
+                <%= f.select(:gender) do %>
+                    <% [['Masculino', 0], ['Feminino', 1]].each do |c| -%>
+                        <%= content_tag(:option, c.first, value: c.last) %>
+                    <% end %>
+                <% end %>
+              </div>
+
+              <div class="12u form-label" style="text-align: left; margin-bottom: -20px;"> <%= f.label "Nascimento:" %></div>
+              <div class="12u form-field-labeled"><%= f.date_select :birth_date,  order: [:day, :month, :year], :start_year => 1900, :end_year => 2000, prompt: {day: 'Dia', month: 'Mês', year: 'Ano'}, use_month_numbers: true %></div>
+            </fieldset>
+          </article>
+        </section>
+      </div>
+
+      <div class="4u">
+        <section>
+          <header>
+            <h3>Endereço</h3>
+          </header>
+          <article>
+            <fieldset>
+              <%= f.fields_for :addresses do |ff| %>
+                  <div class="12u form-field"><%= ff.text_field :zipcode, placeholder: "CEP" %></div>
+                  <div class="12u form-field"><%= ff.text_field :street, placeholder: "Logradouro" %></div>
+                  <div class="12u form-field"><%= ff.text_field :complement, placeholder: "Complemento" %></div>
+              <% end %>
+            </fieldset>
+          </article>
+        </section>
+      </div>
+
+      <div class="4u">
+        <section>
+          <header>
+            <h3>Cadastre uma senha</h3>
+          </header>
+          <article>
+
+            <fieldset>
+              <div class="12u form-field"><%= f.text_field :email, placeholder: "Email" %></div>
+              <div class="12u form-field"><%= f.password_field :password, placeholder: "Senha" %></div>
+              <div class="12u form-field"><%= f.password_field :password_confirmation, placeholder: "Confirmação de Senha" %></div>
+            </fieldset>
+          </article>
+        </section>
+      </div>
     </div>
-  <% end %>
 
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+    <div class="row">
+      <div class="12u no-padding form-margin">
+        <%= f.submit "Cadastrar", class: "button big icon fa-arrow-circle-right" %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :cpf %>
-      <%= f.text_field :cpf %>
-    </div>
-
-    <div class="field">
-      <%= f.label :login %>
-      <%= f.text_field :login %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-
-    <div class="field">
-      <%= f.date_select :birth_date %>
-    </div>
-
-    <div class="field">
-      <% User.genders.keys.each do |gender| %>
-          <%= f.radio_button :gender, gender %>
-          <%= f.label gender.to_sym %>
-      <% end %>
-    </div>
-
-    <div>
-      <%= f.label "Endereço" %>
-    </div>
-
-    <%= f.fields_for :addresses do |ff| %>
-        <div class="field">
-          <%= ff.label :zipcode %>
-          <%= ff.text_field :zipcode %>
-        </div>
-
-        <div class="field">
-          <%= ff.label :street %>
-          <%= ff.text_field :street %>
-        </div>
-    <% end %>
-
-    <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
-
-
-
