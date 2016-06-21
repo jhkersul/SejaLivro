@@ -44,6 +44,22 @@ class UsersController < ApplicationController
   def valid_address(params)
     result = true
 
+    if params[:addresses_attributes]["0"][:country].empty?
+      @user.errors.add(:country, "não pode ficar em branco.")
+      result = false
+    end
+    if params[:addresses_attributes]["0"][:city].empty?
+      @user.errors.add(:city, "não pode ficar em branco.")
+      result = false
+    end
+    if params[:addresses_attributes]["0"][:state].empty?
+      @user.errors.add(:state, "não pode ficar em branco.")
+      result = false
+    end
+    if params[:addresses_attributes]["0"][:quarter].empty?
+      @user.errors.add(:quarter, "não pode ficar em branco.")
+      result = false
+    end
     if params[:addresses_attributes]["0"][:zipcode].empty?
       @user.errors.add(:zipcode, "não pode ficar em branco.")
       result = false
@@ -61,14 +77,14 @@ class UsersController < ApplicationController
     params[:user][:gender] = params[:user][:gender].to_i
 
     # Build nos parametros
-    @user = User.find(params[:id])
-    
+    @user = User.find(params[:id])        
+
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to action: :profile, notice: 'User updated' }
+        format.html { redirect_to action: :profile, notice: 'Atualizado com sucesso!' }
         format.json { render action: :profile, status: :created, location: @user }
       else
-        format.html { render :cadastro }
+        format.html { render action: :profile }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -109,12 +125,13 @@ class UsersController < ApplicationController
     end    
   end
 
+  def destroy
+    #precisa implementar 
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :cpf, :email, :login, :birth_date, :gender, :password, :password_confirmation, :addresses_attributes => [ :zipcode, :city, :country, :state, :complement, :street, :quarter])
     end
-
-
-
 end

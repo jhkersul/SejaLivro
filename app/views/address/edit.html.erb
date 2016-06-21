@@ -1,0 +1,76 @@
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style2">
+      <div class="inner">
+
+        <!-- Feature 1 -->
+        <section class="container box feature1">
+
+
+          <div class="12u" id="vantagens">
+            <%= form_for(@address, :url => { action: :update }) do |f| %>
+    <div class="row">
+      <% if @address.errors.any? %>
+          <div class="12u">
+            <ul>
+              <li><b><%= pluralize(@address.errors.count, "erros") %> foram encontrados no preenchimento do formulário.</b></li>
+              <% @address.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="12u">
+        <section>
+          <header>
+            <h3>Endereço</h3>
+          </header>
+          <article>
+            <fieldset>              
+            	<label for="name" class="6u" style="text-align: left;"><span>País </span><%= f.text_field :country %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Cidade </span><%= f.text_field :city %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Estado </span><%= f.text_field :state %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Bairro </span><%= f.text_field :quarter %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>CEP </span><%= f.text_field :zipcode %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Logradouro </span><%= f.text_field :street %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Complemento </span><%= f.text_field :complement %></label> 
+            </fieldset>
+          </article>
+        </section>
+      </div>      
+    </div>
+
+    <div class="row">
+      <div class="12u no-padding form-margin">
+        <%= f.submit "Atualizar", class: "button icon fa-arrow-circle-right" %>
+      </div>
+    </div>
+
+<% end %>
+          </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Wrapper -->
+  <%= render 'main/footer' %>
+
+</div>

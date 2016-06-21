@@ -32,11 +32,18 @@
 													<dt>Data de nascimento: </dt>
 													<dd><%= @user.birth_date.to_formatted_s(:rfc822) %></dd>
 													<dt>Endereço: </dt>
-													<dd><%= full_address %></dd>
+													<% address = @user.addresses.first %>
+													<dd><%= address.street +
+															( address.complement == '' ? '' : ', ' + address.complement ) %>
+													</dd>
+													<dd><%= address.quarter %> </dd>
+													<dd><%= address.zipcode + ', ' + address.city + ' - ' +  address.state%> </dd>
+													<dd><%= address.country %> </dd>								
 												</dl>
 												<footer>
 												  <p><%= link_to 'Atualizar dados', edit_user_path(@user), class: "button" %></p>
-												  <p><a href="cancel.html" class="button" style="align: center;">Cancelar conta</a></p>
+												  <p><%= link_to 'Atualizar endereço', edit_address_path(@user), class: "button" %></p>
+												  <p><%= link_to 'Cancelar conta', delete_user_path(@user), class: "button" %></p>
 												</footer>
 											</section>
 										</div>
