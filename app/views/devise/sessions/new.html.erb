@@ -1,26 +1,72 @@
-<h2>Log in</h2>
+<div id="page-wrapper">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style2">
+      <div class="inner">
+
+        <!-- Feature 2 -->
+        <section class="container box feature2">
+          <div class="row" id="logar">
+            <div class="6u 12u(mobile)">
+              <section>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+                    <header class="major">
+                      <h2>Login </h2>
+
+                      <%- flash.each do |name, msg| -%>
+                          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+                      <%- end -%>
+
+                      <div class="12u">
+                        <%= f.label :email %>
+                        <%= f.email_field :email, autofocus: true %>
+                      </div>
+
+                      <div class="12u form-label">
+                        <%= f.label :password %>
+                        <%= f.password_field :password, autocomplete: "off" %>
+                      </div>
+
+                    </header>
+                    <footer>
+                      <%= f.submit "Entrar", class: "button medium icon" %>
+                    </footer>
+                <% end %>
+              </section>
+            </div>
+            <div class="6u 12u(mobile)">
+              <section>
+                <header class="major">
+                  <h2>Criar minha conta</h2>
+                </header>
+                <footer>
+                  <%= link_to "Cadastrar", cadastro_path, class: "button big icon fa-arrow-circle-right" %>
+                </footer>
+              </section>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Wrapper -->
+  <%= render 'main/footer' %>
+
+</div>
+
+

@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   root 'main#index'
 
   get '/cadastro', to: 'users#cadastro'
-  get '/login', to: 'users#login'
   get '/logout', to: 'users#logout'
   get '/assinatura', to: 'main#assinatura'
   get '/profile/:id', to: 'users#profile'
