@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   end
 
   def logout
+    cookies.delete :waiting_for_payment
+
     sign_out :user
     redirect_to root_path
   end
