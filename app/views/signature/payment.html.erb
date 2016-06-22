@@ -24,10 +24,25 @@
           <div class="6u 12u(mobile)">
             <section>
               <header>
-                <h2>Valor da assinatura </h2>
-
+                <h2>Detalhes da Assinatura</h2>
               </header>
-              <p>R$ <span class="valorDestaque" id="valor">VALOR </span></p>
+              <p align="left" style="margin-bottom: 0px">
+                <b>PERIDIOCIDADE:</b> <%= cookies[:form_signature_peridiocity] %>
+              </p>
+              <p align="left" style="margin-bottom: 0px">
+                <b>QUANTIDADE:</b> <%= cookies[:form_signature_quantity] %>
+              </p>
+              <p align="left" style="margin-bottom: 0px">
+                <b>PERÍODO:</b> <%= cookies[:form_signature_period] %>
+              </p>
+              <p align="left">
+                <b>CATEGORIAS SELECIONADAS:</b>
+                <% @categories.each do |category| %>
+                  <%= category.name %>
+                <% end %>
+              </p>
+
+              <p>R$ <span class="valorDestaque" id="valor"><%= cookies[:form_signature_resulted_value] %> </span></p>
             </section>
           </div>
           <div class="6u 12u(mobile)">
@@ -39,14 +54,17 @@
                 <form action="#" method="post">
                   <fieldset>
                     <p align="left">
-                      <label for="boleto"><input type="radio" name="formaPagamento" id="boleto" value="boleto" /> Boleto</label>
-                      <label for="card"><input type="radio" name="formaPagamento" id="card" value="card" /> Cartão de crédito</label>
+                      <label for="card"><input type="radio" name="formaPagamento" id="card" value="card" onclick="selectedPaymentMethod(0)" /> Cartão de crédito</label>
+                      <label for="boleto"><input type="radio" name="formaPagamento" id="boleto" value="boleto" onclick="selectedPaymentMethod(1)" /> Boleto</label>
                     </p>
                   </fieldset>
+
                 </form>
                 <div id=paymentType>
                   <p>Escolha a forma de pagamento</p>
                 </div>
+
+                <%= link_to "Avançar", "#", :class => "button", :id => "go_to_payment" %>
 
               </article>
             </section>

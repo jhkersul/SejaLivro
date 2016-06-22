@@ -1,0 +1,83 @@
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style2">
+      <div class="inner">
+
+        <!-- Feature 1 -->
+        <section class="container box feature1">
+
+          <section class="container box feature1">
+            <div class="row" id="createBookstore">
+              <div class="12u">
+                <header>
+                  <h2>DADOS DE PAGAMENTO</h2>
+                </header>
+              </div>
+            </div>
+          </section>
+
+          <div class="12u" id="vantagens">
+            <%= form_for(:creditcard, :html => { :id => "form_cadastro" }) do |f| %>
+                <div class="row">
+                  <% if @credit_card.errors.any? %>
+                      <div class="12u">
+                        <ul>
+                          <li><b><%= pluralize(@credit_card.errors.count, "erros") %> foram encontrados no preenchimento do formulário.</b></li>
+                          <% @credit_card.errors.full_messages.each do |message| %>
+                              <li><%= message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
+                </div>
+
+                <div class="row">
+                  <div class="6u 12u(mobile)">
+                    <fieldset>
+                      <label for="name"><span>Número do Cartão </span><%= f.text_field :name %></label>
+                      <label for="name"><span>Nome Impresso no Cartão </span><%= f.text_field :card_number %></label>
+                      <label for="name"><span>Validade </span>
+                        <div class="12u"><%= f.date_select :expiry_date,  order: [:month, :year], :start_year => 2016, :end_year => 2030, prompt: {month: 'Mês', year: 'Ano'}, use_month_numbers: true %></div>
+                      </label>
+                    </fieldset>
+                  </div>
+                  <div class="6u 12u(mobile)">
+                    <fieldset>
+                      <label for="name"><span>CVC </span><%= f.text_field :cvc %></label>
+                      <label for="name"><span>Parcelas </span><%= f.select "installments", options_for_select(@installments, selected: 0) %></label>
+                    </fieldset>
+                  </div>
+
+                </div>
+
+                <div class="12u">
+                  <div class="12u no-padding form-margin">
+                    <%= f.submit "Cadastrar", class: "button big icon fa-arrow-circle-right" %>
+                  </div>
+                </div>
+
+            <% end %>
+          </div>
+
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Wrapper -->
+  <%= render 'main/footer' %>
+
+</div>

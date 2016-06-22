@@ -2593,6 +2593,12 @@ dl.inline dt{
 	float: left;
 }
 
+#creditcard_expiry_date_2i, #creditcard_expiry_date_1i  {
+	width: 47%;
+	margin-right: 10px;
+	float: left;
+}
+
 .no-padding {
 	padding: 0px 0px 0px 0px;
 }
@@ -2611,5 +2617,17 @@ dl.inline dt{
 
 .form-margin {
 	margin: 40px 0px 0px 0px;
+}
+
+.float_center {
+	float: right;
+
+	position: relative;
+	left: -50%; /* or right 50% */
+	text-align: left;
+}
+.float_center > .child {
+	position: relative;
+	left: 50%;
 }
 

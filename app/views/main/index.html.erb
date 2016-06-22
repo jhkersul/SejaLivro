@@ -118,6 +118,7 @@
                   </header>
                   <p>R$ <span id="resultedValue" class="valorDestaque">VALOR</span></p>
                     <%= f.hidden_field :resulted_value, :value => "VALOR" %>
+                    <%= f.hidden_field :selected_categories, :value => "" %>
                   <p>FRETE GRÁTIS</p>
                   <footer>
                     <%= f.submit "Assine já!", :class => "button medium alt icon fa-check-circle" %>

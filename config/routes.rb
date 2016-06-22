@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   resources :bookstores, :categories, :books
-  resources :admin
+  resources :admin, :signature
   #resources :address, only: :update
 
   root 'main#index'
@@ -20,11 +20,14 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'users#profile', as: 'profile'
   get '/my_books/:id', to: 'users#my_books', as: 'my_books'
   get '/catalog' => 'books#catalog', as: 'books_catalog'
-   get '/packages' => 'admin#packages', as: 'admin_packages'
+  get '/packages' => 'admin#packages', as: 'admin_packages'
+  get '/boleto_payment' => 'signature#boleto_payment'
+  get '/credit_card_payment' => 'signature#credit_card_payment'
 
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
   post 'books/search' => 'books#search', as: 'search_books'
   post 'categories/search' => 'categories#search', as: 'search_categories'
+  post '/credit_card_payment' => 'signature#process_payment'
 
 
   post '/' => 'main#store_signature'

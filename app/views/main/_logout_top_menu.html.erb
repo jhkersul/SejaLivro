@@ -55,10 +55,10 @@
                     <a href="#social">#SejaLivro</a>
                 </li>
                 <li>
-                    <a href="#">Já é assinante?</a>
-                    <ul>
-                        <li><%= link_to "Login", new_user_session_path %></li>
-                    </ul>
+                  <%= link_to "Cadastrar-se", "/cadastro" %>
+                </li>
+                <li>
+                  <%= link_to "Já é assinante?", new_user_session_path %>
                 </li>
             </ul>
         </nav>

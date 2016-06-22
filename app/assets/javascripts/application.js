@@ -30,6 +30,9 @@ function changeBackgroundColorCategory(category_id) {
         document.getElementById("categoria-img-".concat(category_id)).style.backgroundColor = "#d1d1d1";
         document.getElementById("categoria-img-".concat(category_id)).style.borderRadius = "10px";
     }
+
+    // Setando Hidden Field para receber as categorias selecionadas
+    document.getElementById("form_signature_selected_categories").value = selectedCategories
 }
 
 function updatePrice() {

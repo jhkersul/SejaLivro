@@ -10,13 +10,14 @@ class MainController < ApplicationController
   end
 
   def store_signature
-    byebug
     form_signature_params = params[:form_signature]
 
+    cookies[:waiting_for_payment] = true
     cookies[:form_signature_peridiocity] = form_signature_params[:peridiocity]
     cookies[:form_signature_quantity] = form_signature_params[:quantity]
     cookies[:form_signature_period] = form_signature_params[:period]
     cookies[:form_signature_resulted_value] = form_signature_params[:resulted_value]
+    cookies[:form_signature_selected_categories] = form_signature_params[:selected_categories]
 
     if user_signed_in?
       redirect_to "/pagamento"

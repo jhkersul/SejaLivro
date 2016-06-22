@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
+    if (cookies[:waiting_for_payment])
+      cookies.delete :waiting_for_payment
+      return "/pagamento"
+    end
+
     if (!user.admin)
       "/profile/#{user.id}"
     else
