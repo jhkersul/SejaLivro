@@ -62,19 +62,66 @@ function goToByScroll(id){
     $('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');
 }
 
+function validateUserUpdate(){
+    var nome = document.getElementById('nome').value;
+    var CPF = document.getElementById('cpf').value;
+    
+
+    if (nome == "")
+    {
+        alert("Existem campos vazios!");
+        return false;
+    }
+
+    if (!validaCPF(CPF))
+    {
+        alert("CPF inválido!");
+        return false;
+    }
+
+    return true;
+}
+
+function validateAddressUpdate(){
+
+    var pais = document.getElementById('pais').value;
+    var CEP = document.getElementById('cep').value;
+    var cidade = document.getElementById('cidade').value;
+    var estado = document.getElementById('uf').value;
+    var bairro = document.getElementById('bairro').value;
+    var rua = document.getElementById('rua').value;
+        
+    if (pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "")
+    {
+        alert("Existem campos vazios!");
+        return false;
+    }
+    
+    var objER = /^[0-9]{5}-[0-9]{3}$/;
+
+    if (!objER.test(CEP))
+    {
+        alert("CEP inválido!");
+        return false;
+    }
+
+    return true;
+}
+
 function validateUser(){
     var nome = document.getElementById('nome').value;
     var CPF = document.getElementById('cpf').value;
     var pais = document.getElementById('pais').value;
     var CEP = document.getElementById('cep').value;
     var cidade = document.getElementById('cidade').value;
-    var bairro = document.getElementById('cep').value;
+    var estado = document.getElementById('uf').value;
+    var bairro = document.getElementById('bairro').value;
     var rua = document.getElementById('rua').value;
     var email = document.getElementById('email').value;
     var senha = document.getElementById('senha').value;
     var conf_senha = document.getElementById('conf_senha').value;
 
-    if (nome == "" || pais == "" || cidade == "" || bairro == "" || rua == "" || senha == "")
+    if (nome == "" || pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "" || senha == "")
     {
         alert("Existem campos vazios!");
         return false;
@@ -169,10 +216,9 @@ function limpa_formulário_cep() {
             document.getElementById('bairro').value=("");
             document.getElementById('cidade').value=("");
             document.getElementById('uf').value=("");
-            document.getElementById('ibge').value=("");
-    }
+}
 
-    function meu_callback(conteudo) {
+function meu_callback(conteudo) {
         if (!("erro" in conteudo)) {
             //Atualiza os campos com os valores.
             document.getElementById('rua').value=(conteudo.logradouro);
@@ -182,12 +228,11 @@ function limpa_formulário_cep() {
         } //end if.
         else {
             //CEP não Encontrado.
-            limpa_formulário_cep();
-            alert("CEP não encontrado.");
+            limpa_formulário_cep();            
         }
-    }
+}
         
-    function pesquisacep(valor) {
+function pesquisacep(valor) {
 
         //Nova variável "cep" somente com dígitos.
         var cep = valor.replace(/\D/g, '');
@@ -219,12 +264,11 @@ function limpa_formulário_cep() {
             } //end if.
             else {
                 //cep é inválido.
-                limpa_formulário_cep();
-                alert("Formato de CEP inválido.");
+                limpa_formulário_cep();                
             }
         } //end if.
         else {
             //cep sem valor, limpa formulário.
             limpa_formulário_cep();
         }
-    };
+}

@@ -41,12 +41,12 @@
           </header>
           <article>
             <fieldset>              
-            	<label for="name" class="6u" style="text-align: left;"><span>País </span><%= f.text_field :country %></label>
-            	<label for="name" class="6u" style="text-align: left;"><span>Cidade </span><%= f.text_field :city %></label>
-            	<label for="name" class="6u" style="text-align: left;"><span>Estado </span><%= f.text_field :state %></label>
-            	<label for="name" class="6u" style="text-align: left;"><span>Bairro </span><%= f.text_field :quarter %></label>
-            	<label for="name" class="6u" style="text-align: left;"><span>CEP </span><%= f.text_field :zipcode %></label>
-            	<label for="name" class="6u" style="text-align: left;"><span>Logradouro </span><%= f.text_field :street %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>País </span><%= f.text_field :country, id: 'pais' %></label>
+              <label for="name" class="6u" style="text-align: left;"><span>CEP </span><%= f.text_field :zipcode, id: 'cep', onblur: "pesquisacep(this.value);" %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Cidade </span><%= f.text_field :city, id: 'cidade' %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Estado </span><%= f.text_field :state, id: 'uf' %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Bairro </span><%= f.text_field :quarter, id: 'bairro' %></label>
+            	<label for="name" class="6u" style="text-align: left;"><span>Logradouro </span><%= f.text_field :street, id: 'rua' %></label>
             	<label for="name" class="6u" style="text-align: left;"><span>Complemento </span><%= f.text_field :complement %></label> 
             </fieldset>
           </article>
@@ -56,7 +56,7 @@
 
     <div class="row">
       <div class="12u no-padding form-margin">
-        <%= f.submit "Atualizar", class: "button icon fa-arrow-circle-right" %>
+        <%= f.submit "Atualizar", class: "button icon fa-arrow-circle-right", id: 'atualizar' %>
       </div>
     </div>
 
@@ -70,7 +70,15 @@
     </div>
   </div>
 
+  <script type="text/javascript">
+    $(document).ready(function() { $('#atualizar').on('click', function(e){
+      if (!validateAddressUpdate())
+          e.preventDefault();
+    })
+  });
+  </script>
+
   <!-- Footer Wrapper -->
-  <%= render 'main/footer' %>
+  <%= render 'main/footer' %>  
 
 </div>
