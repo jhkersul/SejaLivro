@@ -4,7 +4,7 @@ class MainController < ApplicationController
   def index
     @categories = Category.all.order(:id)
 
-    @peridiocities = ["Semanal" , "Quinzenal", "Mensal", "Bimestral", "Trimestral"]
+    @peridiocities = Periodicity.all
     @quantities = ["1" , "2", "3", "4", "5"]
     @periods = ["1 ano" , "2 anos", "3 anos", "4 anos", "5 anos"]
   end

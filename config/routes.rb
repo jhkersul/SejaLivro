@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   post 'bookstores/search' => 'bookstores#search', as: 'search_bookstores'
   post 'books/search' => 'books#search', as: 'search_books'
   post 'categories/search' => 'categories#search', as: 'search_categories'
-  post '/credit_card_payment' => 'signature#process_payment'
+  post '/credit_card_payment' => 'signature#process_payment_credit_card'
+  post '/boleto_payment' => 'signature#process_payment_boleto'
+  post '/cadastro' => 'users#create'
 
 
   post '/' => 'main#store_signature'

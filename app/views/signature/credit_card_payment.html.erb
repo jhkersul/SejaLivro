@@ -32,19 +32,6 @@
           <div class="12u" id="vantagens">
             <%= form_for(:creditcard, :html => { :id => "form_cadastro" }) do |f| %>
                 <div class="row">
-                  <% if @credit_card.errors.any? %>
-                      <div class="12u">
-                        <ul>
-                          <li><b><%= pluralize(@credit_card.errors.count, "erros") %> foram encontrados no preenchimento do formulário.</b></li>
-                          <% @credit_card.errors.full_messages.each do |message| %>
-                              <li><%= message %></li>
-                          <% end %>
-                        </ul>
-                      </div>
-                  <% end %>
-                </div>
-
-                <div class="row">
                   <div class="6u 12u(mobile)">
                     <fieldset>
                       <label for="name"><span>Número do Cartão </span><%= f.text_field :name %></label>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615182200) do
+ActiveRecord::Schema.define(version: 20160622055239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,8 +123,10 @@ ActiveRecord::Schema.define(version: 20160615182200) do
   end
 
   create_table "user_preferences", primary_key: ["user_id", "category_id"], force: :cascade do |t|
-    t.bigint "user_id",     null: false
-    t.bigint "category_id", null: false
+    t.bigint "user_id",      null: false
+    t.bigint "category_id",  null: false
+    t.bigint "signature_id"
+    t.index ["signature_id"], name: "index_user_preferences_on_signature_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

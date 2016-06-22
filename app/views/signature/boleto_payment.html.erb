@@ -1,0 +1,52 @@
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style2">
+      <div class="inner">
+
+        <!-- Feature 1 -->
+        <section class="container box feature1">
+
+          <section class="container box feature1" style="margin-bottom: 0px">
+            <div class="row">
+              <div class="12u">
+                <header>
+                  <h2>SEU BOLETO</h2>
+                </header>
+              </div>
+            </div>
+          </section>
+
+          <%= form_for(:boleto, :html => { :id => "form_boleto" }) do |f| %>
+              <div class="12u">
+                <div class="12u no-padding form-margin">
+                  <%= f.submit "FINALIZAR", class: "button big icon fa-arrow-circle-right" %>
+                </div>
+              </div>
+          <% end %>
+
+          <div class="12u" id="vantagens">
+            <img src="/images/boleto-example.jpg" style="width: 100%; max-width: 600px" />
+          </div>
+
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Wrapper -->
+  <%= render 'main/footer' %>
+
+</div>
