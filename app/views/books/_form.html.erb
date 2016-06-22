@@ -13,25 +13,56 @@
     <div class="row">
       <div class="6u 12u(mobile)">
         <fieldset>
-          <label for="name"><span>Nome </span><%= f.text_field :name %></label>
-          <label for="isbn"><span>ISBN </span><%= f.text_field :isbn %></label>
-          <label for="autor"><span>Autor </span><%= f.text_field :author %></label>
+          <label for="name"><span>Nome </span><%= f.text_field :name, id: 'nome' %></label>
+          <label for="isbn"><span>ISBN </span><%= f.text_field :isbn, id: 'isbn' %></label>
+          <label for="autor"><span>Autor </span><%= f.text_field :author, id: 'autor' %></label>
         </fieldset>
       </div>
 
       <div class="6u 12u(mobile)">
-        <label for="ano"><span>Ano </span><%= f.text_field :year %></label>
-        <label for="idioma"><span>Idioma </span><%= f.text_field :language %></label>
-        <label for="editora"><span>Editora </span><%= f.text_field :publisher %></label>
+        <label for="ano"><span>Ano </span><%= f.text_field :year, id: 'ano' %></label>
+        <label for="idioma"><span>Idioma </span><%= f.text_field :language, id: 'idioma' %></label>
+        <label for="editora"><span>Editora </span><%= f.text_field :publisher, id: 'editora' %></label>
       </div>
     </div>
 
     <section class="container box feature1">
       <div class="row">
         <div class="12u">
-          <%= f.submit "Salvar", class: "button" %>
+          <%= f.submit "Salvar", class: "button", id: 'salvar' %>
           <%= link_to "Cancelar", books_path, class: "button" %>
         </div>
       </div>
     </section>
 <% end %>
+
+
+<script type="text/javascript">
+    $(document).ready(function() { $('#salvar').on('click', function(e){
+      var nome = document.getElementById('nome').value;
+      var isbn = document.getElementById('isbn').value;
+      var autor = document.getElementById('autor').value;
+      var ano = document.getElementById('ano').value;
+      var idioma = document.getElementById('idioma').value;
+      var editora = document.getElementById('editora').value;
+
+      if (nome == "" || autor == "" || ano == "" || idioma == "" || editora == ""){
+        alert("Existem campos vazios!");
+        e.preventDefault();
+        return;
+      }
+
+      if (isNaN(ano)){
+        alert("Ano deve ser um número!");
+        e.preventDefault(); 
+        return;
+      }
+
+      if (!validaISBN(isbn)){
+        alert("ISBN inválido!");
+        e.preventDefault(); 
+      }
+          
+    })
+  });
+  </script>

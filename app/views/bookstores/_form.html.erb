@@ -12,22 +12,22 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.label 'Nome' %>
+      <%= f.text_field :name, id: 'nome' %>
     </div>
 
     <div class="field">
-      <%= f.label :telephone %>
-      <%= f.text_field :telephone %>
+      <%= f.label 'Telefone' %>
+      <%= f.text_field :telephone, id:'telefone' %>
     </div>
 
     <div class="field">
-      <%= f.label :cnpj %>
-      <%= f.text_field :cnpj %>
+      <%= f.label 'CNPJ' %>
+      <%= f.text_field :cnpj, id: 'cnpj' %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Salvar" %>
+      <%= f.submit "Salvar", id: 'salvar' %>
       <%= link_to "Cancelar", bookstores_path, class: "button" %>
     </div>
 <% end %>

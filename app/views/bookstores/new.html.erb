@@ -60,13 +60,13 @@
 								<div class="row">								
 									<div class="6u 12u(mobile)">										
 											<fieldset>												
-												<label for="name"><span>Nome </span><%= f.text_field :name %></label>
-												<label for="cnpj"><span>CNPJ </span><%= f.text_field :cnpj %></label>
+												<label for="name"><span>Nome </span><%= f.text_field :name, id: 'nome'%></label>
+												<label for="cnpj"><span>CNPJ </span><%= f.text_field :cnpj, id: 'cnpj' %></label>
 											</fieldset>
 									</div>
 									<div class="6u 12u(mobile)">										
 											<fieldset>
-												<label for="tel"><span>Telefone </span><%= f.text_field :telephone %></label>
+												<label for="tel"><span>Telefone </span><%= f.text_field :telephone, id: 'telefone' %></label>
 												<!-- <label for="email"><span>E-mail </span><%# f.text_field :email %></label>
 												-->
 											</fieldset>										
@@ -75,7 +75,7 @@
 								<section class="container box feature1">
 									<div class="row">
 										<div class="12u">										
-											<%= f.submit "Salvar", class: "button" %>
+											<%= f.submit "Salvar", class: "button", id: 'salvar' %>
 											<%= link_to "Cancelar", "/bookstores", class: "button" %>
 										</div>
 									</div>
@@ -88,3 +88,11 @@
 
 			<!-- Footer Wrapper -->
 			<%= render 'main/footer' %>
+
+	<script type="text/javascript">
+    $(document).ready(function() { $('#salvar').on('click', function(e){
+      if (!validateBookstore())
+          e.preventDefault();
+    	})
+  	});
+  </script>

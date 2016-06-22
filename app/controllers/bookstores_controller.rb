@@ -16,7 +16,7 @@ class BookstoresController < ApplicationController
 
     respond_to do |format|
       if @bookstore.save
-        format.html { redirect_to action: :index, notice: 'Bookstore created' }
+        format.html { redirect_to action: :index }
         format.json { render :index, status: :created, location: @bookstore }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class BookstoresController < ApplicationController
 
   def index
     if user_signed_in?
-      @bookstores = Bookstore.all
+      @bookstores = Bookstore.all.order(:id)
     else
       redirect_to root_path
     end
@@ -45,7 +45,7 @@ class BookstoresController < ApplicationController
     @bookstore = Bookstore.find(params[:id])
     respond_to do |format|
       if @bookstore.update(bookstore_params)
-        format.html { redirect_to action: :index, notice: 'Bookstore was successfully updated.' }
+        format.html { redirect_to action: :index }
         format.json { render :index, status: :ok, location: @bookstore }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class BookstoresController < ApplicationController
     @bookstore = Bookstore.find(params[:id])
     @bookstore.destroy
     respond_to do |format|
-      format.html { redirect_to bookstores_url, notice: 'Bookstore was successfully destroyed.' }
+      format.html { redirect_to bookstores_url }
       format.json { head :no_content }
     end
   end

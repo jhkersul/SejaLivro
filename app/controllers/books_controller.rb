@@ -27,7 +27,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to action: :index, notice: 'Book created' }
+        format.html { redirect_to action: :index }
         format.json { render :new, status: :created, location: @book }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to action: :index, notice: 'Book updated' }
+        format.html { redirect_to action: :index }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }

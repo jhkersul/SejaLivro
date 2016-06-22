@@ -27,7 +27,7 @@
                       <h2>Login </h2>
 
                       <%- flash.each do |name, msg| -%>
-                          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+                          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) && msg != "Login efetuado com sucesso!" %>
                       <%- end -%>
 
                       <div class="12u">

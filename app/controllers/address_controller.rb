@@ -13,7 +13,7 @@ class AddressController < ApplicationController
 
   	respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to profile_path, notice: 'Atualizado com sucesso!' }
+        format.html { redirect_to profile_path }
         format.json { render action: :profile, status: :created, location: @user }
       else
         format.html { render action: :profile }

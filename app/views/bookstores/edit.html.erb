@@ -50,4 +50,12 @@
 
 
 	<%= render 'main/footer' %>
+
+	<script type="text/javascript">
+    $(document).ready(function() { $('#salvar').on('click', function(e){
+      if (!validateBookstore())
+          e.preventDefault();
+    })
+  });
+  </script>
 	

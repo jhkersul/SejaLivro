@@ -1,5 +1,0 @@
-<h1>Register Book</h1>
-
-<%= render 'form', book: @book %>
-
-<%= link_to 'Back', "/" %>

@@ -12,12 +12,12 @@
 <div class="row">               
   <div class="6u 12u(mobile)">                    
     <fieldset>                        
-      <label for="name"><span>Nome </span><%= f.text_field :name %></label>
+      <label for="name"><span>Nome </span><%= f.text_field :name, id: 'nome'%></label>
     </fieldset>
   </div>  
     <div class="6u 12u(mobile)">                    
       <fieldset>
-          <label for="tel"><span>Imagem </span><%= f.text_field :image_url %></label>
+          <label for="tel"><span>Imagem </span><%= f.text_field :image_url, id: 'url' %></label>
           <!-- <label for="email"><span>E-mail </span><%# f.text_field :email %></label>
           -->
       </fieldset>                   
@@ -26,9 +26,24 @@
   <section class="container box feature1">
     <div class="row">
       <div class="12u">                   
-          <%= f.submit "Salvar", class: "button" %>
+          <%= f.submit "Salvar", class: "button", id: 'salvar' %>
           <%= link_to "Cancelar", categories_path, class: "button" %>
       </div>
     </div>
   </section>
 <% end %>
+
+
+<script type="text/javascript">
+    $(document).ready(function() { $('#salvar').on('click', function(e){
+      var nome = document.getElementById('nome').value;
+      var url = document.getElementById('url').value;
+
+      if (nome == "" || url == ""){
+        alert("Existem campos vazios!");
+        e.preventDefault();
+      }
+          
+    })
+  });
+  </script>

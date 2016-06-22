@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to action: :index, notice: 'Category created' }
+        format.html { redirect_to action: :index }
         format.json { render :index, status: :created, location: @category }
       else
         format.html { render :new }
@@ -27,12 +27,12 @@ class CategoriesController < ApplicationController
     end
   end
 
-    def show
-    @category = Category.find(params[:id])
-    @category_user_prefs = @category.user_preferences
-    @category_book_cats = @category.book_categories
+def show
+  @category = Category.find(params[:id])
+  @category_user_prefs = @category.user_preferences
+  @category_book_cats = @category.book_categories
 
-  end 
+end 
 
   def index
     if user_signed_in?
@@ -48,8 +48,8 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     respond_to do |format|
       if @category.update(categories_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
+        format.html { redirect_to action: :index }
+        format.json { render :index, status: :ok, location: @category }
       else
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -63,7 +63,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_path, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to categories_path }
       format.json { head :no_content }
     end
   end
