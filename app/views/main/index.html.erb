@@ -105,7 +105,7 @@
                   <header class="major">
                     <h2>2. Periodicidade </h2>
                     <p>
-                      <%= f.select "peridiocity", options_for_select(@peridiocities, selected: 0), {:prompt => "Selecione uma peridiocidade"}, :onchange => "updatePrice();" %>
+                      <%= f.select "peridiocity", @peridiocities.collect {|period| [ period.name, period.id ] }, {:prompt => "Selecione uma peridiocidade"}, :onchange => "updatePrice();" %>
                     </p>
                     <h2>3. Quantidade </h2>
                     <p>
