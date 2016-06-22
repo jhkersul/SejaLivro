@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'users#logout'
   get '/pagamento', to: 'signature#payment'
   get '/profile/:id/edit', to: 'users#edit', as: 'edit_user'
+  patch '/profile/:id/edit', to: 'users#update', as: 'update_user'
   delete 'profile/:id', to: 'users#destroy', as: 'delete_user'
   get 'profile/:id/address', to: 'address#edit', as: 'edit_address'
   patch 'profile/:id/address', to: 'address#update', as: 'address_update'  

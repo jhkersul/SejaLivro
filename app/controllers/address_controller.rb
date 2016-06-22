@@ -16,7 +16,7 @@ class AddressController < ApplicationController
         format.html { redirect_to profile_path, notice: 'Atualizado com sucesso!' }
         format.json { render action: :profile, status: :created, location: @user }
       else
-        format.html { render profile_path }
+        format.html { render action: :profile }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
