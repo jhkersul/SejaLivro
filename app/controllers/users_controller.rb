@@ -96,6 +96,7 @@ class UsersController < ApplicationController
     if user_signed_in? && current_user.id.to_s == params[:id]
       @user = User.find(params[:id])
       @user_signatures = @user.signatures
+      @periodicity = Periodicity.all
       @user_addresses = @user.addresses
       @user_books = @user.user_books
     else
@@ -111,6 +112,18 @@ class UsersController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def delete_user
+    sign_out :user
+
+    Signature.where(user_id: params[:id].to_i).destroy_all
+    CreditCard.where(user_id: params[:id].to_i).destroy_all
+    Address.where(user_id: params[:id].to_i).destroy_all
+
+    User.delete(params[:id].to_i)
+
+    redirect_to root_path
   end
 
   def index

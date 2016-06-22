@@ -6,142 +6,141 @@
 	oi
 -->
 <html>
-	<head>
-		<title>SejaLivro - Assinatura Literária</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-		</script>
-	</head>
-	<body class="homepage">
-		<div id="page-wrapper">
+<head>
+  <title>SejaLivro - Assinatura Literária</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+  </script>
+</head>
+<body class="homepage">
+<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div class="container">
-						<!-- Header -->
-							<% if user_signed_in? %>
-			                <%= render 'main/login_top_menu' %>
-			            <% else %>
-			                <%= render 'main/logout_top_menu' %>
-			            <% end %>
-					</div>
-				</div>
-				
-			<!-- Main Wrapper -->
-				<div id="main-wrapper">
-					<div class="wrapper style3">
-						<div class="inner">
-							<div class="container">
-							<section class="container box feature1">
-									<div class="row" id="bookList">
-										<div class="12u">
-											<header>
-												<h2>Livros</h2>
-												<div class="row" style="vertical-align: bottom;">
-                       								<div class="6u" style="vertical-align: middle;">
-													<%= form_tag search_books_path do %>
-														<%= label_tag(:q, "Buscar livros pelo nome:") %>
-														<input type="search" id="search" placeholder="Buscar livros" type="text" name="query">
-														<%= submit_tag("Buscar") %>
-														<% end %>
-														</div>
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <!-- Header -->
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
 
-														<div class="6u" style="line-height: 100%;">
-														 <%= link_to 'Adicionar livro', new_book_path, class: "button" %>
-														 </div>
-													</div>
-											</header>
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style3">
+      <div class="inner">
+        <div class="container">
+          <section class="container box feature1">
+            <div class="row" id="bookList">
+              <div class="12u">
+                <header>
+                  <h2>Livros</h2>
+                  <div class="row" style="vertical-align: bottom;">
+                    <div class="6u" style="vertical-align: middle;">
+                      <%= form_tag search_books_path do %>
+                          <%= label_tag(:q, "Buscar livros pelo nome:") %>
+                          <input type="search" id="search" placeholder="Buscar livros" type="text" name="query">
+                          <%= submit_tag("Buscar") %>
+                      <% end %>
+                    </div>
 
-                      <% if @books.count ==  0 and @q == nil%>
-                          <span style="font-weight: bold;"> Não possui itens. </span><br>
-                      <% else %>
-	                      <div class="row"> 
-								<div class="1u"> 
-									<b>ID</b>
-								</div>
-								<div class="1u"> 
-									<b>Nome</b>
-								</div>
-								<div class="1u"> 
-									<b>ISBN</b>
-								</div>
-								<div class="1u"> 
-									<b>Autor</b>
-								</div>
-								<div class="1u"> 
-									<b>Ano</b>
-								</div>	
-								<div class="1u"> 
-									<b>Idioma</b>
-								</div>
-								<div class="1u"> 
-									<b>Editora</b>
-								</div>
-								<div class="5u"> 
-									<b>Ações</b>
-								</div>
-						</div>
-						<% if @books.count == 0 and @q != nil %>
-							<div class="row"> 
-								<div class="12u">
-									<h2>
-										<%= "Não há livros cadastrados com esse nome" %>
-									</h2>
-								</div>
-							</div>
-							<div class="row"> 
-								<div class="12u">
-									<%= link_to "Voltar", "/books/", :class => "button" %>
-									</div>
-							</div>
-						<% end %>
-	                      <% @books.each do |b| %>
-							<div class="row"> 
-								<div class="1u"> 
-									<%= b.id %>
-								</div>
-								<div class="1u"> 
-									<%= b.name %>
-								</div>
-								<div class="1u"> 
-									<%= b.isbn %>
-								</div>
-								<div class="1u"> 
-									<%= b.author %>
-								</div>
-								<div class="1u"> 
-									<%= b.year %>
-								</div>
-								<div class="1u"> 
-									<%= b.language %>
-								</div>
-								<div class="1u"> 
-									<%= b.publisher %>
-								</div>
-								<div class="5u"> 
+                    <div class="6u" style="line-height: 100%;">
+                      <%= link_to 'Adicionar livro', new_book_path, class: "button" %>
+                    </div>
+                  </div>
+                </header>
+
+                <% if @books.count ==  0 and @q == nil%>
+                    <span style="font-weight: bold;"> Não possui itens. </span><br>
+                <% else %>
+                    <div class="row">
+                      <div class="1u">
+                        <b>ID</b>
+                      </div>
+                      <div class="1u">
+                        <b>Nome</b>
+                      </div>
+                      <div class="1u">
+                        <b>ISBN</b>
+                      </div>
+                      <div class="1u">
+                        <b>Autor</b>
+                      </div>
+                      <div class="1u">
+                        <b>Ano</b>
+                      </div>
+                      <div class="1u">
+                        <b>Idioma</b>
+                      </div>
+                      <div class="1u">
+                        <b>Editora</b>
+                      </div>
+                      <div class="5u">
+                        <b>Ações</b>
+                      </div>
+                    </div>
+                    <% if @books.count == 0 and @q != nil %>
+                        <div class="row">
+                          <div class="12u">
+                            <h2>
+                              <%= "Não há livros cadastrados com esse nome" %>
+                            </h2>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="12u">
+                            <%= link_to "Voltar", "/books/", :class => "button" %>
+                          </div>
+                        </div>
+                    <% end %>
+                    <% @books.each do |b| %>
+                        <div class="row">
+                          <div class="1u">
+                            <%= b.id %>
+                          </div>
+                          <div class="1u">
+                            <%= b.name %>
+                          </div>
+                          <div class="1u">
+                            <%= b.isbn %>
+                          </div>
+                          <div class="1u">
+                            <%= b.author %>
+                          </div>
+                          <div class="1u">
+                            <%= b.year %>
+                          </div>
+                          <div class="1u">
+                            <%= b.language %>
+                          </div>
+                          <div class="1u">
+                            <%= b.publisher %>
+                          </div>
+                          <div class="5u">
 								<span> 
-									<%= link_to 'Visualizar', b, class: "button" %>
 	                          		<%= link_to 'Editar', edit_book_path(b), class: "button" %>
-	                          		<%= link_to 'Excluir', b, method: :delete, class: "button" %>
+                  <%= link_to 'Excluir', b, method: :delete, class: "button" %>
 	                          		</span>
-								</div>
-								</div>
-	                      <% end %>
-                    	  <% end %>  
-							</div>
-							</div>
-							</section>
-								</section>
-							</div>
-						</div>
-					</div>
-				</div>
-				
+                          </div>
+                        </div>
+                    <% end %>
+                <% end %>
+              </div>
+            </div>
+          </section>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
 
-			<!-- Footer Wrapper -->
-			<%= render 'main/footer' %>
+
+  <!-- Footer Wrapper -->
+<%= render 'main/footer' %>

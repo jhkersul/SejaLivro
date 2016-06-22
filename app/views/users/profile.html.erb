@@ -18,7 +18,7 @@
 							<!-- Feature 1 -->
 								<section class="container box feature1">
 									<div class="row" id="vantagens">
-										<div class="3u 12u(mobile)">
+										<div class="6u 12u(mobile)">
 											<section>
 												<header>
 													<h3>Dados pessoais</h3>													
@@ -43,11 +43,11 @@
 												<footer>
 												  <p><%= link_to 'Atualizar dados', edit_user_path(@user), class: "button" %></p>
 												  <p><%= link_to 'Atualizar endereço', edit_address_path(@user), class: "button" %></p>
-												  <p><%= link_to 'Cancelar conta', delete_user_path(@user), class: "button" %></p>
+												  <p><%= link_to 'Cancelar conta', "/users/delete_user/#{@user.id}", method: :post, class: "button" %></p>
 												</footer>
 											</section>
 										</div>
-										<div class="3u 12u(mobile)">
+										<div class="6u 12u(mobile)">
 											<section>
 												<header>
 													<h3>Dados de assinatura</h3>
@@ -56,28 +56,26 @@
 													 <dt>Status da assinatura: </dt>
 													 <dd>Não possui assinaturas</dd>
 													 <footer>
-												  		<p><a href="assinatura.html" class="button" style="align: center;">Nova assinatura</a></p>												  		
+												  		<p><a href="/#simular" class="button" style="align: center;">Nova Assinatura</a></p>
 													</footer>
 												<% else %>
 													<% @user_signatures.each do |signature| %>
 														<dl class="inline">
 															<dt>Status da assinatura: </dt>
-															<dd> </dd>
+															<dd> ATIVA </dd>
 															<dt>Periodicidade: </dt>
-															<dd></dd>
-															<dt>Quantidade: </dt>
-															<dd>Quantidade de livros </dd>
-															<dt>Preferências: </dt>
-															<dd>Preferências </dd>
+															<dd><%= @periodicity.find(signature.periodicity_id).name %></dd>
 														</dl>
+                                <footer>
+                                  <p>
+                                    <%= link_to "Cancelar Assinatura", "/signature/cancel_signature/#{signature.id}", method: :post, class: "button" %>
+                                  </p>
+                                </footer>
 													<% end %>
-													<footer>
-												  		<p><a href="assinatura.html" class="button" style="align: center;">Alterar assinatura</a></p>
-												  		<p><a href="cancelAssinatura.html" class="button" style="align: center;">Cancelar assinatura</a></p>
-													</footer>
 												<% end %>												
 											</section>
 										</div>
+                    <!--
 										<div class="6u 12u(mobile)">
 											<section>
 												<header>
@@ -87,14 +85,14 @@
 													<div class="row" id="livros">
 													<% if @user_books.count == 0 %>
 														<span style="font-weight: bold;"> Não possui itens. </span><br>
-														<% else 
+														<% else
 															if @user_books.count > 6
 																max = 6
 															else
 																max = @user_books.count
 															end
 															@user_books[0..max].each do |book| %>
-																<% b = Book.find(book.book_id) %>	
+																<% b = Book.find(book.book_id) %>
 											        			<div class="1.5u 6u(mobile)">
 												        			<%= image_tag("/images/books_cover/#{b.id}.jpg",:id => "capa") %><br>
 	        														<span style="font-weight: bold;"> <%= b.name %></span><br>
@@ -108,7 +106,7 @@
 												<%= link_to "Ver todos", "/my_books/#{@user.id}", :class => "button" %>
 												</footer>
 											</section>
-										</div>
+										</div> -->
 									</div>
 								</section>
 							</div>

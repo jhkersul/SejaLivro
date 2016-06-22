@@ -7,93 +7,92 @@
 -->
 <html>
 <body class="homepage">
-    <div id="page-wrapper">
+<div id="page-wrapper">
 
+  <!-- Header -->
+  <div id="header-wrapper" style="background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('images/bg03.png'), url('images/bg02.png');">
+    <div class="container">
       <!-- Header -->
-        <div id="header-wrapper" style="background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('images/bg03.png'), url('images/bg02.png');"> 
-          <div class="container">
-            <!-- Header -->
-            <% if user_signed_in? %>
-			                <%= render 'main/login_top_menu' %>
-			            <% else %>
-			                <%= render 'main/logout_top_menu' %>
-			            <% end %>
-          	</div>
-        </div>
-				
-			<!-- Main Wrapper -->
-						<!-- Main Wrapper -->
-				<div id="main-wrapper">
-					<div class="wrapper style3">
-						<div class="inner">
-							<div class="container">
-								<section class="container box feature1">
-									<div class="row" id="bookstoreList">
-										<div class="12u">
-											<header>
-												<h2>Categorias</h2> <br>
-												<div class="row">
-													<div class="6u">
-													<%= form_tag search_categories_path do %>
-													<%= label_tag(:q, "Buscar categoria pelo nome:") %>
-													<input type="search" id="search" placeholder="Buscar categorias" type="text" name="query">
-													<%= submit_tag("Buscar") %>
-													<% end %>
-													
-													</div>
-													<div class="6u">
-														<a href="categories/new.html" class="button">Adicionar categoria</a>
-													</div>
-												</div>
-												
-											</header>
-											<div class="row"> 
-												<div class="1u"> 
-													<b>ID</b>
-												</div>
-												<div class="2u"> 
-													<b>Nome</b>
-												</div>
-												<div class="2u"> 
-													<b>Qtde Títulos</b>
-												</div>
-												<div class="2u"> 
-													<b>Qtde Usuários</b>
-												</div>
-												<div class="5u"> 
-													<b>Opções</b>
-												</div>
-											</div>
-											
-											<% @categories.each do |category| %>
-												<div class="row"> 
-													<div class="1u"> 
-														<%= category.id %>
-													</div>
-													<div class="2u"> 
-														<%= category.name %>
-													</div>
-													<div class="2u"> 
-														<%= category.user_preferences.count %>
-													</div>
-													<div class="2u"> 
-														<%= category.user_preferences.count %>
-													</div>
-													<div class="5u"> 
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Main Wrapper -->
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style3">
+      <div class="inner">
+        <div class="container">
+          <section class="container box feature1">
+            <div class="row" id="bookstoreList">
+              <div class="12u">
+                <header>
+                  <h2>Categorias</h2> <br>
+                  <div class="row">
+                    <div class="6u">
+                      <%= form_tag search_categories_path do %>
+                          <%= label_tag(:q, "Buscar categoria pelo nome:") %>
+                          <input type="search" id="search" placeholder="Buscar categorias" type="text" name="query">
+                          <%= submit_tag("Buscar") %>
+                      <% end %>
+
+                    </div>
+                    <div class="6u">
+                      <a href="categories/new.html" class="button">Adicionar categoria</a>
+                    </div>
+                  </div>
+
+                </header>
+                <div class="row">
+                  <div class="1u">
+                    <b>ID</b>
+                  </div>
+                  <div class="2u">
+                    <b>Nome</b>
+                  </div>
+                  <div class="2u">
+                    <b>Qtde Títulos</b>
+                  </div>
+                  <div class="2u">
+                    <b>Qtde Usuários</b>
+                  </div>
+                  <div class="5u">
+                    <b>Opções</b>
+                  </div>
+                </div>
+
+                <% @categories.each do |category| %>
+                    <div class="row">
+                      <div class="1u">
+                        <%= category.id %>
+                      </div>
+                      <div class="2u">
+                        <%= category.name %>
+                      </div>
+                      <div class="2u">
+                        <%= category.user_preferences.count %>
+                      </div>
+                      <div class="2u">
+                        <%= category.user_preferences.count %>
+                      </div>
+                      <div class="5u">
 													<span> 
-														<%= link_to "Visualizar", "/categories/#{category.id.to_s}/view/", :class => "button" %>
 														<%= link_to "Editar", "/categories/#{category.id.to_s}/edit/", :class => "button" %>
-														<%= link_to "Deletar", "/categories/#{category.id.to_s}/del/", :class => "button" %>
-	
-													</div>
-												</div>
-											<% end %>	
-										</div>
-									</div>	
-								</section>
-							</div>
-						</div>
-					</div>
-				</div>	
-			<!-- Footer Wrapper -->
-			<%= render 'main/footer' %>
+                            <%= link_to "Deletar", "/categories/#{category.id.to_s}/del/", :class => "button" %>
+                          </span>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Wrapper -->
+<%= render 'main/footer' %>

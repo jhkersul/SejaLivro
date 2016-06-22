@@ -65,6 +65,7 @@ class SignatureController < ApplicationController
     credit_card.card_key = SecureRandom.hex(13)
     credit_card.name = name
     credit_card.brand = "NONE"
+    credit_card.last_digits = 0
     credit_card.save
 
 
@@ -94,6 +95,11 @@ class SignatureController < ApplicationController
     end
 
     categories
+  end
+
+  def cancel_signature
+    Signature.delete(params[:id].to_i)
+    redirect_to "/profile/#{current_user.id}"
   end
 
 end

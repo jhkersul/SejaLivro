@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   post '/boleto_payment' => 'signature#process_payment_boleto'
   post '/cadastro' => 'users#create'
 
+  post '/signature/cancel_signature/:id' => 'signature#cancel_signature'
+  post '/users/delete_user/:id' => 'users#delete_user'
 
   post '/' => 'main#store_signature'
 
