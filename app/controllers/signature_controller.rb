@@ -22,11 +22,11 @@ class SignatureController < ApplicationController
 
     unique_installment = cookies[:form_signature_resulted_value].to_f / 12
 
-    for i in 1...12 do
+    for i in 1...13 do
       if i == 1
-        installment = "#{i} parcela de #{'%.02f' % (unique_installment*i).to_f}"
+        installment = "#{i} parcela de #{'%.02f' % (unique_installment*(13 - i)).to_f}"
       else
-        installment = "#{i} parcelas de #{'%.02f' % (unique_installment*i).to_f}"
+        installment = "#{i} parcelas de #{'%.02f' % (unique_installment*(13 - i)).to_f}"
       end
 
 
