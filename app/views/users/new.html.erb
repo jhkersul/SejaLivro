@@ -34,4 +34,12 @@
   <!-- Footer Wrapper -->
   <%= render 'main/footer' %>
 
+  <script type="text/javascript">
+    $(document).ready(function() { $('#cadastrar').on('click', function(e){
+      if (!validateUser())
+          e.preventDefault();
+    })
+  });
+  </script>
+
 </div>

@@ -20,8 +20,8 @@
           </header>
           <article>
             <fieldset>
-              <div class="12u form-field"><%= f.text_field :name, placeholder: "Nome" %></div>
-              <div class="12u form-field"><%= f.text_field :cpf, placeholder: "CPF" %></div>
+              <div class="12u form-field"><%= f.text_field :name, placeholder: "Nome", id: 'nome' %></div>
+              <div class="12u form-field"><%= f.text_field :cpf, placeholder: "CPF", id: 'cpf' %></div>
               <div class="12u form-label" style="text-align: left; margin-bottom: -20px;"><%= f.label "Gênero" %></div>
               <div class="12u form-field-labeled">
                 <%= f.select(:gender) do %>
@@ -45,13 +45,13 @@
           </header>
           <article>
             <fieldset>
-              <%= f.fields_for :addresses do |ff| %>
-                  <div class="12u form-field"><%= ff.text_field :country, placeholder: "País" %></div>
-                  <div class="12u form-field"><%= ff.text_field :city, placeholder: "Cidade" %></div>
-                  <div class="12u form-field"><%= ff.text_field :state, placeholder: "Estado" %></div>
-                  <div class="12u form-field"><%= ff.text_field :quarter, placeholder: "Bairro" %></div>
-                  <div class="12u form-field"><%= ff.text_field :zipcode, placeholder: "CEP" %></div>
-                  <div class="12u form-field"><%= ff.text_field :street, placeholder: "Logradouro" %></div>
+              <%= f.fields_for :addresses do |ff| %>                  
+                  <div class="12u form-field"><%= ff.text_field :country, placeholder: "País", id: 'pais' %></div>
+                  <div class="12u form-field"><%= ff.text_field :zipcode, placeholder: "CEP", id: 'cep', onblur: "pesquisacep(this.value);" %></div>
+                  <div class="12u form-field"><%= ff.text_field :city, placeholder: "Cidade", id: 'cidade' %></div>
+                  <div class="12u form-field"><%= ff.text_field :state, placeholder: "Estado", id: 'uf' %></div>
+                  <div class="12u form-field"><%= ff.text_field :quarter, placeholder: "Bairro", id: 'bairro' %></div>
+                  <div class="12u form-field"><%= ff.text_field :street, placeholder: "Logradouro", id: 'rua' %></div>
                   <div class="12u form-field"><%= ff.text_field :complement, placeholder: "Complemento" %></div>
               <% end %>
             </fieldset>
@@ -67,9 +67,9 @@
           <article>
 
             <fieldset>
-              <div class="12u form-field"><%= f.text_field :email, placeholder: "Email" %></div>
-              <div class="12u form-field"><%= f.password_field :password, placeholder: "Senha" %></div>
-              <div class="12u form-field"><%= f.password_field :password_confirmation, placeholder: "Confirmação de Senha" %></div>
+              <div class="12u form-field"><%= f.text_field :email, placeholder: "Email", id: 'email' %></div>
+              <div class="12u form-field"><%= f.password_field :password, placeholder: "Senha", id: 'senha' %></div>
+              <div class="12u form-field"><%= f.password_field :password_confirmation, placeholder: "Confirmação de Senha", id: 'conf_senha' %></div>
             </fieldset>
           </article>
         </section>
@@ -78,7 +78,7 @@
 
     <div class="row">
       <div class="12u no-padding form-margin">
-        <%= f.submit "Cadastrar", class: "button big icon fa-arrow-circle-right" %>
+        <%= f.submit "Cadastrar", class: "button big icon fa-arrow-circle-right", id: 'cadastrar' %>
       </div>
     </div>
 

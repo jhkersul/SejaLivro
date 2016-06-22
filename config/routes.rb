@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
   resources :bookstores, :categories, :books
   resources :admin, :signature
-  #resources :address, only: :update
-
+  
   root 'main#index'
 
   get '/cadastro', to: 'users#new', as: 'users'
+  post '/cadastro', to: 'users#create'
   get '/logout', to: 'users#logout'
   get '/pagamento', to: 'signature#payment'
   get '/profile/:id/edit', to: 'users#edit', as: 'edit_user'
