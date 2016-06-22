@@ -1,58 +1,39 @@
-<!DOCTYPE HTML>
-<!--
-	ZeroFour by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-	oi
--->
-<html>
-	<head>
-		<title>SejaLivro - Assinatura Liter�ria</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-		</script>
-	</head>
-	<body class="homepage">
-		<div id="page-wrapper">
+<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div class="container">
-						<!-- Header -->
-							<% if user_signed_in? %>
-			                <%= render 'main/login_top_menu' %>
-			            <% else %>
-			                <%= render 'main/logout_top_menu' %>
-			            <% end %>
-					</div>
-				</div>
-			<!-- Main Wrapper -->
-				<div id="main-wrapper">
-					<div class="wrapper style3">
-						<div class="inner">
-							<div class="container">
-								<section class="container box feature1">
-									<div class="row" id="createCategory">
-										<div class="12u">
-											<header>
-												<h2>Adicionar Categoria</h2>
-											</header>
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div class="container">
+      <!-- Header -->
+      <% if user_signed_in? %>
+          <%= render 'main/login_top_menu' %>
+      <% else %>
+          <%= render 'main/logout_top_menu' %>
+      <% end %>
+    </div>
+  </div>
+  <!-- Main Wrapper -->
+  <div id="main-wrapper">
+    <div class="wrapper style3">
+      <div class="inner">
+        <div class="container">
+          <section class="container box feature1">
+            <div class="row" id="createCategory">
+              <div class="12u">
+                <header>
+                  <h2>Adicionar Categoria</h2>
+                </header>
 
-											<%= render 'form' %>
-																						
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                <%= render 'form' %>
 
-		<%= render 'main/footer' %>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<%= render 'main/footer' %>

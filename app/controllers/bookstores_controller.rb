@@ -16,8 +16,8 @@ class BookstoresController < ApplicationController
 
     respond_to do |format|
       if @bookstore.save
-        format.html { redirect_to action: :new, notice: 'Bookstore created' }
-        format.json { render :new, status: :created, location: @bookstore }
+        format.html { redirect_to action: :index, notice: 'Bookstore created' }
+        format.json { render :index, status: :created, location: @bookstore }
       else
         format.html { render :new }
         format.json { render json: @bookstore.errors, status: :unprocessable_entity }
@@ -26,9 +26,9 @@ class BookstoresController < ApplicationController
   end
 
   def show
-    @bookstore = Bookstore.find(params[:id]).order(:id)
-    @bookstore_books = @bookstore.bookstore_books.order(:id)
-    @bookstore_orders = @bookstore.orders.order(:id)
+    @bookstore = Bookstore.find(params[:id])
+    @bookstore_books = @bookstore.bookstore_books
+    @bookstore_orders = @bookstore.orders
   end 
 
   def index
@@ -45,8 +45,8 @@ class BookstoresController < ApplicationController
     @bookstore = Bookstore.find(params[:id])
     respond_to do |format|
       if @bookstore.update(bookstore_params)
-        format.html { redirect_to @bookstore, notice: 'Bookstore was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bookstore }
+        format.html { redirect_to action: :index, notice: 'Bookstore was successfully updated.' }
+        format.json { render :index, status: :ok, location: @bookstore }
       else
         format.html { render :edit }
         format.json { render json: @bookstore.errors, status: :unprocessable_entity }

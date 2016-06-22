@@ -33,8 +33,7 @@
 													<dd><%= @user.birth_date.to_formatted_s(:rfc822) %></dd>
 													<dt>Endereço: </dt>
 													<% address = @user.addresses.first %>
-													<dd><%= address.street +
-															( address.complement == '' ? '' : ', ' + address.complement ) %>
+													<dd><%= address.street %>
 													</dd>
 													<dd><%= address.quarter %> </dd>
 													<dd><%= address.zipcode + ', ' + address.city + ' - ' +  address.state%> </dd>

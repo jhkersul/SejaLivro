@@ -34,11 +34,6 @@
                   <h2>Categorias</h2> <br>
                   <div class="row">
                     <div class="6u">
-                      <%= form_tag search_categories_path do %>
-                          <%= label_tag(:q, "Buscar categoria pelo nome:") %>
-                          <input type="search" id="search" placeholder="Buscar categorias" type="text" name="query">
-                          <%= submit_tag("Buscar") %>
-                      <% end %>
 
                     </div>
                     <div class="6u">
@@ -82,7 +77,7 @@
                       <div class="5u">
 													<span> 
 														<%= link_to "Editar", "/categories/#{category.id.to_s}/edit/", :class => "button" %>
-                            <%= link_to "Deletar", "/categories/#{category.id.to_s}/del/", :class => "button" %>
+                            <%= link_to 'Excluir', category, method: :delete, class: "button" %>
                           </span>
                       </div>
                     </div>

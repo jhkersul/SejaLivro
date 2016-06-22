@@ -94,7 +94,7 @@
 													<div class="5u"> 
                             <span>
                               <%= link_to "Editar", "/bookstores/#{bookstore.id.to_s}/edit/", :class => "button" %>
-                              <%= link_to "Deletar", "/bookstores/#{bookstore.id.to_s}/del/", :class => "button" %>
+                              <%= link_to 'Excluir', bookstore, method: :delete, class: "button" %>
                             </span>
 													</div>
 												</div>
